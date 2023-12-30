@@ -12,7 +12,7 @@ export const NavbarDesktop = () => {
                     <Menu.Item
                         as='a'
                         inverted
-                        color='white'
+                        style={{color: 'white'}}
                     >
                         MONEY APP
                     </Menu.Item>
@@ -24,6 +24,7 @@ export const NavbarDesktop = () => {
                     </Menu.Item>
                     <Menu.Item>
                         <Button size='mini' circular color='green'>
+                            <Icon name="signup" />
                             Register
                         </Button> 
                     </Menu.Item>
