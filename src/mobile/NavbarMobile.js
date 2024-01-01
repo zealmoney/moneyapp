@@ -27,7 +27,7 @@ export const NavbarMobile = () => {
                 </Menu.Item>
             </Sidebar>
             <Sidebar.Pusher>
-                <Segment vertical style={{backgroundColor: 'teal'}}>
+                <Segment vertical inverted color="teal">
                     <Menu size="small" secondary>
                         <Container>
                             <Menu.Item style={{color: '#fff'}}>
