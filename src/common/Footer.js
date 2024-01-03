@@ -11,7 +11,7 @@ export const Footer = () => {
                         <Grid.Row>
                             <Grid.Column width={4}>
                                 <Header content="Our Company" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
-                                <List>
+                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
                                     <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
                                         About Us
                                     </List.Item>
@@ -24,8 +24,8 @@ export const Footer = () => {
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Header content="Services" style={{color: "white"}} />
-                                <List>
+                                <Header content="Services" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
+                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
                                     <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
                                         Login
                                     </List.Item>
@@ -41,8 +41,8 @@ export const Footer = () => {
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                            <Header content="Support" style={{color: "white"}} />
-                                <List>
+                            <Header content="Support" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
+                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
                                     <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
                                         Help
                                     </List.Item>
@@ -58,8 +58,8 @@ export const Footer = () => {
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                            <Header content="Security" style={{color: "white"}} />
-                                <List>
+                            <Header content="Security" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
+                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
                                     <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
                                         Report a Suspicious Activity
                                     </List.Item>
