@@ -13,11 +13,10 @@ export const NavbarDesktop = () => {
                     <Menu.Item
                         as='a'
                         inverted
-                        style={{color: 'white'}}
+                        style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '20px'}}
                     >
                         MONEY APP
                     </Menu.Item>
-                    <Header content='About Us' style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '30px'}} />
                     <Menu.Item position='right'>
                         <Button size='mini' circular color='green'>
                             <Icon name='sign in alternate' />
