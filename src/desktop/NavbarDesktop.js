@@ -6,9 +6,9 @@ export const NavbarDesktop = () => {
     return(
         <Segment vertical>
             <Menu 
-                size='large'
+                size='huge'
                 secondary
-                fixed='top'
+                pointing
                 
             >
                 <Container>

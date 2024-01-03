@@ -5,7 +5,7 @@ export const HomeDesktop = () => {
     return(
         <>
             <NavbarDesktop />
-            <br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             <Footer />
         </>
     )
