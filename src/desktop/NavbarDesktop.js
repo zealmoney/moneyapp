@@ -4,7 +4,7 @@ import { Button, Container, Header, Icon, Menu, Segment } from 'semantic-ui-reac
 
 export const NavbarDesktop = () => {
     return(
-        <Segment vertical inverted color='teal'>
+        <Segment vertical>
             <Menu 
                 size='large'
                 secondary

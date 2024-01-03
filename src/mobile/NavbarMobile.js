@@ -30,7 +30,7 @@ export const NavbarMobile = () => {
             */
             }
             <Sidebar.Pusher>
-                <Segment vertical inverted color="teal">
+                <Segment vertical>
                     <Menu size="small" secondary>
                         <Container>
                             <Menu.Item style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '12px'}}>
