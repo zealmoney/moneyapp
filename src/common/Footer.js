@@ -5,7 +5,7 @@ export const Footer = () => {
 
     return(
         <>
-            <Segment vertical inverted color="teal">
+            <Segment vertical inverted color="green">
                 <Container>
                     <Grid stackable>
                         <Grid.Row>
