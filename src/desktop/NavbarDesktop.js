@@ -1,5 +1,6 @@
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Container, Icon, Menu, Segment } from 'semantic-ui-react'
+import '../AGRESSIVE.otf'
+import { Button, Container, Header, Icon, Menu, Segment } from 'semantic-ui-react'
 
 export const NavbarDesktop = () => {
     return(
@@ -16,6 +17,7 @@ export const NavbarDesktop = () => {
                     >
                         MONEY APP
                     </Menu.Item>
+                    <Header content='About Us' style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '30px'}} />
                     <Menu.Item position='right'>
                         <Button size='mini' circular color='green'>
                             <Icon name='sign in alternate' />

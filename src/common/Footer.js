@@ -10,7 +10,7 @@ export const Footer = () => {
                     <Grid stackable>
                         <Grid.Row>
                             <Grid.Column width={4}>
-                                <Header content="Our Company" style={{color: "white"}} />
+                                <Header content="Our Company" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
                                 <List>
                                     <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
                                         About Us
