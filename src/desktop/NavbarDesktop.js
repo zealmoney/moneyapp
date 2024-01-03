@@ -6,11 +6,10 @@ export const NavbarDesktop = () => {
     return(
         <Segment vertical>
             <Menu 
-                size='huge'
+                size='large'
                 secondary
                 fixed='top'
-                pointing
-                style={{backgroundColor: 'white'}}
+                
             >
                 <Container>
                     <Menu.Item
