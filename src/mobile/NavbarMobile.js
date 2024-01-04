@@ -29,8 +29,12 @@ export const NavbarMobile = () => {
             </Sidebar>
             */
             }
-                <Segment vertical  style={{minHeight: '40px'}}>
-                    <Menu size="small" secondary fixed="top">
+                    <Menu 
+                        size="small" 
+                        secondary 
+                        fixed="top"
+                        style={{minHeight: 40, backgroundColor: '#fff'}}
+                    >
                         <Container>
                             <Menu.Item style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '12px'}}>
                                 MONEY APP
@@ -51,7 +55,6 @@ export const NavbarMobile = () => {
                             </Menu.Item>
                         </Container>
                     </Menu>
-                </Segment>
         </>
     )
 }

@@ -4,11 +4,11 @@ import { Button, Container, Header, Icon, Menu, Segment } from 'semantic-ui-reac
 
 export const NavbarDesktop = () => {
     return(
-        <Segment vertical>
             <Menu 
                 size='huge'
                 secondary
-                pointing
+                fixed='top'
+                style={{minHeight: 80, backgroundColor: '#fff'}}
                 
             >
                 <Container>
@@ -33,6 +33,5 @@ export const NavbarDesktop = () => {
                     </Menu.Item>
                 </Container>
             </Menu>
-        </Segment>
     )
 }
