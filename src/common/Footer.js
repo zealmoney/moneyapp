@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Container, Grid, Header, List, Placeholder, Segment } from "semantic-ui-react"
+import { Container, Divider, Grid, Header, Image, List, Placeholder, Segment } from "semantic-ui-react"
 
 export const Footer = () => {
 
@@ -72,35 +72,26 @@ export const Footer = () => {
                                 </List>
                             </Grid.Column>
                         </Grid.Row>
-                        {/*
                         <Grid.Row>
-                            <Grid.Column width={4}></Grid.Column>
                             <Grid.Column width={4}>
-                                <Placeholder style={{height: 50, width: 90}}>
-                                    <Placeholder.Image />
-                                </Placeholder>
-                            </Grid.Column>
-                            <Grid.Column width={4}>
-                                <Placeholder style={{height: 50, width: 90}}>
-                                    <Placeholder.Image />
-                                </Placeholder>
-                            </Grid.Column>
-                            <Grid.Column width={4}></Grid.Column>
+                                <Grid>
+                                    <Grid.Row>
+                                        <Grid.Column width={8}>
+                                            <Image rounded src='/images/applestore.svg' />
+                                        </Grid.Column>
+                                        <Grid.Column width={8}>
+                                            <Image rounded src='/images/googleplay.png' />
+                                        </Grid.Column>
+                                    </Grid.Row>
+                                </Grid>
+                            </Grid.Column> 
                         </Grid.Row>
+                        <Divider />
                         <Grid.Row>
-                            <Grid.Column width={8}>
-                                Scan the QR code to download the App
-                                <Placeholder style={{height: 50, width: 90}}>
-                                    <Placeholder.Image />
-                                </Placeholder>
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column textAlign="right">
+                            <Grid.Column>
                                 MONEY APP LLC, All rights reserved &copy;2023
                             </Grid.Column>
                         </Grid.Row>
-                        */}
                     </Grid>
                 </Container>
             </Segment>
