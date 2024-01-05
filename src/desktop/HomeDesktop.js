@@ -6,6 +6,7 @@ export const HomeDesktop = () => {
         <>
             <NavbarDesktop />
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             <Footer />
         </>
     )

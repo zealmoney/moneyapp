@@ -5,73 +5,74 @@ export const Footer = () => {
 
     return(
         <>
-            <Segment vertical inverted color="green">
+            <Segment vertical inverted>
                 <Container>
-                    <Grid stackable>
+                    <Grid stackable inverted divided>
                         <Grid.Row>
                             <Grid.Column width={4}>
-                                <Header content="Our Company" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
-                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                <Header as='h4' inverted content="Our Company"  />
+                                <List link inverted>
+                                    <List.Item as='a'>
                                         About Us
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         Careers
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         Press
                                     </List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Header content="Services" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
-                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                <Header as='h4' inverted content="Services" />
+                                <List link inverted>
+                                    <List.Item as='a'>
                                         Login
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         Sign Up
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         Rates and Fees
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         Refer Friends and Relatives
                                     </List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                            <Header content="Support" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
-                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                            <Header as='h4' inverted content="Support" />
+                                <List link inverted>
+                                    <List.Item as='a'>
                                         Help
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         Contact Us
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         User Feedback
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         FAQ
                                     </List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                            <Header content="Security" style={{fontFamily: 'Poppins', fontSize: '20px', fontWeight: 'bold'}} />
-                                <List relaxed link style={{fontFamily: 'Poppins', fontWeight: 'normal', fontSize: '16px'}}>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                            <Header as='h4' inverted content="Security" />
+                                <List link inverted>
+                                    <List.Item as='a'>
                                         Report a Suspicious Activity
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         Privacy Policy
                                     </List.Item>
-                                    <List.Item as='a' style={{color: "white", fontSize: '1.3em'}}>
+                                    <List.Item as='a'>
                                         User Agreement
                                     </List.Item>
                                 </List>
                             </Grid.Column>
                         </Grid.Row>
+                        {/*
                         <Grid.Row>
                             <Grid.Column width={4}></Grid.Column>
                             <Grid.Column width={4}>
@@ -99,6 +100,7 @@ export const Footer = () => {
                                 MONEY APP LLC, All rights reserved &copy;2023
                             </Grid.Column>
                         </Grid.Row>
+                        */}
                     </Grid>
                 </Container>
             </Segment>
