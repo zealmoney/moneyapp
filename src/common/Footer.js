@@ -77,19 +77,22 @@ export const Footer = () => {
                                 <Grid>
                                     <Grid.Row>
                                         <Grid.Column width={8}>
-                                            <Image rounded src='/images/applestore.svg' />
+                                            <Image as='a' href="#" target='_blank' rounded src='/images/apple.png' />
                                         </Grid.Column>
                                         <Grid.Column width={8}>
-                                            <Image rounded src='/images/googleplay.png' />
+                                            <Image as='a' href="#" target='_blank' rounded src='/images/googleplay.png' />
                                         </Grid.Column>
                                     </Grid.Row>
                                 </Grid>
                             </Grid.Column> 
                         </Grid.Row>
-                        <Divider />
+                        <Divider inverted section />
                         <Grid.Row>
-                            <Grid.Column>
-                                MONEY APP LLC, All rights reserved &copy;2023
+                            <Grid.Column textAlign="center">
+                                <span style={{wordSpacing: '0.2em'}}>
+                                    MONEY APP LLC, All rights reserved &copy;2024
+                                </span>
+                                
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
