@@ -30,7 +30,7 @@ export const FindOut = () => {
                                 />
                             </Grid.Column>
                             <Grid.Column textAlign="center" width={4}>
-                            <Icon inverted color="green" size="big" name="check circle" />
+                                <Icon inverted color="green" size="big" name="check circle" />
                                 <Header style={{fontSize: '1.6em'}} content='Delivery Time Guaranteed' />
                                 <Header 
                                     as='h4' 
