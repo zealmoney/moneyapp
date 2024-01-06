@@ -4,7 +4,7 @@ export const HeadingPage = () => {
     
     return(
         <>
-            <Segment vertical style={{padding: '8em 0em', backgroundColor: '#F6F6F6', maxHeight: 400}}>
+            <Segment vertical style={{padding: '8em 0em', backgroundColor: '#F6F6F6'}}>
                 <Container>
                     <Grid>
                         <Grid.Row>
