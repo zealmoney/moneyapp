@@ -4,6 +4,7 @@ import { Button, Container, Header, Icon, Menu, Segment } from 'semantic-ui-reac
 
 export const NavbarDesktop = () => {
     return(
+        <Segment vertical secondary>
             <Menu 
                 size='huge'
                 secondary
@@ -33,5 +34,6 @@ export const NavbarDesktop = () => {
                     </Menu.Item>
                 </Container>
             </Menu>
+        </Segment>
     )
 }
