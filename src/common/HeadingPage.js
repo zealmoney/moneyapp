@@ -9,8 +9,8 @@ export const HeadingPage = () => {
                     <Grid verticalAlign="middle">
                         <Grid.Row>
                             <Grid.Column textAlign="center" width={8}>
-                                <Header as='h1' content='Worry-free transfers for you and your loved ones' />
-                                <Button circular color="green">
+                                <Header style={{fontSize: '3.2em', textAlign: 'left'}} content='Worry-free transfers for you and your loved ones' />
+                                <Button circular size="huge" color="green">
                                     Learn More
                                 </Button>
                             </Grid.Column>
