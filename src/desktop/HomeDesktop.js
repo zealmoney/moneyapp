@@ -1,4 +1,5 @@
 import { CashPayout } from "../common/CashPayout"
+import { Customers } from "../common/Customers"
 import { FindOut } from "../common/FindOut"
 import { Footer } from "../common/Footer"
 import { HeadingPage } from "../common/HeadingPage"
@@ -11,6 +12,7 @@ export const HomeDesktop = () => {
             <HeadingPage />
             <FindOut />
             <CashPayout />
+            <Customers />
             <Footer />
         </>
     )
