@@ -19,7 +19,7 @@ export const CashPayout = () => {
 
     return(
         <>
-            <Segment vertical size="massive" style={{padding: '4em 8em'}}>
+            <Segment vertical size="massive" style={{padding: '4em 8em', backgroundColor: '#f6f6f6'}}>
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column>
@@ -27,7 +27,7 @@ export const CashPayout = () => {
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column style={{maxWidth: 900}}>
+                            <Grid.Column style={{maxWidth: 1200}}>
                                 <Grid>
                                     <Grid.Row>
                                         {
