@@ -24,7 +24,7 @@ export const CashPayout = () => {
                     <Grid>
                         <Grid.Row>
                             <Grid.Column textAlign="center">
-                                <Header content='Countries where you can send money' />
+                                <Header as='h1' content='Countries where you can send money' />
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
