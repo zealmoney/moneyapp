@@ -19,12 +19,12 @@ export const CashPayout = () => {
 
     return(
         <>
-            <Segment vertical style={{padding: '4em 0em'}}>
+            <Segment vertical size="massive" style={{padding: '4em 0em'}}>
                 <Container>
                     <Grid>
                         <Grid.Row>
                             <Grid.Column textAlign="center">
-                                <Header style={{fontSize: '3.2em'}} content='Countries where you can send money' />
+                                <Header content='Countries where you can send money' />
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
@@ -33,9 +33,12 @@ export const CashPayout = () => {
                                     <Grid.Row>
                                         {
                                             countries.map((country) => (
-                                                <Grid.Column  textAlign="center" key={country.countryCode} width={4} style={{fontSize: '2em'}}>
-                                                    {flagRenderer(country)}{country.name}
-                                                </Grid.Column>
+                                                <>
+                                                    <Grid.Column  textAlign="center" key={country.countryCode} width={4}>
+                                                        {flagRenderer(country)}{country.name}
+                                                    </Grid.Column>
+                                                    <br/><br/>
+                                                </>
                                             ))
                                         }
                                     </Grid.Row>
