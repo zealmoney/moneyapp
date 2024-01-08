@@ -34,7 +34,7 @@ export const CashPayout = () => {
                                         {
                                             countries.map((country) => (
                                                 <>
-                                                    <Grid.Column  textAlign="center" key={country.countryCode} width={4}>
+                                                    <Grid.Column key={country.countryCode} width={4}>
                                                         {flagRenderer(country)}{country.name}
                                                     </Grid.Column>
                                                     <br/><br/>
