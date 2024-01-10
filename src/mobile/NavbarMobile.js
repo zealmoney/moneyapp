@@ -33,7 +33,7 @@ export const NavbarMobile = () => {
                         size="large" 
                         secondary 
                         fixed="top"
-                        style={{minHeight: 80, backgroundColor: '#fff'}}
+                        style={{minHeight: 60, backgroundColor: '#fff'}}
                     >
                             <Menu.Item style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '14px'}}>
                                 MONEY APP
