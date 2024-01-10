@@ -4,7 +4,7 @@ export const FindOutMobile = () => {
 
     return(
         <>
-            <Segment vertical size="massive" style={{padding: '4em 0em'}}>
+            <Segment vertical size="massive" style={{padding: '2em 0em'}}>
                 
                 <Grid textAlign="center" stackable>
                     <Grid.Row>
