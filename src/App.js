@@ -17,7 +17,7 @@ function App() {
       <Media at="mobile">
         <BrowserRouter>
           <Routes>
-            <Route index element={<HomeDesktop />} />
+            <Route index element={<HomeMobile />} />
           </Routes>
         </BrowserRouter>
       </Media>
