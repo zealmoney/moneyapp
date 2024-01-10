@@ -35,8 +35,7 @@ export const NavbarMobile = () => {
                         fixed="top"
                         style={{minHeight: 40, backgroundColor: '#fff'}}
                     >
-                        <Container>
-                            <Menu.Item style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '16px'}}>
+                            <Menu.Item style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '14px'}}>
                                 MONEY APP
                             </Menu.Item>
                             {/*<Menu.Item style={{color: '#fff'}} position="right" onClick={() => setSidebarOpened(true)}>
@@ -51,7 +50,6 @@ export const NavbarMobile = () => {
                                     Register
                                 </Button> 
                             </Menu.Item>
-                        </Container>
                     </Menu>
         </>
     )
