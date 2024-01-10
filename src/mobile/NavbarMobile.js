@@ -30,7 +30,7 @@ export const NavbarMobile = () => {
             */
             }
                     <Menu 
-                        size="small" 
+                        size="large" 
                         secondary 
                         fixed="top"
                         style={{minHeight: 40, backgroundColor: '#fff'}}
