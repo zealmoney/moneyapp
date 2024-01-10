@@ -4,7 +4,7 @@ export const HeadingPageMobile = () => {
 
     return(
         <>
-            <Segment vertical style={{backgroundColor: '#F6F6F6', marginTop: '6em', padding: '4em 0em'}}>
+            <Segment vertical style={{backgroundColor: '#F6F6F6', marginTop: '3.5em', padding: '4em 0em'}}>
                 <Container>
                     <Grid verticalAlign="middle">
                         <Grid.Row>
