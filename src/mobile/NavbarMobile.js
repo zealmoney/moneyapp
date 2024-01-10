@@ -44,12 +44,10 @@ export const NavbarMobile = () => {
                             </Menu.Item>*/}
                             <Menu.Item position='right'>
                                 <Button size='mini' circular color='green'>
-                                    <Icon name='sign in alternate' />
                                     Sign In
                                 </Button>
                                 &nbsp; &nbsp;
                                 <Button size='mini' circular color='green'>
-                                    <Icon name="signup" />
                                     Register
                                 </Button> 
                             </Menu.Item>
