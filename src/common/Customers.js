@@ -16,7 +16,7 @@ export const Customers = () => {
                             <Grid.Column width={4}>
                                 <Segment circular raised inverted color="green">
                                     <Header content='Adam Smith' />
-                                    <Rating icon="star" maxRating={3} />
+                                    <Rating icon="star" defaultRating={4} maxRating={5} />
                                     <p>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
@@ -27,7 +27,7 @@ export const Customers = () => {
                             <Grid.Column width={4}>
                                 <Segment circular raised inverted color="green">
                                     <Header content='Adam Smith' />
-                                    <Rating icon="star" maxRating={3} />
+                                    <Rating icon="star" defaultRating={3} maxRating={5} />
                                     <p>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
@@ -38,7 +38,7 @@ export const Customers = () => {
                             <Grid.Column width={4}>
                                 <Segment circular raised inverted color="green">
                                     <Header content='Adam Smith' />
-                                    <Rating icon="star" maxRating={3} />
+                                    <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
@@ -49,7 +49,7 @@ export const Customers = () => {
                             <Grid.Column width={4}>
                                 <Segment circular raised inverted color="green">
                                     <Header content='Adam Smith' />
-                                    <Rating icon="star" maxRating={3} />
+                                    <Rating icon="star" defaultRating={5} maxRating={5} />
                                     <p>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
