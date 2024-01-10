@@ -6,7 +6,7 @@ export const FindOut = () => {
         <>
             <Segment vertical size="massive" style={{padding: '4em 0em'}}>
                 
-                    <Grid textAlign="center">
+                    <Grid textAlign="center" stackable>
                         <Grid.Row>
                             <Grid.Column>
                                 <Header as='h1' textAlign="center" content='Find Out Why More People Use Money App' />

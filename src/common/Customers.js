@@ -6,7 +6,7 @@ export const Customers = () => {
         <>
             <Segment vertical size="massive" style={{padding: '4em 0em'}}>
                 <Container>
-                    <Grid>
+                    <Grid stackable>
                         <Grid.Row>
                             <Grid.Column textAlign="center">
                                 <Header as='h1' content='What our Customers are saying' />

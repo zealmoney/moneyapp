@@ -6,7 +6,7 @@ export const HeadingPage = () => {
         <>
             <Segment vertical style={{backgroundColor: '#F6F6F6', marginTop: '3.5em'}}>
                 <Container>
-                    <Grid verticalAlign="middle">
+                    <Grid verticalAlign="middle" stackable>
                         <Grid.Row>
                             <Grid.Column textAlign="center" width={8}>
                                 <Header style={{fontSize: '3.2em', textAlign: 'left'}} content='Worry-free transfers for you and your loved ones' />

@@ -20,7 +20,7 @@ export const CashPayout = () => {
     return(
         <>
             <Segment vertical size="massive" style={{padding: '4em 8em', backgroundColor: '#f6f6f6'}}>
-                    <Grid textAlign="center">
+                    <Grid textAlign="center" stackable>
                         <Grid.Row>
                             <Grid.Column>
                                 <Header as='h1' content='Countries where you can send money' />
