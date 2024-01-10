@@ -4,7 +4,7 @@ export const Customers = () => {
 
     return(
         <>
-            <Segment vertical size="massive">
+            <Segment vertical size="massive" style={{padding: '4em 0em'}}>
                 <Container>
                     <Grid>
                         <Grid.Row>
@@ -14,7 +14,7 @@ export const Customers = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column width={4}>
-                                <Segment circular raised inverted color="green">
+                                <Segment circular raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={4} maxRating={5} />
                                     <p>
@@ -25,7 +25,7 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment circular raised inverted color="green">
+                                <Segment circular raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={3} maxRating={5} />
                                     <p>
@@ -36,7 +36,7 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment circular raised inverted color="green">
+                                <Segment circular raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p>
@@ -47,7 +47,7 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment circular raised inverted color="green">
+                                <Segment circular raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={5} maxRating={5} />
                                     <p>
