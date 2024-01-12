@@ -14,10 +14,10 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment raised>
+                                <Segment textAlign="center" raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={4} maxRating={5} />
-                                    <p>
+                                    <p style={{textAlign: 'left'}}>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
                                         for recepient! Also, very good exchange rate!
@@ -27,10 +27,10 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment raised>
+                                <Segment textAlign="center" raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
-                                    <p>
+                                    <p style={{textAlign: 'left'}}>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
                                         for recepient! Also, very good exchange rate!
@@ -40,10 +40,10 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment raised>
+                                <Segment textAlign="center" raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
-                                    <p>
+                                    <p style={{textAlign: 'left'}}>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
                                         for recepient! Also, very good exchange rate!
@@ -53,10 +53,10 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment raised>
+                                <Segment textAlign="center" raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
-                                    <p>
+                                    <p style={{textAlign: 'left'}}>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
                                         for recepient! Also, very good exchange rate!
