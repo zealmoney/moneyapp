@@ -55,7 +55,7 @@ export const CashPayoutMobile = () => {
     
     return(
         <>
-            <Segment vertical size="massive" style={{padding: '2em 0em', backgroundColor: '#f6f6f6'}}>
+            <Segment vertical style={{padding: '2em 0em', backgroundColor: '#f6f6f6'}}>
                 <Container>
                     <Grid>
                         <Grid.Row>
