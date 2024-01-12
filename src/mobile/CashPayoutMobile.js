@@ -1,4 +1,4 @@
-import { Flag, Grid, Header, Segment } from "semantic-ui-react"
+import { Container, Flag, Grid, Header, Segment } from "semantic-ui-react"
 
 const countries = [
     { name: 'Albania', countryCode: 'al'},
@@ -56,20 +56,21 @@ export const CashPayoutMobile = () => {
     return(
         <>
             <Segment size="massive" style={{padding: '2em 0em'}}>
-                    <Grid textAlign="center">
+                <Container>
+                    <Grid>
                         <Grid.Row>
                             <Grid.Column>
-                                <Header as='h1' content='Countries where you can send money' />
+                                <Header textAlign="center" as='h1' content='Countries where you can send money' />
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column style={{maxWidth: 600}}>
+                            <Grid.Column>
                                 <Grid>
                                     <Grid.Row>
                                         {
                                             countries.map((country) => (
                                                 <>
-                                                    <Grid.Column textAlign="left" key={country.countryCode} width={8}>
+                                                    <Grid.Column key={country.countryCode} width={8}>
                                                         {flagRenderer(country)}{country.name}                      
                                                     </Grid.Column>
                                                     <br/><br/>
@@ -81,6 +82,7 @@ export const CashPayoutMobile = () => {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
+                </Container>
             </Segment>
         </>
     )
