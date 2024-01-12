@@ -13,7 +13,7 @@ export const CustomersMobile = () => {
                             </Grid.Column>  
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column width={8}>
+                            <Grid.Column>
                                 <Segment raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={4} maxRating={5} />
@@ -24,20 +24,9 @@ export const CustomersMobile = () => {
                                     </p>
                                 </Segment>
                             </Grid.Column>
-                            <Grid.Column width={8}>
-                                <Segment raised>
-                                    <Header content='Adam Smith' />
-                                    <Rating icon="star" defaultRating={3} maxRating={5} />
-                                    <p>
-                                        Exceptionally easy application to use. 
-                                        Affordable rate and convenient arrangement 
-                                        for recepient! Also, very good exchange rate!
-                                    </p>
-                                </Segment>
-                            </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column width={8}>
+                            <Grid.Column>
                                 <Segment raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
@@ -48,10 +37,25 @@ export const CustomersMobile = () => {
                                     </p>
                                 </Segment>
                             </Grid.Column>
-                            <Grid.Column width={8}>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Column>
                                 <Segment raised>
                                     <Header content='Adam Smith' />
-                                    <Rating icon="star" defaultRating={5} maxRating={5} />
+                                    <Rating icon="star" defaultRating={2} maxRating={5} />
+                                    <p>
+                                        Exceptionally easy application to use. 
+                                        Affordable rate and convenient arrangement 
+                                        for recepient! Also, very good exchange rate!
+                                    </p>
+                                </Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Segment raised>
+                                    <Header content='Adam Smith' />
+                                    <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p>
                                         Exceptionally easy application to use. 
                                         Affordable rate and convenient arrangement 
