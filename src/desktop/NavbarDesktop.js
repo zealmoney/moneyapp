@@ -1,8 +1,12 @@
 import 'semantic-ui-css/semantic.min.css'
 import '../AGRESSIVE.otf'
 import { Button, Container, Header, Icon, Menu, Segment } from 'semantic-ui-react'
+import { useNavigate } from 'react-router-dom'
 
 export const NavbarDesktop = () => {
+
+    const navigate = useNavigate()
+
     return(
         <Segment vertical secondary>
             <Menu 
@@ -17,11 +21,16 @@ export const NavbarDesktop = () => {
                         as='a'
                         inverted
                         style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '20px'}}
+                        onClick={() => navigate('/')}
                     >
                         MONEY APP
                     </Menu.Item>
                     <Menu.Item position='right'>
-                        <Button size='mini' circular color='green'>
+                        <Button 
+                            size='mini' 
+                            circular color='green'
+                            onClick={() => navigate('/signin')}
+                        >
                             <Icon name='sign in alternate' />
                             Sign In
                         </Button> 

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createMedia } from "@artsy/fresnel";
 import { HomeDesktop } from "./desktop/HomeDesktop";
 import { HomeMobile } from "./mobile/HomeMobile";
+import { SignIn } from "./common/SignIn";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -25,6 +26,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<HomeDesktop />} />
+            <Route path="/signin" element={<SignIn />} />
           </Routes>
         </BrowserRouter>
       </Media>
