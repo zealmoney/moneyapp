@@ -1,16 +1,24 @@
-import { Menu } from "semantic-ui-react"
+import { Container, Grid, Header, Menu, Segment } from "semantic-ui-react"
 
 export const AuthenticationHeader = () => {
 
     return(
         <>
-            <Menu
-                size="huge"
+            <Segment
+                vertical
             >
-                <Menu.Item>
-                    MONEY APP
-                </Menu.Item>
-            </Menu>
+                <Container>
+                    <Grid textAlign="center">
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Header style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '30px'}}>
+                                    MONEY APP
+                                </Header>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Container>
+            </Segment>
         </>
     )
 }

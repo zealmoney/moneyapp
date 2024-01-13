@@ -19,6 +19,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<HomeMobile />} />
+            <Route path="/signin" element={<SignIn />} />
           </Routes>
         </BrowserRouter>
       </Media>
