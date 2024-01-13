@@ -29,7 +29,12 @@ export const NavbarMobile = () => {
                                     Sign In
                                 </Button>
                                 &nbsp; &nbsp;
-                                <Button size='mini' circular color='green'>
+                                <Button 
+                                    size='mini' 
+                                    circular 
+                                    color='green'
+                                    onClick={() => navigate('/register')}
+                                >
                                     Sign Up
                                 </Button> 
                             </Menu.Item>
