@@ -4,6 +4,8 @@ import { HomeDesktop } from "./desktop/HomeDesktop";
 import { HomeMobile } from "./mobile/HomeMobile";
 import { SignIn } from "./common/SignIn";
 import { SignInMobile } from "./mobile/SignInMobile";
+import { Register } from "./common/Register";
+import { RegisterMobile } from "./mobile/RegisterMobile";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -21,6 +23,7 @@ function App() {
           <Routes>
             <Route index element={<HomeMobile />} />
             <Route path="/signin" element={<SignInMobile />} />
+            <Route path="/register" element={<RegisterMobile />} />
           </Routes>
         </BrowserRouter>
       </Media>
@@ -29,6 +32,7 @@ function App() {
           <Routes>
             <Route index element={<HomeDesktop />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
       </Media>

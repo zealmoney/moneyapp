@@ -1,5 +1,6 @@
 import { Button, Container, Form, Grid, Header, Menu, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
+import { Link } from "react-router-dom"
 
 export const SignIn = () => {
 
@@ -22,8 +23,7 @@ export const SignIn = () => {
                                         </label>
                                         <Form.Input 
                                             fluid
-                                            icon='user'
-                                            iconPosition="left"
+                                            placeholder='youremail@domain.com'
                                         />
                                     </Form.Field> 
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -32,8 +32,8 @@ export const SignIn = () => {
                                         </label>
                                         <Form.Input 
                                             fluid
-                                            icon='lock'
-                                            iconPosition="left"
+                                            icon='eye'
+                                            iconPosition="right"
                                             type="password"
                                         />
                                     </Form.Field> 
@@ -41,7 +41,18 @@ export const SignIn = () => {
                                         <Button color="green" fluid size="huge">
                                             Sign In
                                         </Button>
-                                    </Form.Field>        
+                                    </Form.Field>
+                                    <Form.Field>
+                                        <span>
+                                            <Link>Forgot Password</Link>
+                                        </span>
+                                    </Form.Field> 
+                                    <Form.Field>
+                                        <span>
+                                            Don't have an Account? &nbsp; 
+                                            <Link style={{textDecorationLine: 'none'}} to={'/register'}>Register</Link>
+                                        </span>
+                                    </Form.Field>       
                                 </Form>
                             </Segment>
                         </Grid.Column>

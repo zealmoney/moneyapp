@@ -36,7 +36,12 @@ export const NavbarDesktop = () => {
                         </Button> 
                     </Menu.Item>
                     <Menu.Item>
-                        <Button size='mini' circular color='green'>
+                        <Button 
+                            size='mini' 
+                            circular 
+                            color='green'
+                            onClick={() => navigate('/register')}
+                        >
                             <Icon name="signup" />
                             Register
                         </Button> 
