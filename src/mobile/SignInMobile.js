@@ -1,8 +1,11 @@
+import { Button, Form, Grid, Header, Segment } from "semantic-ui-react"
+import { AuthenticationHeader } from "../common/AuthenticationHeader"
 
-export const signInMobile = () => {
+export const SignInMobile = () => {
 
     return(
         <>
+            <AuthenticationHeader />
             <Segment vertical style={{padding: '2em 0em'}}>
                 <Grid textAlign="center">
                     <Grid.Row>

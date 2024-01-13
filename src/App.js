@@ -3,6 +3,7 @@ import { createMedia } from "@artsy/fresnel";
 import { HomeDesktop } from "./desktop/HomeDesktop";
 import { HomeMobile } from "./mobile/HomeMobile";
 import { SignIn } from "./common/SignIn";
+import { SignInMobile } from "./mobile/SignInMobile";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -19,7 +20,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<HomeMobile />} />
-            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signin" element={<SignInMobile />} />
           </Routes>
         </BrowserRouter>
       </Media>
