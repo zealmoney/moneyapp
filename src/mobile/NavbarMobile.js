@@ -7,28 +7,6 @@ export const NavbarMobile = () => {
     const navigate = useNavigate()
     return(
         <>
-            {/*
-            <Sidebar
-                visible={sidebarOpened}
-                as={Menu}
-                animation="overlay"
-                inverted
-                vertical
-                style={{
-                    backgroundColor: 'teal',
-                    maxHeight: 400
-                }}
-                onHide={() => setSidebarOpened(false)}
-            >
-                <Menu.Item as='a'>
-                    <span><Icon name="sign in alternate" />Login</span>
-                </Menu.Item>
-                <Menu.Item as='a'>
-                    <span><Icon name="signup" />Register</span>
-                </Menu.Item>
-            </Sidebar>
-            */
-            }
                     <Menu 
                         size="large" 
                         secondary 
@@ -42,7 +20,12 @@ export const NavbarMobile = () => {
                                 <Icon size="big" name="sidebar" />
                             </Menu.Item>*/}
                             <Menu.Item position='right'>
-                                <Button size='mini' circular color='green'>
+                                <Button 
+                                    size='mini' 
+                                    circular 
+                                    color='green'
+                                    onClick={() => navigate('/signin')}
+                                >
                                     Sign In
                                 </Button>
                                 &nbsp; &nbsp;

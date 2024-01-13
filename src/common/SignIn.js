@@ -15,7 +15,7 @@ export const SignIn = () => {
                                 <Header textAlign="left" as='h1' style={{wordSpacing: '0.1em'}}>
                                     Sign In with Money App
                                 </Header>
-                                <Form size="massive">
+                                <Form size="huge">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>
                                             Email Address

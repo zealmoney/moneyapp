@@ -11,7 +11,7 @@ export const AuthenticationHeader = () => {
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column>
-                                <Header style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '30px'}}>
+                                <Header style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '25px'}}>
                                     MONEY APP
                                 </Header>
                             </Grid.Column>
