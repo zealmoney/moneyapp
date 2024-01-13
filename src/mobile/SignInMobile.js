@@ -6,12 +6,12 @@ export const SignInMobile = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '2em 0em'}}>
+            <Segment vertical style={{padding: '2em 1em'}}>
                 <Grid textAlign="center">
                     <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
                             <Segment vertical>
-                                <Header textAlign="left" as='h1' style={{wordSpacing: '0.1em'}}>
+                                <Header textAlign="left" as='h2' style={{wordSpacing: '0.1em'}}>
                                     Sign In with Money App
                                 </Header>
                                 <Form size="huge">
@@ -31,8 +31,8 @@ export const SignInMobile = () => {
                                         </label>
                                         <Form.Input 
                                             fluid
-                                            icon='lock'
-                                            iconPosition="left"
+                                            icon='eye'
+                                            iconPosition="right"
                                             type="password"
                                         />
                                     </Form.Field> 
