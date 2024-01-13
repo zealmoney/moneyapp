@@ -1,14 +1,10 @@
-import { Button, Container, Form, Grid, Header, Menu, Segment } from "semantic-ui-react"
-import { AuthenticationHeader } from "./AuthenticationHeader"
 
-export const SignIn = () => {
+export const signInMobile = () => {
 
     return(
         <>
-            <AuthenticationHeader />
-            <Segment vertical style={{padding: '4em 2em'}}>
-                <Container>
-                <Grid textAlign="center" stackable>
+            <Segment vertical style={{padding: '2em 0em'}}>
+                <Grid textAlign="center">
                     <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
                             <Segment vertical>
@@ -47,7 +43,6 @@ export const SignIn = () => {
                         </Grid.Column>
                     </Grid.Row>                
                 </Grid>
-                </Container>
             </Segment>
         </>
     )
