@@ -8,7 +8,6 @@ export const ForgotPasswordMobile = () => {
         <>
             <AuthenticationHeader />
             <Segment vertical style={{padding: '2em 1em'}}>
-                <Container>
                 <Grid textAlign="center">
                     <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
@@ -46,7 +45,6 @@ export const ForgotPasswordMobile = () => {
                         </Grid.Column>
                     </Grid.Row>                
                 </Grid>
-                </Container>
             </Segment>
         </>
     )

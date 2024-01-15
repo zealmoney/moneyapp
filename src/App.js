@@ -8,6 +8,7 @@ import { Register } from "./common/Register";
 import { RegisterMobile } from "./mobile/RegisterMobile";
 import { ForgotPassword } from "./common/ForgotPassword";
 import { ForgotPasswordMobile } from "./mobile/ForgotPasswordMobile";
+import { TransactionComponent } from "./common/TransactionComponent";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot" element={<ForgotPassword />} />
+            <Route path="/transaction" element={<TransactionComponent />} />
           </Routes>
         </BrowserRouter>
       </Media>
