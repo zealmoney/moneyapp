@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Container, Grid, Header, Menu, Segment } from "semantic-ui-react"
 
 export const AuthenticationHeader = () => {
@@ -12,7 +13,7 @@ export const AuthenticationHeader = () => {
                         <Grid.Row>
                             <Grid.Column>
                                 <Header style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '25px'}}>
-                                    MONEY APP
+                                    <Link to={'/'} style={{color: 'black'}}>MONEY APP</Link>
                                 </Header>
                             </Grid.Column>
                         </Grid.Row>

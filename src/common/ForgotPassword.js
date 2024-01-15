@@ -1,8 +1,8 @@
-import { Button, Container, Form, Grid, Header, Menu, Segment } from "semantic-ui-react"
+import { Button, Container, Form, Grid, Header, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { Link } from "react-router-dom"
 
-export const SignIn = () => {
+export const ForgotPassword = () => {
 
     return(
         <>
@@ -14,8 +14,12 @@ export const SignIn = () => {
                         <Grid.Column style={{maxWidth: 600}}>
                             <Segment vertical>
                                 <Header textAlign="left" as='h1' style={{wordSpacing: '0.1em'}}>
-                                    Sign In with Money App
+                                    Change Your Password
                                 </Header>
+                                <p style={{textAlign: 'left'}}>
+                                    We'll send instructions on how to change your password
+                                    to the email you enter below. 
+                                </p>
                                 <Form size="huge">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>
@@ -25,33 +29,17 @@ export const SignIn = () => {
                                             fluid
                                             placeholder='youremail@domain.com'
                                         />
-                                    </Form.Field> 
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            Password
-                                        </label>
-                                        <Form.Input 
-                                            fluid
-                                            icon='eye'
-                                            iconPosition="right"
-                                            type="password"
-                                        />
-                                    </Form.Field> 
+                                    </Form.Field>
                                     <Form.Field>
                                         <Button color="green" fluid size="huge">
-                                            Sign In
+                                            Continue
                                         </Button>
                                     </Form.Field>
                                     <Form.Field>
-                                        <span>
-                                            <Link to={'/forgot'}>Forgot Password</Link>
-                                        </span>
+                                        <Link to={'/signin'} style={{fontWeight: 'bold'}}>Sign In</Link>
                                     </Form.Field> 
                                     <Form.Field>
-                                        <span>
-                                            Don't have an Account? &nbsp; 
-                                            <Link style={{textDecorationLine: 'none'}} to={'/register'}>Register</Link>
-                                        </span>
+                                        <Link style={{fontWeight: 'bold'}}>Get Help</Link>
                                     </Form.Field>       
                                 </Form>
                             </Segment>

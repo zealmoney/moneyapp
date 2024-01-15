@@ -6,6 +6,8 @@ import { SignIn } from "./common/SignIn";
 import { SignInMobile } from "./mobile/SignInMobile";
 import { Register } from "./common/Register";
 import { RegisterMobile } from "./mobile/RegisterMobile";
+import { ForgotPassword } from "./common/ForgotPassword";
+import { ForgotPasswordMobile } from "./mobile/ForgotPasswordMobile";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -24,6 +26,7 @@ function App() {
             <Route index element={<HomeMobile />} />
             <Route path="/signin" element={<SignInMobile />} />
             <Route path="/register" element={<RegisterMobile />} />
+            <Route path="/forgot" element={<ForgotPasswordMobile />} />
           </Routes>
         </BrowserRouter>
       </Media>
@@ -33,6 +36,7 @@ function App() {
             <Route index element={<HomeDesktop />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forgot" element={<ForgotPassword />} />
           </Routes>
         </BrowserRouter>
       </Media>

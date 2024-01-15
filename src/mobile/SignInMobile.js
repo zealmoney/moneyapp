@@ -43,7 +43,7 @@ export const SignInMobile = () => {
                                     </Form.Field> 
                                     <Form.Field>
                                         <span>
-                                            <Link>Forgot Password</Link>
+                                            <Link to={'/forgot'}>Forgot Password</Link>
                                         </span>
                                     </Form.Field>
                                     <Form.Field>
