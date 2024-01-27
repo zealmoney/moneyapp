@@ -1,8 +1,67 @@
 import { Button, Container, Form, Grid, Header, Menu, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { useGetUsersQuery } from "../features/api/apiSlice"
+import EmailValidator from 'email-validator'
 
 export const SignIn = () => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [verify, setVerify] = useState()
+    const [loading, setLoading] = useState(false)
+
+    const [emailError, setEmailError] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
+
+    const handleEmailChange = e => setEmail(e.target.value)
+    const handlePasswordChange = e => setPassword(e.target.value)
+
+    const navigate = useNavigate()
+
+    const {data: users, isSuccess} = useGetUsersQuery()
+    let count_email = 0
+    let count_user = 0
+    let email_verify = 0
+    if(isSuccess){
+        const user = users.find(u => u.email === email)
+        if(user){
+            ++count_email
+            if(user.verify === 1){
+                ++email_verify
+            }
+            users.map((usr) => {
+                if(usr.email === email && usr.password === password && usr.verify === 1){
+                    ++count_user
+                }
+            })
+        }
+    }
+
+    const signInClick = () => {
+        if(email === ''){
+            setEmailError({content: 'Empty Fields'})
+        }else if(password === ''){
+            setPasswordError({content: 'Empty Fields'})
+        }else if(!EmailValidator.validate(email)){
+            setEmailError({content: 'Invalid Email'})
+        }else if(count_email === 0){
+            setEmailError({content: 'Email does not exist'})
+        }else if(email_verify === 0){
+            setEmailError({content: 'Email not verified'})
+        }
+        else if(count_user === 0){
+            setPasswordError({content: 'Wrong password entered'})
+        }
+        else if(count_user > 0){
+            setLoading(true)
+            setTimeout(() => {
+                sessionStorage.setItem('userId', email)
+                navigate('/profile')
+            }, 300)
+        }
+    }
 
     return(
         <>
@@ -24,6 +83,10 @@ export const SignIn = () => {
                                         <Form.Input 
                                             fluid
                                             placeholder='youremail@domain.com'
+                                            value={email}
+                                            error={emailError}
+                                            onChange={handleEmailChange}
+                                            onClick={() => setEmailError(false)}
                                         />
                                     </Form.Field> 
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -35,10 +98,20 @@ export const SignIn = () => {
                                             icon='eye'
                                             iconPosition="right"
                                             type="password"
+                                            value={password}
+                                            error={passwordError}
+                                            onChange={handlePasswordChange}
+                                            onClick={() => setPasswordError(false)}
                                         />
                                     </Form.Field> 
                                     <Form.Field>
-                                        <Button color="green" fluid size="huge">
+                                        <Button 
+                                            color="green" 
+                                            fluid 
+                                            size="huge"
+                                            loading={loading}
+                                            onClick={() => signInClick()}
+                                        >
                                             Sign In
                                         </Button>
                                     </Form.Field>

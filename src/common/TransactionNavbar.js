@@ -5,6 +5,11 @@ export const TransactionNavbar = () => {
 
     const navigate = useNavigate()
 
+    const signOut = () => {
+        sessionStorage.removeItem('userId')
+        navigate('/')
+    }
+
     return(
         <>
             <Segment vertical>
@@ -21,18 +26,34 @@ export const TransactionNavbar = () => {
                         >
                             MONEY APP
                         </Menu.Item>
-                        <Menu.Item active>
+                        <Menu.Item
+                            as='a'
+                            onClick={() => navigate('/profile')}
+                        >
+                            Profile
+                        </Menu.Item>
+                        <Menu.Item
+                            as='a'
+                            onClick={() => navigate('/transaction')}
+                        >
                             Send Money
                         </Menu.Item>
                         <Menu.Item>
                             Transfer History
                         </Menu.Item>
                         <Menu.Item position="right">
-                            <Dropdown text="John Doe" fluid>
+                            <Dropdown 
+                                text={sessionStorage.getItem('userId')} 
+                                fluid
+                            >
                                 <Dropdown.Menu>
                                     <Dropdown.Item icon='setting' text='Settings' />
                                     <Dropdown.Item icon='help circle' text='Get Help' />
-                                    <Dropdown.Item icon='sign-out' text='Sign Out' />
+                                    <Dropdown.Item 
+                                        icon='sign-out' 
+                                        text='Sign Out'
+                                        onClick={() => signOut()}
+                                    />
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Menu.Item>
