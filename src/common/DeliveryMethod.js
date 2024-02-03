@@ -18,58 +18,39 @@ export const DeliveryMethod = () => {
     const [gtb, setGtb] = useState(false)
     const [polaris, setPolaris] = useState(false)
 
-    const [accountNumber, setAccountNumber] = useState('')
-    const [retypeAccountNumber, setretypeAccountNumber] = useState('')
     const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(true)
 
-    const [accountNumberError, setAccountNumberError] = useState(false)
-    const [retypeAccountNumberError, setretypeAccountNumberError] = useState(false)
-
-    const [recepientsInfo, setRecepientsInfo] = useState(false)
-
-    const [country, setCountry] = useState('')
-
-    const handleAccountNumberChange = e => setAccountNumber(e.target.value)
-    const handleretypeAccountNumberChange = e => setretypeAccountNumber(e.target.value)
-
+    const navigate = useNavigate()
 
     const handleDeliveryChangeBank = () => {
         setDeliveryBank(true)
-        setZenith(false)
-        setGtb(false)
-        setPolaris(false)
-        setRecepientsInfo(false)
-        sessionStorage.setItem('deliverybank', deliveryBank)
+        
     }
     const handleDeliveryChangeCash = () => {
         setDeliveryCash(true)
-        setZenith(false)
-        setGtb(false)
-        setPolaris(false)
-        setRecepientsInfo(false)
-        sessionStorage.setItem('deliverycash', deliveryCash)
+        
     } 
 
     const handleZenithChange = () => {
-        setDeliveryBank(false)
-        setDeliveryCash(false)
+        setDisabled(false)
         setZenith(true)
-        setRecepientsInfo(false)
-        sessionStorage.setItem('zenith', zenith)
+        setGtb(false)
+        setPolaris(false)
     }
-    const handleGtbChange = () =>{
-        setDeliveryBank(false)
-        setDeliveryCash(false)
+
+    const handleGtbChange = () => {
+        setDisabled(false)
         setGtb(true)
-        setRecepientsInfo(false)
-        sessionStorage.setItem('gtb', gtb)
-    } 
+        setZenith(false)
+        setPolaris(false)
+    }
+
     const handlePolarisChange = () => {
-        setDeliveryBank(false)
-        setDeliveryCash(false)
+        setDisabled(false)
         setPolaris(true)
-        setRecepientsInfo(false)
-        sessionStorage.setItem('polaris', polaris)
+        setZenith(false)
+        setGtb(false)
     }
 
     const resetDelivery = () => {
@@ -78,30 +59,13 @@ export const DeliveryMethod = () => {
     }
 
     const deliveryClick = () => {
-        if(accountNumber === ''){
-            setAccountNumberError({content: 'Empty Fields'})
-        }else if(retypeAccountNumber === ''){
-            setretypeAccountNumberError({content: 'Empty Fields'})
-        }else if(accountNumber !== retypeAccountNumber){
-            setAccountNumberError({content: 'Account numbers does not match'})
-        }else{
-            setLoading(true)
-            setTimeout(() => {
-                setRecepientsInfo(true)
-                setDeliveryBank(false)
-                setDeliveryCash(false)
-                setZenith(false)
-                setGtb(false)
-                setPolaris(false)
-                setLoading(false)
-            }, 300)   
-        }
-        
+        setLoading(true)
+        setTimeout(() => {
+            navigate('/accountinfo')
+        }, 300)    
     }
 
-    const navigate = useNavigate()
-
-    if(deliveryCash === false && deliveryBank === false && zenith === false && gtb === false && polaris === false && recepientsInfo === false){
+    if(deliveryCash === false && deliveryBank === false){
         return(
             <>
                 <TransactionNavbar />
@@ -114,7 +78,7 @@ export const DeliveryMethod = () => {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column textAlign="left" style={{maxWidth: 400}}>
+                                <Grid.Column textAlign="left" style={{maxWidth: 600}}>
                                     <Segment>
                                         <Form>
                                             <Form.Field>
@@ -132,11 +96,6 @@ export const DeliveryMethod = () => {
                                                     onChange={handleDeliveryChangeBank} 
                                                 />
                                             </Form.Field>
-                                            <Form.Field style={{textAlign: 'center'}}>
-                                                <Button color="green">
-                                                    Continue
-                                                </Button>
-                                            </Form.Field>
                                         </Form>
                                     </Segment>
                                 </Grid.Column>
@@ -146,7 +105,7 @@ export const DeliveryMethod = () => {
                 </Segment>
             </>
         )
-    }else if((deliveryCash === true || deliveryBank === true) && (zenith === false && gtb === false && polaris === false) && (recepientsInfo === false)){
+    }else if((deliveryCash === true || deliveryBank === true)){
         return(
             <>
                 <TransactionNavbar />
@@ -164,7 +123,7 @@ export const DeliveryMethod = () => {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column textAlign="left" style={{maxWidth: 400}}>
+                                <Grid.Column textAlign="left" style={{maxWidth: 600}}>
                                     <Segment>
                                         
                                         {
@@ -175,178 +134,49 @@ export const DeliveryMethod = () => {
                                         <Header textAlign="center" as='h5' content='Available Banks' />
                                         <List verticalAlign="middle" celled>
                                             <List.Item>
-                                                <Radio 
-                                                    label='Zenith Bank'
-                                                    value={zenith} 
-                                                    onChange={() => handleZenithChange()}
-                                                />                 
+                                                <input
+                                                    type='radio'
+                                                    name="bank" 
+                                                    onChange={handleZenithChange}   
+                                                /> &nbsp; &nbsp; &nbsp;
+                                                <span>Zenith Bank</span>              
                                                 <List.Content floated="right">
                                                     <Image size="mini" src='/images/zenith_bank.png' />
                                                 </List.Content>
                                             </List.Item>
                                             <List.Item>
-                                                <Radio 
-                                                    label='Guaranty Trust Bank' 
-                                                    value={gtb}
-                                                    onChange={() => handleGtbChange()}
-                                                />                 
+                                                <input
+                                                    type='radio'
+                                                    name="bank"
+                                                    onChange={handleGtbChange}
+                                                /> &nbsp; &nbsp; &nbsp;
+                                                <span>Guaranty Trust Bank</span>                
                                                 <List.Content floated="right">
                                                     <Image size="mini" src='/images/guaranty_trust_bank.png' />
                                                 </List.Content>
                                             </List.Item>
                                             <List.Item>
-                                                <Radio 
-                                                    label='Polaris Bank'
-                                                    value={polaris}
-                                                    onChange={() => handlePolarisChange()} 
-                                                />                 
+                                                <input 
+                                                    type='radio'
+                                                    name="bank"
+                                                    onChange={handlePolarisChange}
+                                                />  &nbsp; &nbsp; &nbsp;  
+                                                <span>Polaris Bank</span>             
                                                 <List.Content floated="right">
                                                     <Image size="mini" src='/images/polaris_bank.png' />
                                                 </List.Content>
                                             </List.Item>
                                         </List>
-                                    </Segment>
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
-                    </Container>
-                </Segment>
-            </>
-        )
-    }else if((zenith === true || gtb === true || polaris === true) && (deliveryCash === false && deliveryBank === false) && (recepientsInfo === false)){
-        return(
-            <>
-                <TransactionNavbar />
-                <Segment vertical>
-                    <Container>
-                        <Grid textAlign="center">
-                            <Grid.Row>
-                                <Grid.Column style={{maxWidth: 400}}>
-                                    <Segment>
-                                        <Header as='h4' content='Account Information' />
-                                        <Form>
-                                            <Header textAlign="left" as='h4' content='Account Type' />
-                                            <Form.Field style={{textAlign: 'left'}}>                                                
-                                                <input type="radio"  name="acctype" /> &nbsp;&nbsp;&nbsp;
-                                                <span><label>Checking</label></span>                                               
-                                            </Form.Field>
-                                            <Form.Field style={{textAlign: 'left'}}>
-                                                <input type="radio" name="acctype" /> &nbsp;&nbsp;&nbsp;
-                                                <span><label>Savings</label></span>
-                                            </Form.Field>
-                                            <Form.Field style={{textAlign: 'left'}}>
-                                                <label>Account Number</label>
-                                                <Form.Input 
-                                                    value={accountNumber}
-                                                    error={accountNumberError}
-                                                    onChange={handleAccountNumberChange}
-                                                    onClick={() => setAccountNumberError(false)}
-                                                />
-                                            </Form.Field>
-                                            <Form.Field style={{textAlign: 'left'}}>
-                                                <label>Re-type Account Number</label>
-                                                <Form.Input 
-                                                    value={retypeAccountNumber}
-                                                    error={retypeAccountNumberError}
-                                                    onChange={handleretypeAccountNumberChange}
-                                                    onClick={() => setretypeAccountNumberError(false)}
-                                                />
-                                            </Form.Field>
-                                            <Form.Field>
-                                                <Button 
-                                                    color="green" 
-                                                    fluid
-                                                    loading={loading}
-                                                    onClick={() => deliveryClick()}
-                                                >
-                                                    Continue
-                                                </Button>
-                                            </Form.Field>
-                                        </Form>
-                                    </Segment>
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
-                    </Container>
-                </Segment>
-            </>
-        )
-    }else if((recepientsInfo === true) && (deliveryBank === false && deliveryCash === false) && (zenith === false && gtb === false && polaris === false)){
-        return(
-            <>
-                <TransactionNavbar />
-                <Segment vertical>
-                    <Container>
-                        <Grid textAlign="center">
-                            <Grid.Row>
-                                <Grid.Column style={{maxWidth: 450}}>
-                                    <Segment>
-                                        <Header as='h3' content="Recepient's Information" />
-                                        <span>
-                                            Enter the recepient's information as it appears on 
-                                            official identification.
-                                        </span>
-                                        <Form>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>First Name</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>Middle Name(Optional)</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>Last Name</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>Second Last Name(Optional)</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Field>
-                                            <Input>
-                                            <Label basic>
-                                                <Dropdown 
-                                                    options={countryOptions}
-                                                    fluid
-                                                    onChange={(e, {value}) => setCountry(value.toString())}
-                                                />
-                                            </Label>
-                                            <input />
-                                            </Input>
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>Email</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>Street 1</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>Street 2</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <label>State/Province/Region</label>
-                                            <Form.Input />
-                                        </Form.Field>
-                                        <Form.Group widths='equal'>
-                                            <Form.Field style={{textAlign: 'left'}}>
-                                                <label>City</label>
-                                                <Form.Input />
-                                            </Form.Field>
-                                            <Form.Field style={{textAlign: 'left'}}>
-                                                <label>Postal Code</label>
-                                                <Form.Input />
-                                            </Form.Field>
-                                        </Form.Group>
-                                        <Form.Field>
-                                            <Button color="green" fluid>
-                                                Continue
-                                            </Button>
-                                        </Form.Field>
-                                    </Form>
+                                        <Button 
+                                            color="green"
+                                            size="huge"
+                                            fluid
+                                            loading={loading}
+                                            disabled={disabled}
+                                            onClick={() => deliveryClick()}
+                                        >
+                                            Continue
+                                        </Button>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
@@ -356,4 +186,5 @@ export const DeliveryMethod = () => {
             </>
         )
     }
+    
 }

@@ -49,23 +49,23 @@ export const RecepientsInfo = () => {
 
     const RecepientInfoClick = () => {
         if(fname === ''){
-            fnameError({content: 'Empty Fields'})
+            setFnameError({content: 'Empty Fields'})
         }else if(lname === ''){
-            lnameError({content: 'Empty Fields'})
+            setLnameError({content: 'Empty Fields'})
         }else if(country === ''){
-            countryError({content: 'Please Select a Country'})
+            setCountryError({content: 'Please Select a Country'})
         }else if(email === ''){
-            emailError({content: 'Empty Fields'})
+            setEmailError({content: 'Empty Fields'})
         }else if(street === ''){
-            streetError({content: 'Empty Fields'})
+            setStreetError({content: 'Empty Fields'})
         }else if(street2 === ''){
-            street2Error({content: 'Empty Fields'})
+            setStreet2Error({content: 'Empty Fields'})
         }else if(region === ''){
-            regionError({content: 'Empty Fields'})
+            setRegionError({content: 'Empty Fields'})
         }else if(city === ''){
-            cityError({content: 'Empty Fields'})
+            setCityError({content: 'Empty Fields'})
         }else if(postal === ''){
-            postalError({content: 'Empty Fields'})
+            setPostalError({content: 'Empty Fields'})
         }else if(
             fname !== '' &&
             lname !== '' &&
@@ -89,7 +89,7 @@ export const RecepientsInfo = () => {
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
-                                <Grid.Column style={{maxWidth: 450}}>
+                                <Grid.Column style={{maxWidth: 600}}>
                                     <Segment>
                                         <Header as='h3' content="Recepient's Information" />
                                         <span>
@@ -136,7 +136,7 @@ export const RecepientsInfo = () => {
                                         </Form.Field>
                                         <Form.Field>
                                             <Input
-                                                error={handleCountryError}
+                                                error={countryError}
                                             >
                                             <Label basic>
                                                 <Dropdown 
@@ -207,6 +207,7 @@ export const RecepientsInfo = () => {
                                         <Form.Field>
                                             <Button 
                                                 color="green" 
+                                                size="huge"
                                                 fluid
                                                 loading={loading}
                                                 onClick={() => RecepientInfoClick()}
