@@ -16,8 +16,15 @@ export const apiSlice = createApi({
         }),
         getUsers: builder.query({
             query: () => 'register'
+        }),
+        getRates: builder.query({
+            query: () => 'rates'
         })
     })
 })
 
-export const { useRegisterMutation, useGetUsersQuery } = apiSlice
+export const { 
+    useRegisterMutation, 
+    useGetUsersQuery,
+    useGetRatesQuery 
+} = apiSlice

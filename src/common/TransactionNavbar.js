@@ -38,8 +38,11 @@ export const TransactionNavbar = () => {
                         >
                             Send Money
                         </Menu.Item>
-                        <Menu.Item>
-                            Transfer History
+                        <Menu.Item 
+                            as='a'
+                            onClick={() => navigate('/transactionhistory')}
+                        >
+                            Transaction History
                         </Menu.Item>
                         <Menu.Item position="right">
                             <Dropdown 

@@ -11,6 +11,7 @@ import { ForgotPasswordMobile } from "./mobile/ForgotPasswordMobile";
 import { TransactionComponent } from "./common/TransactionComponent";
 import { DeliveryMethod } from "./common/DeliveryMethod";
 import { Profile } from "./common/Profile";
+import { TransactionHistory } from "./common/TransactionHistory";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -43,6 +44,7 @@ function App() {
             <Route path="/transaction" element={<TransactionComponent />} />
             <Route path="/delivery" element={<DeliveryMethod />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/transactionhistory" element={<TransactionHistory />} />
           </Routes>
         </BrowserRouter>
       </Media>

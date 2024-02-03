@@ -2,10 +2,13 @@ import { Button, Container, Divider, Dropdown, Flag, Form, Grid, Header, Input, 
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useReducer, useState } from "react"
 import { TransactionModal } from "./TransactionModal"
+import { useGetRatesQuery } from "../features/api/apiSlice"
+import { parseInt } from "lodash"
+import { useNavigate } from "react-router-dom"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
-    { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN-USD'},
+    { key: 'ng', value: 'us', flag: 'ng', text: 'NGN-USD'},
     { key: 'gh', value: 'gh', flag: 'gh', text: 'GHS'},
 ]
 
@@ -33,15 +36,23 @@ export const TransactionComponent = () => {
     const [countryName, setCountryName] = useState('')
     const [country, setCountry] = useState('')
 
-    const [moneySent, setMoneySent] = useState(0.00)
-    const [moneyReceived, setMoneyReceived] = useState(0.00)
+    const [moneySent, setMoneySent] = useState('')
+    const [moneyReceived, setMoneyReceived] = useState()
     const [currencySent, setCurrencySent] = useState('')
     const [currencyReceived, setCurrencyReceived] = useState('')
     const [deliverySpeed, setDeliverySpeed] = useState('')
-    const [fee, setFee] = useState('4.00')
-    const [total, setTotal] = useState('0.00')
+    const [fee, setFee] = useState(0.00)
+    const [total, setTotal] = useState(0.00)
+    const [loading, setLoading] = useState(false)
+
+    const [moneySentError, setMoneySentError] = useState(false)
+    const [moneyReceivedError, setMoneyReceivedError] = useState(false)
 
     const handleMoneySentChange = e => setMoneySent(e.target.value)
+
+    const navigate = useNavigate()
+
+    const {data: rates, isSuccess} = useGetRatesQuery()
 
 
     const [state, dispatch] = useReducer(modalReducer, 
@@ -57,10 +68,39 @@ export const TransactionComponent = () => {
             dispatch({type: 'close'})
         }
 
+        let total_amount = 0
+
         const calculateCurrency = (value) => {
             setCountryName(value)
-            setMoneyReceived(1000)
-            setTotal(moneySent + fee)
+            const currency = rates.find(r => r.countrycode === value)
+            if(currency){
+                setMoneyReceived(moneySent * currency.rate)
+                setFee(currency.fee)
+                total_amount = parseInt(moneySent) + parseInt(currency.fee)
+                setTotal(total_amount)
+
+            }
+        }
+
+        const transactionClick = () => {
+            if(country === ''){
+                alert('Please select a currency to send')
+            }else if(moneySent === ''){
+                //alert('Enter amount to be sent')
+                setMoneySentError({content: 'Enter amount to be sent'})
+            }else if(countryName === ''){
+                alert('Please select currency to be received')
+            }else if(country !== '' && moneySent !== '' && countryName !== ''){
+                setLoading(true)
+                setTimeout(() => {
+                    sessionStorage.setItem('moneysent', moneySent)
+                    sessionStorage.setItem('moneyreceived', moneyReceived)
+                    sessionStorage.setItem('countrysent', country)
+                    sessionStorage.setItem('countryreceived', countryName)
+                    setLoading(false)
+                    navigate('/delivery')
+                }, 300)
+            }
         }
 
     return(
@@ -77,11 +117,14 @@ export const TransactionComponent = () => {
                                             <label>You Send</label>
                                             <Input 
                                                 type="text"
-                                                placeholder='0.00'
-                                                labelPosition="right"    
+                                                labelPosition="right" 
+                                                error={moneySentError}   
                                             >
                                                 <Label basic><Flag name={country} /></Label>
-                                                <input 
+                                                <Input 
+                                                    placeholder='0.00'
+                                                    value={moneySent}
+                                                    
                                                     onChange={handleMoneySentChange}
                                                 />
                                                 <Label basic>
@@ -97,13 +140,14 @@ export const TransactionComponent = () => {
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>They Receive</label>
                                             <Input 
-                                                type="text"
-                                                placeholder='0.00'
-                                                labelPosition="right"    
+                                                type="text"                              
+                                                labelPosition="right"   
                                             >
                                                 <Label basic><Flag name={countryName} /></Label>
-                                                <input 
+                                                <Input
+                                                    placeholder='0.00'
                                                     value={moneyReceived}
+                                                    error={moneyReceivedError}
                                                 />
                                                 <Label basic>
                                                     <Dropdown 
@@ -120,23 +164,10 @@ export const TransactionComponent = () => {
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column style={{maxWidth: 600}}>
-                                <Segment>
-                                    <Header as='h2' content='Delivery speed' textAlign="left" />
-                                    <Form size="huge">
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <Radio toggle label='Express, 1 USD = 852.02 NGN' />
-                                        </Form.Field>
-                                        <Form.Field style={{textAlign: 'left'}}>
-                                            <Radio toggle label='Economy, 1 USD = 852.02 NGN' />
-                                        </Form.Field>
-                                        
-                                    </Form>
-                                </Segment>
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
                             <Grid.Column textAlign="left" style={{maxWidth: 600}}>
+                                <span style={{textAlign: "center"}}>
+                                    {}
+                                </span>
                                 <Message
                                     onClick={() => dispatch({type: 'open', size: 'tiny'})}
                                 >
@@ -148,7 +179,13 @@ export const TransactionComponent = () => {
                                         <span style={{float: 'right'}}>{total}</span>
                                     </Message.Content>
                                 </Message>
-                                <Button fluid size="huge" color="green">
+                                <Button 
+                                    fluid 
+                                    size="huge" 
+                                    color="green"
+                                    loading={loading}
+                                    onClick={() => transactionClick()}
+                                >
                                     Continue
                                 </Button>
                             </Grid.Column>

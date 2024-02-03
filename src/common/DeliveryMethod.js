@@ -18,9 +18,20 @@ export const DeliveryMethod = () => {
     const [gtb, setGtb] = useState(false)
     const [polaris, setPolaris] = useState(false)
 
+    const [accountNumber, setAccountNumber] = useState('')
+    const [retypeAccountNumber, setretypeAccountNumber] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    const [accountNumberError, setAccountNumberError] = useState(false)
+    const [retypeAccountNumberError, setretypeAccountNumberError] = useState(false)
+
     const [recepientsInfo, setRecepientsInfo] = useState(false)
 
     const [country, setCountry] = useState('')
+
+    const handleAccountNumberChange = e => setAccountNumber(e.target.value)
+    const handleretypeAccountNumberChange = e => setretypeAccountNumber(e.target.value)
+
 
     const handleDeliveryChangeBank = () => {
         setDeliveryBank(true)
@@ -28,6 +39,7 @@ export const DeliveryMethod = () => {
         setGtb(false)
         setPolaris(false)
         setRecepientsInfo(false)
+        sessionStorage.setItem('deliverybank', deliveryBank)
     }
     const handleDeliveryChangeCash = () => {
         setDeliveryCash(true)
@@ -35,6 +47,7 @@ export const DeliveryMethod = () => {
         setGtb(false)
         setPolaris(false)
         setRecepientsInfo(false)
+        sessionStorage.setItem('deliverycash', deliveryCash)
     } 
 
     const handleZenithChange = () => {
@@ -42,18 +55,21 @@ export const DeliveryMethod = () => {
         setDeliveryCash(false)
         setZenith(true)
         setRecepientsInfo(false)
+        sessionStorage.setItem('zenith', zenith)
     }
     const handleGtbChange = () =>{
         setDeliveryBank(false)
         setDeliveryCash(false)
         setGtb(true)
         setRecepientsInfo(false)
+        sessionStorage.setItem('gtb', gtb)
     } 
     const handlePolarisChange = () => {
         setDeliveryBank(false)
         setDeliveryCash(false)
         setPolaris(true)
         setRecepientsInfo(false)
+        sessionStorage.setItem('polaris', polaris)
     }
 
     const resetDelivery = () => {
@@ -62,12 +78,25 @@ export const DeliveryMethod = () => {
     }
 
     const deliveryClick = () => {
-        setRecepientsInfo(true)
-        setDeliveryBank(false)
-        setDeliveryCash(false)
-        setZenith(false)
-        setGtb(false)
-        setPolaris(false)
+        if(accountNumber === ''){
+            setAccountNumberError({content: 'Empty Fields'})
+        }else if(retypeAccountNumber === ''){
+            setretypeAccountNumberError({content: 'Empty Fields'})
+        }else if(accountNumber !== retypeAccountNumber){
+            setAccountNumberError({content: 'Account numbers does not match'})
+        }else{
+            setLoading(true)
+            setTimeout(() => {
+                setRecepientsInfo(true)
+                setDeliveryBank(false)
+                setDeliveryCash(false)
+                setZenith(false)
+                setGtb(false)
+                setPolaris(false)
+                setLoading(false)
+            }, 300)   
+        }
+        
     }
 
     const navigate = useNavigate()
@@ -198,23 +227,36 @@ export const DeliveryMethod = () => {
                                         <Form>
                                             <Header textAlign="left" as='h4' content='Account Type' />
                                             <Form.Field style={{textAlign: 'left'}}>                                                
-                                                <Radio label='Checking'/>                                                
+                                                <input type="radio"  name="acctype" /> &nbsp;&nbsp;&nbsp;
+                                                <span><label>Checking</label></span>                                               
                                             </Form.Field>
                                             <Form.Field style={{textAlign: 'left'}}>
-                                                <Radio label='Savings'/>
+                                                <input type="radio" name="acctype" /> &nbsp;&nbsp;&nbsp;
+                                                <span><label>Savings</label></span>
                                             </Form.Field>
                                             <Form.Field style={{textAlign: 'left'}}>
                                                 <label>Account Number</label>
-                                                <Form.Input />
+                                                <Form.Input 
+                                                    value={accountNumber}
+                                                    error={accountNumberError}
+                                                    onChange={handleAccountNumberChange}
+                                                    onClick={() => setAccountNumberError(false)}
+                                                />
                                             </Form.Field>
                                             <Form.Field style={{textAlign: 'left'}}>
                                                 <label>Re-type Account Number</label>
-                                                <Form.Input />
+                                                <Form.Input 
+                                                    value={retypeAccountNumber}
+                                                    error={retypeAccountNumberError}
+                                                    onChange={handleretypeAccountNumberChange}
+                                                    onClick={() => setretypeAccountNumberError(false)}
+                                                />
                                             </Form.Field>
                                             <Form.Field>
                                                 <Button 
                                                     color="green" 
                                                     fluid
+                                                    loading={loading}
                                                     onClick={() => deliveryClick()}
                                                 >
                                                     Continue
