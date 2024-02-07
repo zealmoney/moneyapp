@@ -85,13 +85,13 @@ export const RecepientsInfo = () => {
     return(
         <>
             <TransactionNavbar />
-                <Segment vertical>
+                <Segment vertical style={{padding: '4em 0em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 600}}>
-                                    <Segment>
-                                        <Header as='h3' content="Recepient's Information" />
+                                    <Header as='h1' content="Recepient's Information" />
+                                    <Segment style={{padding: '2em 2em'}}>
                                         <span>
                                             Enter the recepient's information as it appears on 
                                             official identification.

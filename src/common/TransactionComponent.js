@@ -5,6 +5,7 @@ import { TransactionModal } from "./TransactionModal"
 import { useGetRatesQuery } from "../features/api/apiSlice"
 import { parseInt } from "lodash"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -45,14 +46,23 @@ export const TransactionComponent = () => {
     const [total, setTotal] = useState(0.00)
     const [loading, setLoading] = useState(false)
 
+    const [msg, setMsg] = useState(false)
+    const [msg1, setMsg1] = useState(false)
+    const [msg2, setMsg2] = useState(false)
+
     const [moneySentError, setMoneySentError] = useState(false)
     const [moneyReceivedError, setMoneyReceivedError] = useState(false)
 
-    const handleMoneySentChange = e => setMoneySent(e.target.value)
+    const handleMoneySentChange = e => {
+        setMoneySent(e.target.value)
+        setMsg1(false)
+    }
 
     const navigate = useNavigate()
 
     const {data: rates, isSuccess} = useGetRatesQuery()
+
+    const dispatch_reducer = useDispatch()
 
 
     const [state, dispatch] = useReducer(modalReducer, 
@@ -84,15 +94,16 @@ export const TransactionComponent = () => {
 
         const transactionClick = () => {
             if(country === ''){
-                alert('Please select a currency to send')
+                setMsg(true)
             }else if(moneySent === ''){
-                //alert('Enter amount to be sent')
-                setMoneySentError({content: 'Enter amount to be sent'})
+                setMsg1(true)
             }else if(countryName === ''){
-                alert('Please select currency to be received')
+                //alert('Please select currency to be received')
+                setMsg2(true)
             }else if(country !== '' && moneySent !== '' && countryName !== ''){
                 setLoading(true)
                 setTimeout(() => {
+                    dispatch_reducer()
                     sessionStorage.setItem('moneysent', moneySent)
                     sessionStorage.setItem('moneyreceived', moneyReceived)
                     sessionStorage.setItem('countrysent', country)
@@ -106,12 +117,40 @@ export const TransactionComponent = () => {
     return(
         <>
             <TransactionNavbar />
-            <Segment vertical style={{marginTop: '0em'}}>
+            <Segment vertical style={{marginTop: '0em', padding: '4em 0em'}}>
                 <Container>
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column style={{maxWidth: 600}}>
+                                <Header as='h1' content='Send money to...?' />
                                 <Segment style={{padding: '4em 2em'}}>
+                                    {
+                                        msg ?
+                                        <Message 
+                                            style={{textAlign: 'left'}}
+                                            error
+                                            header='Currency selection error'
+                                            list={['Please select a currency to send']}
+                                        /> : ''
+                                    }
+                                    {
+                                        msg1 ?
+                                        <Message 
+                                            style={{textAlign: 'left'}}
+                                            error
+                                            header='Money Sent Error '
+                                            list={['Please select an amount to be sent']}
+                                        /> : ''
+                                    }
+                                    {
+                                        msg2 ?
+                                        <Message 
+                                            style={{textAlign: 'left'}}
+                                            error
+                                            header='Currency selection error'
+                                            list={['Please select a currency to be received']}
+                                        /> : ''
+                                    }
                                     <Form size="huge">
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>You Send</label>
@@ -132,7 +171,10 @@ export const TransactionComponent = () => {
                                                         placeholder="Cur"
                                                         options={countryOptions2}
                                                         fluid
-                                                        onChange={(e, {value}) => setCountry(value.toString())}
+                                                        onChange={(e, {value}) => {
+                                                            setCountry(value.toString())
+                                                            setMsg(false)
+                                                        }}
                                                     />
                                                 </Label>
                                             </Input>
@@ -154,7 +196,10 @@ export const TransactionComponent = () => {
                                                         placeholder="Cur"
                                                         options={countryOptions}
                                                         fluid
-                                                        onChange={(e, {value}) => calculateCurrency(value.toString())}
+                                                        onChange={(e, {value}) => {
+                                                            calculateCurrency(value.toString())
+                                                            setMsg2(false)
+                                                        }}
                                                     />
                                                 </Label>
                                             </Input>

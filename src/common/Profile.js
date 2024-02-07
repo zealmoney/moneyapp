@@ -20,7 +20,7 @@ export const Profile = () => {
     return(
         <>
             <TransactionNavbar />
-            <Segment vertical style={{padding: '6em 0em'}}>
+            <Segment vertical style={{padding: '4em 0em'}}>
                 <Container>
                     <Grid textAlign="center">
                         <Grid.Row>

@@ -12,25 +12,41 @@ export const AccountInfo = () => {
     const [loading, setLoading] = useState(false)
 
     const [msg, setMsg] = useState(false)
+    const [msg1, setMsg1] = useState(false)
+    const [msg2, setMsg2] = useState(false)
+    const [msg3, setMsg3] = useState(false)
 
     const navigate = useNavigate()
 
     const [accountNumberError, setAccountNumberError] = useState(false)
     const [retypeAccountNumberError, setretypeAccountNumberError] = useState(false)
 
-    const handleAccountNumberChange = e => setAccountNumber(e.target.value)
-    const handleretypeAccountNumberChange = e => setretypeAccountNumber(e.target.value)
+    const handleAccountNumberChange = e => {
+        setAccountNumber(e.target.value)
+        setMsg1(false)
+    }
+    const handleretypeAccountNumberChange = e => {
+        setretypeAccountNumber(e.target.value)
+        setMsg2(false)
+        setMsg3(false)
+    }
 
     const handleCheckingChange = () => {
         setChecking(true)
         setSavings(false)
         setMsg(false)
+        setMsg1(false)
+        setMsg2(false)
+        setMsg3(false)
     }
 
     const handleSavingsChange = () => {
         setSavings(true)
         setChecking(false)
         setMsg(false)
+        setMsg1(false)
+        setMsg2(false)
+        setMsg3(false)
     }
     
 
@@ -39,11 +55,11 @@ export const AccountInfo = () => {
             setMsg(true)
         }
         else if(accountNumber === ''){
-            setAccountNumberError({content: 'Empty Fields'})
+            setMsg1(true)
         }else if(retypeAccountNumber === ''){
-            setretypeAccountNumberError({content: 'Empty Fields'})
+            setMsg2(true)
         }else if(accountNumber !== retypeAccountNumber){
-            setretypeAccountNumberError({content: 'Account numbers does not match'})
+            setMsg3(true)
         }else{
             setLoading(true)
             setTimeout(() => {
@@ -56,13 +72,13 @@ export const AccountInfo = () => {
     return(
         <>
             <TransactionNavbar />
-                <Segment vertical>
+                <Segment vertical style={{padding: '4em 0em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 600}}>
-                                    <Segment>
-                                        <Header as='h4' content='Account Information' />
+                                    <Header as='h1' content='Account Information' />
+                                    <Segment style={{padding: '2em 2em'}}>
                                         {
                                             msg ?
                                             <Message 
@@ -71,6 +87,36 @@ export const AccountInfo = () => {
                                                 header='Account type error'
                                                 
                                                 list={['Please select either Checking or Savings']}
+                                            /> : ''
+                                        }
+                                        {
+                                            msg1 ?
+                                            <Message 
+                                                style={{textAlign: 'left'}}
+                                                error
+                                                header='Account number error!!'
+                                                
+                                                list={['Please type in your account number']}
+                                            /> : ''
+                                        }
+                                        {
+                                            msg2 ?
+                                            <Message 
+                                                style={{textAlign: 'left'}}
+                                                error
+                                                header='Account number error!!'
+                                                
+                                                list={['Please retype your account number']}
+                                            /> : ''
+                                        }
+                                        {
+                                            msg3 ?
+                                            <Message 
+                                                style={{textAlign: 'left'}}
+                                                error
+                                                header='Account number error!!'
+                                                
+                                                list={['Account numbers does not match']}
                                             /> : ''
                                         }
                                         <Form>

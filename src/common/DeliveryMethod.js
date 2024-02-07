@@ -69,17 +69,17 @@ export const DeliveryMethod = () => {
         return(
             <>
                 <TransactionNavbar />
-                <Segment vertical>
+                <Segment vertical style={{padding: '4em 0em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column>
-                                    <Header as='h4' content='Select a delivery method' />
+                                    <Header as='h1' content='Select a delivery method' />
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column textAlign="left" style={{maxWidth: 600}}>
-                                    <Segment>
+                                    <Segment style={{padding: '4em 2em'}}>
                                         <Form>
                                             <Form.Field>
                                                 <Radio 
@@ -118,21 +118,21 @@ export const DeliveryMethod = () => {
                                         <Icon  name="long arrow alternate left" />
                                         Back
                                     </Link>
-                                    <Header textAlign="center" as='h4' content='Delivery method' />
+                                    <Header textAlign="center" as='h1' content='Delivery method' />
                                     
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column textAlign="left" style={{maxWidth: 600}}>
-                                    <Segment>
+                                    <Segment style={{padding: '2em 2em'}}>
                                         
                                         {
                                         deliveryCash === true ? 
-                                        <Header as='h6' icon='checkmark' content='Cash Pickup' color="green" />:
-                                        <Header as='h6' icon='checkmark' content='Bank Deposit' color="green"  />
+                                        <Header as='h5' icon='checkmark' content='Cash Pickup' color="green" />:
+                                        <Header as='h5' icon='checkmark' content='Bank Deposit' color="green"  />
                                         }
-                                        <Header textAlign="center" as='h5' content='Available Banks' />
-                                        <List verticalAlign="middle" celled>
+                                        <Header textAlign="center" as='h3' content='Available Banks' />
+                                        <List verticalAlign="middle" celled size="huge">
                                             <List.Item>
                                                 <input
                                                     type='radio'
