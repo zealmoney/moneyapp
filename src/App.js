@@ -14,6 +14,8 @@ import { Profile } from "./common/Profile";
 import { TransactionHistory } from "./common/TransactionHistory";
 import { AccountInfo } from "./common/AccountInfo";
 import { RecepientsInfo } from "./common/RecepientsInfo";
+import { TransactionSummary } from "./common/TransactionSummary";
+import { Payment } from "./common/Payment";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -49,6 +51,8 @@ function App() {
             <Route path="/transactionhistory" element={<TransactionHistory />} />
             <Route path="/accountinfo" element={<AccountInfo />} />
             <Route path="/recepientsinfo" element={<RecepientsInfo />} />
+            <Route path="/transactionsummary" element={<TransactionSummary />} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
         </BrowserRouter>
       </Media>

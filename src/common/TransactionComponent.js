@@ -6,6 +6,7 @@ import { useGetRatesQuery } from "../features/api/apiSlice"
 import { parseInt } from "lodash"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import { updateTransaction } from "../features/api/transactionSlice"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -98,18 +99,21 @@ export const TransactionComponent = () => {
             }else if(moneySent === ''){
                 setMsg1(true)
             }else if(countryName === ''){
-                //alert('Please select currency to be received')
                 setMsg2(true)
             }else if(country !== '' && moneySent !== '' && countryName !== ''){
                 setLoading(true)
-                setTimeout(() => {
-                    dispatch_reducer()
-                    sessionStorage.setItem('moneysent', moneySent)
-                    sessionStorage.setItem('moneyreceived', moneyReceived)
-                    sessionStorage.setItem('countrysent', country)
-                    sessionStorage.setItem('countryreceived', countryName)
+                dispatch_reducer(updateTransaction(
+                    moneySent, 
+                    moneyReceived, 
+                    currencySent, 
+                    currencyReceived,
+                    fee, 
+                    total
+                ))
+                setTimeout(() => {                   
                     setLoading(false)
                     navigate('/delivery')
+                    //navigate('/transactionsummary')
                 }, 300)
             }
         }

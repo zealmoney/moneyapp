@@ -2,6 +2,8 @@ import { Breadcrumb, Button, Container, Dropdown, Flag, Form, Grid, Header, Icon
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { updateBank, updateDelivery } from "../features/api/transactionSlice"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -22,6 +24,7 @@ export const DeliveryMethod = () => {
     const [disabled, setDisabled] = useState(true)
 
     const navigate = useNavigate()
+    const dispatch_reducer = useDispatch()
 
     const handleDeliveryChangeBank = () => {
         setDeliveryBank(true)
@@ -60,8 +63,10 @@ export const DeliveryMethod = () => {
 
     const deliveryClick = () => {
         setLoading(true)
+        dispatch_reducer(updateBank(deliveryBank, deliveryCash, zenith, gtb, polaris))
         setTimeout(() => {
             navigate('/accountinfo')
+            //navigate('/transactionsummary')
         }, 300)    
     }
 
@@ -80,22 +85,26 @@ export const DeliveryMethod = () => {
                             <Grid.Row>
                                 <Grid.Column textAlign="left" style={{maxWidth: 600}}>
                                     <Segment style={{padding: '4em 2em'}}>
-                                        <Form>
+                                        <Form size="huge">
+                                            <Form.Group widths="equal">
                                             <Form.Field>
-                                                <Radio 
-                                                    toggle 
-                                                    label='Cash Pickup' 
+                                                <input  
+                                                    type="radio"
                                                     value={deliveryCash}
                                                     onChange={handleDeliveryChangeCash} 
-                                                />
-                                                <Radio 
-                                                    toggle 
-                                                    label='Bank Deposit' 
-                                                    style={{float: 'right'}} 
+                                                /> &nbsp;&nbsp;&nbsp;
+                                                <span>Cash Pickup</span>
+                                            </Form.Field>
+                                            <Form.Field style={{textAlign: 'right'}}>
+                                                <input 
+                                                    type="radio" 
                                                     value={deliveryBank}
                                                     onChange={handleDeliveryChangeBank} 
-                                                />
+                                                /> &nbsp;&nbsp;&nbsp;
+                                                <span>Bank Deposit</span>
                                             </Form.Field>
+                                            </Form.Group>
+                                            
                                         </Form>
                                     </Segment>
                                 </Grid.Column>

@@ -1,6 +1,9 @@
 import { Button, Container, Dropdown, Form, Grid, Header, Input, Label, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { updateRecepientsInfo } from "../features/api/transactionSlice"
+import { useNavigate } from "react-router-dom"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -47,6 +50,10 @@ export const RecepientsInfo = () => {
     const handleCityChange = e => setCity(e.target.value)
     const handlePostalChange = e => setPostal(e.target.value)
 
+    const navigate = useNavigate()
+
+    const dispatch_reducer =useDispatch()
+
     const RecepientInfoClick = () => {
         if(fname === ''){
             setFnameError({content: 'Empty Fields'})
@@ -78,6 +85,11 @@ export const RecepientsInfo = () => {
             postal !== ''
         ){
             setLoading(true)
+            dispatch_reducer(updateRecepientsInfo(
+                fname, mname, lname, slname, country, email, street, street2,
+                region, city, postal 
+            ))
+            navigate('/payment')
         }
     }
 

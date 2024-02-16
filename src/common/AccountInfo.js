@@ -2,6 +2,8 @@ import { Button, Container, Form, Grid, Header, Message, Segment } from "semanti
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { updateAccountInfo } from "../features/api/transactionSlice"
 
 export const AccountInfo = () => {
 
@@ -17,6 +19,7 @@ export const AccountInfo = () => {
     const [msg3, setMsg3] = useState(false)
 
     const navigate = useNavigate()
+    const dispatch_reducer = useDispatch()
 
     const [accountNumberError, setAccountNumberError] = useState(false)
     const [retypeAccountNumberError, setretypeAccountNumberError] = useState(false)
@@ -62,8 +65,10 @@ export const AccountInfo = () => {
             setMsg3(true)
         }else{
             setLoading(true)
+            dispatch_reducer(updateAccountInfo(accountNumber, retypeAccountNumber, checking, savings))
             setTimeout(() => {
-                navigate('/recepientsinfo')        
+                navigate('/recepientsinfo')
+                //navigate('/transactionsummary')        
             }, 300)
         }
     }
