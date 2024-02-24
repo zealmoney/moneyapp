@@ -5,7 +5,7 @@ export const FindOut = () => {
     return(
         <>
             <Segment vertical size="massive" style={{padding: '4em 0em'}}>
-                
+                <Container>
                     <Grid textAlign="center" stackable>
                         <Grid.Row>
                             <Grid.Column>
@@ -13,34 +13,105 @@ export const FindOut = () => {
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column textAlign="center" width={4}>
-                                <Icon inverted color="green" size="big" name="list" />
-                                <Header as='h3' content='Peace of mind' />
-                                <Header 
-                                    as='h4' 
-                                    content='You and your loved ones can track your transfer every step of the way.' 
-                                />
-                            </Grid.Column>
-                            <Grid.Column textAlign="center" width={4}>
-                                <Icon inverted color="green" size="big" name="money" />
-                                <Header as='h3' content='Great Value' />
-                                <Header 
-                                    as='h4' 
-                                    content='More money makes it home thanks to our great rates, special offers, and no hidden fees.' 
-                                />
-                            </Grid.Column>
-                            <Grid.Column textAlign="center" width={4}>
-                                <Icon inverted color="green" size="big" name="check circle" />
-                                <Header as='h3' content='Delivery Time Guaranteed' />
-                                <Header 
-                                    as='h4' 
-                                    content='You can trust that transfers will be delivered on time or we’ll refund your fees.' 
-                                />
+                            <Grid.Column>
+                                <Grid>
+                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Segment
+                                        tertiary
+                                        raised
+                                        inverted
+                                        secondary
+                                        color="green"
+                                    >
+                                        <Header as='h3' icon>
+                                            <Icon 
+                                                circular 
+                                                inverted
+                                                color="green"
+                                                name="gift"
+                                            />
+                                            Special Offers
+                                            <Header as='h5' inverted 
+                                                content='We always give special offers to all our
+                                                existing and new customers'
+                                            />
+                                        </Header>
+                                    </Segment>
+                                    </Grid.Column>
+                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Segment
+                                        tertiary
+                                        raised
+                                        inverted
+                                        secondary
+                                        color="green"
+                                    >
+                                        <Header as='h3' icon>
+                                            <Icon 
+                                                circular 
+                                                inverted
+                                                color="green"
+                                                name="money"
+                                            />
+                                            Prompt Cash Delivery
+                                            <Header as='h5' inverted 
+                                                content='We deliver money on time and to the 
+                                                right destination'
+                                            />
+                                        </Header>
+                                    </Segment>
+                                    </Grid.Column>
+                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Segment
+                                        tertiary
+                                        raised
+                                        inverted
+                                        secondary
+                                        color="green"
+                                    >
+                                        <Header as='h3' icon>
+                                            <Icon 
+                                                circular 
+                                                inverted
+                                                color="green"
+                                                name="calendar check"
+                                            />
+                                            Track Your Transfers
+                                            <Header as='h5' inverted 
+                                                content="We provide a reliable way to track the 
+                                                progress of your transfers"
+                                            />
+                                        </Header>
+                                    </Segment>
+                                    </Grid.Column>
+                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Segment
+                                        tertiary
+                                        raised
+                                        inverted
+                                        secondary
+                                        color="green"
+                                    >
+                                        <Header as='h3' icon>
+                                            <Icon 
+                                                circular 
+                                                inverted
+                                                color="green"
+                                                name="percent"
+                                            />
+                                            Competitive Rates
+                                            <Header as='h5' inverted 
+                                                content="Our rates are better compared to our competitors"
+                                            />
+                                        </Header>
+                                    </Segment>
+                                    </Grid.Column> 
+                                </Grid>
                             </Grid.Column>
                             
                         </Grid.Row>
                     </Grid>
-                
+                </Container>    
             </Segment>
         </>
     )
