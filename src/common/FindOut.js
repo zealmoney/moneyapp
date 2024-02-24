@@ -53,7 +53,7 @@ export const FindOut = () => {
                                                 color="green"
                                                 name="money"
                                             />
-                                            Prompt Cash Delivery
+                                            On-Time Delivery
                                             <Header as='h5' inverted 
                                                 content='We deliver money on time and to the 
                                                 right destination'
