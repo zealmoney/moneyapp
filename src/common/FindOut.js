@@ -9,13 +9,18 @@ export const FindOut = () => {
                     <Grid textAlign="center" stackable>
                         <Grid.Row>
                             <Grid.Column>
-                                <Header as='h1' textAlign="center" content='Find Out Why More People Use Money App' />
+                                <Header as='h1' textAlign="center" content='Why Money App preffered' />
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
                                 <Grid>
-                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Grid.Column 
+                                        computer={4} 
+                                        mobile={8} 
+                                        textAlign="center"
+                                        style={{maxHeight: 400}}
+                                    >
                                     <Segment
                                         tertiary
                                         raised
@@ -32,7 +37,7 @@ export const FindOut = () => {
                                             />
                                             Special Offers
                                             <Header as='h5' inverted 
-                                                content='We always give special offers to all our
+                                                content='We give special offers to all our
                                                 existing and new customers'
                                             />
                                         </Header>
