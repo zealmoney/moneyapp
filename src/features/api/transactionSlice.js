@@ -7,15 +7,18 @@ const initialState = {
     currencyReceived: '',
     fee: 0,
     total: 0,
+
     deliveryBank: '',
     deliveryCash: '',
     zenith: '',
     gtb: '',
     polaris: '',
+
     accountNumber: '',
     retypeAccountNumber: '',
     checking: '',
     savings: '',
+
     fname: '',
     mname: '',
     lname: '',
@@ -27,6 +30,7 @@ const initialState = {
     region: '',
     city: '', 
     postal: '',
+
     cardNumber: '',
     expiration: '',
     securityCode: '',
@@ -111,7 +115,7 @@ export const transactionSlice = createSlice({
                 state.fname = action.payload.p_fname
                 state.mname = action.payload.p_mname
                 state.lname = action.payload.p_lname
-                state.slnamename = action.payload.p_slname
+                state.slname = action.payload.p_slname
                 state.country = action.payload.p_country
                 state.email = action.payload.p_email
                 state.street = action.payload.p_street

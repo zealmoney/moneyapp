@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { updateRecepientsInfo } from "../features/api/transactionSlice"
 import { useNavigate } from "react-router-dom"
+import { Footer } from "./Footer"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -14,13 +15,13 @@ const countryOptions = [
 export const RecepientsInfo = () => {
 
     const [fname, setFname] = useState('')
-    const [mname, setMname] = useState('')
+    const [mname, setMname] = useState('none')
     const [lname, setLname] = useState('')
-    const [slname, setSlname] = useState('')
+    const [slname, setSlname] = useState('none')
     const [country, setCountry] = useState()
     const [email, setEmail] = useState('')
     const [street, setStreet] = useState('')
-    const [street2, setStreet2] = useState('')
+    const [street2, setStreet2] = useState('none')
     const [region, setRegion] = useState('')
     const [city, setCity] = useState('')
     const [postal, setPostal] = useState('')
@@ -65,8 +66,6 @@ export const RecepientsInfo = () => {
             setEmailError({content: 'Empty Fields'})
         }else if(street === ''){
             setStreetError({content: 'Empty Fields'})
-        }else if(street2 === ''){
-            setStreet2Error({content: 'Empty Fields'})
         }else if(region === ''){
             setRegionError({content: 'Empty Fields'})
         }else if(city === ''){
@@ -79,7 +78,6 @@ export const RecepientsInfo = () => {
             country !== '' &&
             email !== '' &&
             street !== '' &&
-            street2 !== '' &&
             region !== '' &&
             city !== '' &&
             postal !== ''
@@ -103,12 +101,15 @@ export const RecepientsInfo = () => {
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 600}}>
                                     <Header as='h1' content="Recepient's Information" />
+                                    <Header 
+                                        inverted
+                                        color="green"
+                                        as='h4'
+                                        content="Enter the recepient's information as it appears on 
+                                        official identification."
+                                    />
                                     <Segment style={{padding: '2em 2em'}}>
-                                        <span>
-                                            Enter the recepient's information as it appears on 
-                                            official identification.
-                                        </span>
-                                        <Form>
+                                        <Form size="huge">
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>First Name</label>
                                             <Form.Input 
@@ -122,7 +123,6 @@ export const RecepientsInfo = () => {
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>Middle Name(Optional)</label>
                                             <Form.Input 
-                                                value={mname}
                                                 error={mnameError}
                                                 onChange={handleMnameChange}
                                                 onClick={() => setMnameError(false)}
@@ -140,7 +140,6 @@ export const RecepientsInfo = () => {
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>Second Last Name(Optional)</label>
                                             <Form.Input 
-                                                value={slname}
                                                 error={slnameError}
                                                 onChange={handleSlnameChange}
                                                 onClick={() => setSlnameError(false)}
@@ -181,7 +180,6 @@ export const RecepientsInfo = () => {
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>Street 2</label>
                                             <Form.Input 
-                                                value={street2}
                                                 error={street2Error}
                                                 onChange={handleStreet2Change}
                                                 onClick={() => setStreet2Error(false)}
@@ -234,6 +232,7 @@ export const RecepientsInfo = () => {
                         </Grid>
                     </Container>
                 </Segment>
+            <Footer />
         </>
     )
 }

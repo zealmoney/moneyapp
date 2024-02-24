@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updatePayment } from "../features/api/transactionSlice"
+import { Footer } from "./Footer"
 
 export const Payment = () => {
 
@@ -13,9 +14,9 @@ export const Payment = () => {
     const [expiration, setExpiration] = useState('')
     const [securityCode, setSecurityCode] = useState('')
     const [b_fname, setFname] = useState('')
-    const [nickname, setNickname]= useState('')
+    const [nickname, setNickname]= useState('none')
     const [streetAd, setStreetAd]= useState('')
-    const [apartment, setApartment]= useState('')
+    const [apartment, setApartment]= useState('none')
     const [b_city, setCity]= useState('')
     const [b_region, setRegion]= useState('')
     const [zipcode, setZipcode]= useState('')
@@ -56,8 +57,6 @@ export const Payment = () => {
             setSecurityCodeError({content: 'Empty Fields'})
         }else if(b_fname === ''){
             setFnameError({content: 'Empty Fields'})
-        }else if(nickname === ''){
-            setNicknameError({content: 'Empty Fields'})
         }else if(streetAd === ''){
             setStreetAdError({content: 'Empty Fields'})
         }else if(b_city === ''){
@@ -69,7 +68,7 @@ export const Payment = () => {
         }else if(
             cardNumber !== '' && expiration !== '' && 
             securityCode !== '' && b_fname !== '' &&
-            nickname !== '' && streetAd !== '' && b_city !== '' &&
+             streetAd !== '' && b_city !== '' &&
             b_region !== '' && zipcode !== ''
         ){
             setLoading(true)
@@ -86,7 +85,7 @@ export const Payment = () => {
         return(
             <>
                 <TransactionNavbar />
-                <Segment vertical style={{padding: '4em 0em'}}>
+                <Segment vertical style={{padding: '4em 0em 29em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
@@ -116,6 +115,7 @@ export const Payment = () => {
                         </Grid>
                     </Container>
                 </Segment>
+                <Footer />
             </>
         )
     }else if(showForm){
@@ -191,7 +191,6 @@ export const Payment = () => {
                                             <Form.Field>
                                                 <label>Card Nickname (Optional)</label>
                                                 <Form.Input 
-                                                    value={nickname}
                                                     error={nicknameError}
                                                     onChange={handleNicknameChange}
                                                     onClick={() => setNicknameError(false)}
@@ -211,7 +210,6 @@ export const Payment = () => {
                                             <Form.Field>
                                                 <label>Apartment, suit, unit, etc. (Optional)</label>
                                                 <Form.Input 
-                                                    value={apartment}
                                                     error={apartmentError}
                                                     onChange={handleApartmentChange}
                                                     onClick={() => setApartmentError(false)}
@@ -267,6 +265,7 @@ export const Payment = () => {
                         </Grid>
                     </Container>
                 </Segment>
+                <Footer />
             </>
         )
     }

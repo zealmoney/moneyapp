@@ -7,6 +7,7 @@ import { parseInt } from "lodash"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateTransaction } from "../features/api/transactionSlice"
+import { Footer } from "./Footer"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -105,8 +106,8 @@ export const TransactionComponent = () => {
                 dispatch_reducer(updateTransaction(
                     moneySent, 
                     moneyReceived, 
-                    currencySent, 
-                    currencyReceived,
+                    country,
+                    countryName,
                     fee, 
                     total
                 ))
@@ -176,7 +177,7 @@ export const TransactionComponent = () => {
                                                         options={countryOptions2}
                                                         fluid
                                                         onChange={(e, {value}) => {
-                                                            setCountry(value.toString())
+                                                            setCountry(value)
                                                             setMsg(false)
                                                         }}
                                                     />
@@ -247,6 +248,7 @@ export const TransactionComponent = () => {
                     close={closeModal}
                 />
             </Segment>
+            <Footer />
         </>
     )
 }

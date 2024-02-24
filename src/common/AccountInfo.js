@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateAccountInfo } from "../features/api/transactionSlice"
+import { Footer } from "./Footer"
 
 export const AccountInfo = () => {
 
@@ -77,7 +78,7 @@ export const AccountInfo = () => {
     return(
         <>
             <TransactionNavbar />
-                <Segment vertical style={{padding: '4em 0em'}}>
+                <Segment vertical style={{padding: '4em 0em 6em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
@@ -124,7 +125,7 @@ export const AccountInfo = () => {
                                                 list={['Account numbers does not match']}
                                             /> : ''
                                         }
-                                        <Form>
+                                        <Form size="huge">
                                             <Header textAlign="left" as='h4' content='Account Type' />
                                             <Form.Field style={{textAlign: 'left'}}>                                                
                                                 <input 
@@ -182,6 +183,7 @@ export const AccountInfo = () => {
                         </Grid>
                     </Container>
                 </Segment>
+            <Footer />
         </>
     )
 }

@@ -1,6 +1,7 @@
 import { Container, Divider, Grid, Header, Icon, List, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useGetUsersQuery } from "../features/api/apiSlice"
+import { Footer } from "./Footer"
 
 export const Profile = () => {
 
@@ -76,7 +77,7 @@ export const Profile = () => {
                     </Grid>
                 </Container>
             </Segment>
-
+            <Footer />
         </>
     )
 }

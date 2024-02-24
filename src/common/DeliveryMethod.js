@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateBank, updateDelivery } from "../features/api/transactionSlice"
+import { Footer } from "./Footer"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -74,7 +75,7 @@ export const DeliveryMethod = () => {
         return(
             <>
                 <TransactionNavbar />
-                <Segment vertical style={{padding: '4em 0em'}}>
+                <Segment vertical style={{padding: '4em 0em 24em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
@@ -112,13 +113,14 @@ export const DeliveryMethod = () => {
                         </Grid>
                     </Container>
                 </Segment>
+                <Footer />
             </>
         )
     }else if((deliveryCash === true || deliveryBank === true)){
         return(
             <>
                 <TransactionNavbar />
-                <Segment vertical>
+                <Segment vertical style={{padding: '6em 0em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
@@ -192,6 +194,7 @@ export const DeliveryMethod = () => {
                         </Grid>
                     </Container>
                 </Segment>
+                <Footer />
             </>
         )
     }

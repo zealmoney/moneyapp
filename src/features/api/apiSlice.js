@@ -19,6 +19,16 @@ export const apiSlice = createApi({
         }),
         getRates: builder.query({
             query: () => 'rates'
+        }),
+        addTransaction: builder.mutation({
+            query: initialPost => ({
+                url: 'transactions/',
+                method: 'POST',
+                body: initialPost
+            })
+        }),
+        getTransactions: builder.query({
+            query: () => 'transactions'
         })
     })
 })
@@ -26,5 +36,7 @@ export const apiSlice = createApi({
 export const { 
     useRegisterMutation, 
     useGetUsersQuery,
-    useGetRatesQuery 
+    useGetRatesQuery,
+    useAddTransactionMutation,
+    useGetTransactionsQuery
 } = apiSlice
