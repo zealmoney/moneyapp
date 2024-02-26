@@ -19,7 +19,6 @@ export const FindOut = () => {
                                         computer={4} 
                                         mobile={8} 
                                         textAlign="center"
-                                        style={{minHeight: 400}}
                                     >
                                     <Segment
                                         tertiary
@@ -27,6 +26,7 @@ export const FindOut = () => {
                                         inverted
                                         secondary
                                         color="green"
+                                        style={{minHeight: 200}}
                                     >
                                         <Header as='h3' icon>
                                             <Icon 
@@ -47,7 +47,6 @@ export const FindOut = () => {
                                         computer={4} 
                                         mobile={8} 
                                         textAlign="center"
-                                        style={{minHeight: 400}}
                                     >
                                     <Segment
                                         tertiary
@@ -55,6 +54,7 @@ export const FindOut = () => {
                                         inverted
                                         secondary
                                         color="green"
+                                        style={{minHeight: 200}}
                                     >
                                         <Header as='h3' icon>
                                             <Icon 
@@ -75,7 +75,6 @@ export const FindOut = () => {
                                         computer={4} 
                                         mobile={8} 
                                         textAlign="center"
-                                        style={{minHeight: 400}}
                                     >
                                     <Segment
                                         tertiary
@@ -83,6 +82,7 @@ export const FindOut = () => {
                                         inverted
                                         secondary
                                         color="green"
+                                        style={{minHeight: 200}}
                                     >
                                         <Header as='h3' icon>
                                             <Icon 
@@ -110,6 +110,7 @@ export const FindOut = () => {
                                         inverted
                                         secondary
                                         color="green"
+                                        style={{minHeight: 200}}
                                     >
                                         <Header as='h3' icon>
                                             <Icon 
