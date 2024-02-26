@@ -6,7 +6,7 @@ export const FindOut = () => {
         <>
             <Segment vertical size="massive" style={{padding: '4em 0em'}}>
                 <Container>
-                    <Grid textAlign="center" stackable>
+                    <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column>
                                 <Header as='h1' textAlign="center" content='Why Money App Is Preffered To Others' />
@@ -37,8 +37,7 @@ export const FindOut = () => {
                                             />
                                             Special Offers
                                             <Header as='h5' inverted 
-                                                content='We give special offers to all our
-                                                existing and new customers'
+                                                content='We give special offers to all our customers'
                                             />
                                         </Header>
                                     </Segment>
@@ -63,7 +62,7 @@ export const FindOut = () => {
                                                 color="green"
                                                 name="money"
                                             />
-                                            Timely Delivery
+                                            Fast Delivery
                                             <Header as='h5' inverted 
                                                 content='We deliver money on time and to the 
                                                 right destination'
