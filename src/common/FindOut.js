@@ -19,6 +19,7 @@ export const FindOut = () => {
                                         computer={4} 
                                         mobile={8} 
                                         textAlign="center"
+                                        style={{minHeight: 400}}
                                     >
                                     <Segment
                                         tertiary
@@ -42,7 +43,12 @@ export const FindOut = () => {
                                         </Header>
                                     </Segment>
                                     </Grid.Column>
-                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Grid.Column 
+                                        computer={4} 
+                                        mobile={8} 
+                                        textAlign="center"
+                                        style={{minHeight: 400}}
+                                    >
                                     <Segment
                                         tertiary
                                         raised
@@ -65,7 +71,12 @@ export const FindOut = () => {
                                         </Header>
                                     </Segment>
                                     </Grid.Column>
-                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Grid.Column 
+                                        computer={4} 
+                                        mobile={8} 
+                                        textAlign="center"
+                                        style={{minHeight: 400}}
+                                    >
                                     <Segment
                                         tertiary
                                         raised
@@ -88,7 +99,11 @@ export const FindOut = () => {
                                         </Header>
                                     </Segment>
                                     </Grid.Column>
-                                    <Grid.Column computer={4} mobile={8} textAlign="center">
+                                    <Grid.Column 
+                                        computer={4} 
+                                        mobile={8} 
+                                        textAlign="center"
+                                    >
                                     <Segment
                                         tertiary
                                         raised
