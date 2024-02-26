@@ -9,7 +9,7 @@ export const FindOut = () => {
                     <Grid textAlign="center" stackable>
                         <Grid.Row>
                             <Grid.Column>
-                                <Header as='h1' textAlign="center" content='Why Money App preffered' />
+                                <Header as='h1' textAlign="center" content='Why Money App Is Preffered To Others' />
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
@@ -19,7 +19,6 @@ export const FindOut = () => {
                                         computer={4} 
                                         mobile={8} 
                                         textAlign="center"
-                                        style={{maxHeight: 400}}
                                     >
                                     <Segment
                                         tertiary
@@ -58,7 +57,7 @@ export const FindOut = () => {
                                                 color="green"
                                                 name="money"
                                             />
-                                            On-Time Delivery
+                                            Timely Delivery
                                             <Header as='h5' inverted 
                                                 content='We deliver money on time and to the 
                                                 right destination'
