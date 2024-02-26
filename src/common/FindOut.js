@@ -80,7 +80,7 @@ export const FindOut = () => {
                                                 color="green"
                                                 name="calendar check"
                                             />
-                                            Track Your Transfers
+                                            Trackable Transfers
                                             <Header as='h5' inverted 
                                                 content="We provide a reliable way to track the 
                                                 progress of your transfers"
@@ -111,8 +111,7 @@ export const FindOut = () => {
                                     </Segment>
                                     </Grid.Column> 
                                 </Grid>
-                            </Grid.Column>
-                            
+                            </Grid.Column>        
                         </Grid.Row>
                     </Grid>
                 </Container>    
