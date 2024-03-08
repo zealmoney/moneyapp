@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Header, Image, Segment } from "semantic-ui-react"
+import { Button, Container, Grid, Header, Icon, Image, Segment } from "semantic-ui-react"
 
 export const HeadingPage = () => {
     
@@ -9,15 +9,14 @@ export const HeadingPage = () => {
                 tertiary
                 inverted
                 secondary
-                color="green" 
+                color="green"
                 style={{marginTop: '3.5em'}}
             >
                 <Container>
                     <Grid verticalAlign="middle">
                         <Grid.Row>
                             <Grid.Column textAlign="center" width={8}>
-                                <Header 
-                                    inverted
+                                <Header
                                     style={{fontSize: '3.2em'}} 
                                     content='Money Transfer That Is Easy And Reliable' 
                                 />
@@ -26,7 +25,24 @@ export const HeadingPage = () => {
                                 </Button>
                             </Grid.Column>
                             <Grid.Column width={8}>
-                                <Image src='/heading_images/exchange.png' />
+                                {/*<Image src='/heading_images/exchange3.png' rounded/>*/}
+                                <Segment
+                                    size="massive"
+                                    raised
+                                    tertiary
+                                    inverted
+                                    secondary
+                                    color="green"
+                                    textAlign="center"
+                                >  
+                                    <Icon 
+                                        inverted 
+                                        name="money bill alternate outline" 
+                                        circular 
+                                        color="green" 
+                                        size="massive"
+                                    />
+                                </Segment>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
