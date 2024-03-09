@@ -4,13 +4,13 @@ export const HeadingPageMobile = () => {
 
     return(
         <>
-            <Segment vertical style={{backgroundColor: '#F6F6F6', marginTop: '3.5em', padding: '4em 0em'}}>
+            <Segment vertical style={{backgroundColor: '#E5E4E2', marginTop: '3.5em', padding: '4em 0em'}}>
                 <Container>
                     <Grid verticalAlign="middle">
                         <Grid.Row>
                             <Grid.Column textAlign="center">
                                 <Header style={{fontSize: '2.5em'}}>
-                                    Worry-free transfers<br/> for you and your<br/> loved ones
+                                    Money Transfer That<br/> Is Easy And Reliable
                                 </Header>
                                 <Button circular size="huge" color="green">
                                     Learn More
@@ -22,7 +22,7 @@ export const HeadingPageMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Image src='/heading_images/image1.webp' />
+                                <Image src='/heading_images/exchange5.png' />
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
