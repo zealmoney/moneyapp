@@ -55,29 +55,24 @@ export const CashPayout = () => {
     return(
         <>
             <Segment vertical size="massive" style={{padding: '4em 8em', backgroundColor: '#f6f6f6'}}>
-                    <Grid textAlign="center" stackable>
+                    <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column>
                                 <Header as='h1' content='Countries where you can send money' />
                             </Grid.Column>
                         </Grid.Row>
+                    </Grid>
+                    <Grid columns={3}>
                         <Grid.Row>
-                            <Grid.Column style={{maxWidth: 1200}}>
-                                <Grid>
-                                    <Grid.Row>
-                                        {
-                                            countries.map((country) => (
-                                                <>
-                                                    <Grid.Column textAlign="left" key={country.countryCode} width={4}>
-                                                        {flagRenderer(country)}{country.name}                      
-                                                    </Grid.Column>
-                                                    <br/><br/>
-                                                </>
-                                            ))
-                                        }
-                                    </Grid.Row>
-                                </Grid>
-                            </Grid.Column>
+                            
+                            {
+                                countries.map((country) => (
+                                    <Grid.Column key={country.countryCode}>
+                                        {flagRenderer(country)}{country.name}                      
+                                    </Grid.Column>                                                        
+                                ))
+                            }
+                                    
                         </Grid.Row>
                     </Grid>
             </Segment>
