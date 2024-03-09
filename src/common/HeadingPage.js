@@ -6,11 +6,7 @@ export const HeadingPage = () => {
         <>
             <Segment 
                 vertical
-                tertiary
-                inverted
-                secondary
-                color="green"
-                style={{marginTop: '3.5em'}}
+                style={{backgroundColor: '#E5E4E2', marginTop: '3.5em'}}
             >
                 <Container>
                     <Grid verticalAlign="middle">
@@ -25,24 +21,7 @@ export const HeadingPage = () => {
                                 </Button>
                             </Grid.Column>
                             <Grid.Column width={8}>
-                                {/*<Image src='/heading_images/exchange3.png' rounded/>*/}
-                                <Segment
-                                    size="massive"
-                                    raised
-                                    tertiary
-                                    inverted
-                                    secondary
-                                    color="green"
-                                    textAlign="center"
-                                >  
-                                    <Icon 
-                                        inverted 
-                                        name="money bill alternate outline" 
-                                        circular 
-                                        color="green" 
-                                        size="massive"
-                                    />
-                                </Segment>
+                                <Image src='/heading_images/exchange4.png' rounded/>    
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
