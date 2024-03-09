@@ -68,7 +68,10 @@ export const CashPayout = () => {
                             {
                                 countries.map((country) => (
                                     <Grid.Column key={country.countryCode}>
-                                        {flagRenderer(country)}{country.name}                      
+                                        <p style={{fontSize: '0.8em'}}>
+                                            {flagRenderer(country)}{country.name}
+                                        </p>
+                                                              
                                     </Grid.Column>                                                        
                                 ))
                             }
