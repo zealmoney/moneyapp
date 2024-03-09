@@ -62,7 +62,7 @@ export const CashPayout = () => {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                    <Grid columns={3}>
+                    <Grid columns={3} divided>
                         <Grid.Row>
                             
                             {

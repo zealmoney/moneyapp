@@ -9,12 +9,12 @@ export const Customers = () => {
                     <Grid stackable>
                         <Grid.Row>
                             <Grid.Column textAlign="center">
-                                <Header as='h1' content='What our Customers are saying' />
+                                <Header as='h1' content='What Our Customers Are Saying' />
                             </Grid.Column>  
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column width={4}>
-                                <Segment circular raised>
+                                <Segment raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={4} maxRating={5} />
                                     <p>
@@ -25,7 +25,7 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment circular raised>
+                                <Segment raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={3} maxRating={5} />
                                     <p>
@@ -36,7 +36,7 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment circular raised>
+                                <Segment raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p>
@@ -47,7 +47,7 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment circular raised>
+                                <Segment raised>
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={5} maxRating={5} />
                                     <p>
