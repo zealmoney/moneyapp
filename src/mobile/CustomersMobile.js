@@ -14,7 +14,15 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment textAlign="center" raised>
+                                <Segment 
+                                    textAlign="center"
+                                    raised
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={4} maxRating={5} />
                                     <p style={{textAlign: 'left'}}>
@@ -27,7 +35,15 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment textAlign="center" raised>
+                                <Segment 
+                                    textAlign="center" 
+                                    raised
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p style={{textAlign: 'left'}}>
@@ -40,7 +56,15 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment textAlign="center" raised>
+                                <Segment 
+                                    textAlign="center" 
+                                    raised
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p style={{textAlign: 'left'}}>
@@ -53,7 +77,15 @@ export const CustomersMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Segment textAlign="center" raised>
+                                <Segment 
+                                    textAlign="center" 
+                                    raised
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p style={{textAlign: 'left'}}>
