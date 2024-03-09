@@ -64,26 +64,23 @@ export const CashPayoutMobile = () => {
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column>
-                                <Grid>
-                                    <Grid.Row>
-                                        {
-                                            countries.map((country) => (
-                                                <>
-                                                    <Grid.Column 
-                                                        key={country.countryCode} 
-                                                        width={8} 
-                                                        style={{padding: '0em 1em'}}
-                                                    >
-                                                        <span>{flagRenderer(country)}{country.name}</span>                      
-                                                    </Grid.Column>
-                                                    <br/><br/>
-                                                </>
-                                            ))
-                                        }
-                                    </Grid.Row>
-                                </Grid>
-                            </Grid.Column>
+                            
+                            {
+                                countries.map((country) => (
+                                    <>
+                                        <Grid.Column 
+                                            key={country.countryCode} 
+                                            width={8} 
+                                            style={{padding: '0em 1em'}}
+                                        >
+                                            {flagRenderer(country)}{country.name}                    
+                                        </Grid.Column>
+                                        <br/><br/>
+                                    </>
+                                ))
+                            }
+                                    
+                                
                         </Grid.Row>
                     </Grid>
                 </Container>
