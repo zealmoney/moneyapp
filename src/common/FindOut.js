@@ -14,11 +14,10 @@ export const FindOut = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column>
-                                <Grid>
+                                <Grid stackable>
                                     <Grid.Column 
-                                        computer={4} 
-                                        mobile={8} 
                                         textAlign="center"
+                                        width={4}
                                     >
                                     <Segment
                                         tertiary
@@ -43,9 +42,8 @@ export const FindOut = () => {
                                     </Segment>
                                     </Grid.Column>
                                     <Grid.Column 
-                                        computer={4} 
-                                        mobile={8} 
                                         textAlign="center"
+                                        width={4}
                                     >
                                     <Segment
                                         tertiary
@@ -71,9 +69,8 @@ export const FindOut = () => {
                                     </Segment>
                                     </Grid.Column>
                                     <Grid.Column 
-                                        computer={4} 
-                                        mobile={8} 
                                         textAlign="center"
+                                        width={4}
                                     >
                                     <Segment
                                         tertiary
@@ -99,9 +96,8 @@ export const FindOut = () => {
                                     </Segment>
                                     </Grid.Column>
                                     <Grid.Column 
-                                        computer={4} 
-                                        mobile={8} 
                                         textAlign="center"
+                                        width={4}
                                     >
                                     <Segment
                                         tertiary
