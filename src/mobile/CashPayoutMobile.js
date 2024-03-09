@@ -70,7 +70,11 @@ export const CashPayoutMobile = () => {
                                         {
                                             countries.map((country) => (
                                                 <>
-                                                    <Grid.Column key={country.countryCode} width={8}>
+                                                    <Grid.Column 
+                                                        key={country.countryCode} 
+                                                        width={8} 
+                                                        style={{padding: '0em 1em'}}
+                                                    >
                                                         <span>{flagRenderer(country)}{country.name}</span>                      
                                                     </Grid.Column>
                                                     <br/><br/>
