@@ -14,7 +14,14 @@ export const Customers = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column width={4}>
-                                <Segment raised>
+                                <Segment 
+                                    raised 
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={4} maxRating={5} />
                                     <p>
@@ -25,7 +32,14 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment raised>
+                                <Segment 
+                                    raised 
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={3} maxRating={5} />
                                     <p>
@@ -36,7 +50,14 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment raised>
+                                <Segment 
+                                    raised 
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={2} maxRating={5} />
                                     <p>
@@ -47,7 +68,14 @@ export const Customers = () => {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
-                                <Segment raised>
+                                <Segment 
+                                    raised 
+                                    tertiary 
+                                    secondary 
+                                    inverted 
+                                    color="green"
+                                    style={{padding: '2em 2em'}}
+                                >
                                     <Header content='Adam Smith' />
                                     <Rating icon="star" defaultRating={5} maxRating={5} />
                                     <p>
