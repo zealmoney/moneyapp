@@ -66,7 +66,7 @@ export const SignIn = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '8em 2em'}}>
+            <Segment vertical style={{padding: '6em 2em'}}>
                 <Container>
                 <Grid textAlign="center" stackable>
                     <Grid.Row>
@@ -78,7 +78,10 @@ export const SignIn = () => {
                     </Grid.Row>
                     <Grid.Row>                    
                         <Grid.Column style={{maxWidth: 600}}>
-                            <Segment style={{padding: '4em 4em'}}>
+                            <Segment
+                                raised
+                                style={{padding: '4em 4em'}}
+                            >
                                 <Form size="huge">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>

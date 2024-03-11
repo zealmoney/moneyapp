@@ -90,15 +90,22 @@ export const Register = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '4em 2em'}}>
+            <Segment vertical style={{padding: '6em 2em'}}>
                 <Container>
                 <Grid textAlign="center" stackable>
                     <Grid.Row>
+                        <Grid.Column>
+                            <Header textAlign="center" as='h1' style={{wordSpacing: '0.1em'}}>
+                                Sign Up with Money App
+                            </Header>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
-                            <Segment vertical>
-                                <Header textAlign="left" as='h1' style={{wordSpacing: '0.1em'}}>
-                                    Sign Up with Money App
-                                </Header>
+                            <Segment 
+                                raised
+                                style={{padding: '4em 4em'}}
+                            >
                                 <Form size="huge">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>
