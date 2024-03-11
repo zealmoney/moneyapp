@@ -28,9 +28,9 @@ const countries = [
     { name: 'Costa Rica', countryCode: 'cr' },
     { name: 'Cote Divoire', countryCode: 'ci' },
     { name: 'Croatia', countryCode: 'hr' },
-    { name: 'Czech Republic', countryCode: 'cz' },
+    { name: 'Czech Rep.', countryCode: 'cz' },
     { name: 'Denmark', countryCode: 'dk' },
-    { name: 'Dominican Republic', countryCode: 'do' },
+    { name: 'Dominican Rep.', countryCode: 'do' },
     { name: 'Ecuador', countryCode: 'ec' },
     { name: 'Egypt', countryCode: 'eg' },
     { name: 'El Salvador', countryCode: 'sv' },
@@ -74,7 +74,7 @@ export const CashPayoutMobile = () => {
                                         >
                                             {flagRenderer(country)}{country.name}                    
                                         </Grid.Column>
-                                        <br/>
+                                        <br/><br/>
                                     </>
                                     
                                         
