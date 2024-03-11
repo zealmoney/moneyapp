@@ -55,7 +55,7 @@ export const CashPayoutMobile = () => {
     
     return(
         <>
-            <Segment vertical style={{padding: '2em 0em', backgroundColor: '#f6f6f6'}}>
+            <Segment vertical style={{padding: '2em 5em', backgroundColor: '#f6f6f6'}}>
                 <Container>
                     <Grid>
                         <Grid.Row>
@@ -67,15 +67,15 @@ export const CashPayoutMobile = () => {
                             
                             {
                                 countries.map((country) => (
-                                    <>
+                                    
                                         <Grid.Column 
                                             key={country.countryCode} 
                                             mobile={8}
                                         >
                                             {flagRenderer(country)}{country.name}                    
                                         </Grid.Column>
-                                        <br/><br/>
-                                    </>
+                                        
+                                    
                                 ))
                             }
                                     
