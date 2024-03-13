@@ -90,7 +90,7 @@ export const RegisterMobile = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '2em 3em'}}>
+            <Segment vertical style={{padding: '2em 2em'}}>
                 <Grid textAlign="center">
                     <Grid.Row>
                         <Grid.Column>

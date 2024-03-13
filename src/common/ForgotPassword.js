@@ -7,15 +7,22 @@ export const ForgotPassword = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '4em 2em'}}>
+            <Segment vertical style={{padding: '6em 2em'}}>
                 <Container>
                 <Grid textAlign="center" stackable>
                     <Grid.Row>
+                        <Grid.Column>
+                            <Header as='h1' style={{wordSpacing: '0.1em'}}>
+                                Change Your Password
+                            </Header>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
-                            <Segment vertical>
-                                <Header textAlign="left" as='h1' style={{wordSpacing: '0.1em'}}>
-                                    Change Your Password
-                                </Header>
+                            <Segment
+                                raised
+                                style={{padding: '4em 4em'}}
+                            >
                                 <p style={{textAlign: 'left'}}>
                                     We'll send instructions on how to change your password
                                     to the email you enter below. 

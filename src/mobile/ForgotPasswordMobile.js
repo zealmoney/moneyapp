@@ -7,14 +7,21 @@ export const ForgotPasswordMobile = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '2em 1em'}}>
+            <Segment vertical style={{padding: '2em 3em'}}>
                 <Grid textAlign="center">
                     <Grid.Row>
+                        <Grid.Column>
+                            <Header as='h2' style={{wordSpacing: '0.1em'}}>
+                                Change Your Password
+                            </Header>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
-                            <Segment vertical>
-                                <Header textAlign="left" as='h2' style={{wordSpacing: '0.1em'}}>
-                                    Change Your Password
-                                </Header>
+                            <Segment 
+                                raised
+                                style={{padding: '2em 2em'}}
+                            >
                                 <p style={{textAlign: 'left'}}>
                                     We'll send instructions on how to change your password
                                     to the email you enter below. 
