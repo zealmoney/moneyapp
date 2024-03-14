@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Container, Dropdown, Menu, Segment } from "semantic-ui-react"
+import { Container, Dropdown, Icon, Menu, Segment } from "semantic-ui-react"
 
 export const TransactionNavbarMobile = () => {
 
@@ -32,12 +32,12 @@ export const TransactionNavbarMobile = () => {
                         >
                             Profile
                         </Menu.Item>*/}
-                        <Menu.Item
+                        {/*<Menu.Item
                             as='a'
                             onClick={() => navigate('/transaction')}
                         >
                             Send Money
-                        </Menu.Item>
+                        </Menu.Item>*/}
                         {/*<Menu.Item 
                             as='a'
                             onClick={() => navigate('/transactionhistory')}
@@ -54,12 +54,21 @@ export const TransactionNavbarMobile = () => {
                                         as='a'
                                         onClick={() => navigate('/profile')}
                                     >
+                                        <Icon name="user" />
                                         Profile
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        as='a'
+                                        onClick={() => navigate('/transaction')}
+                                    >
+                                        <Icon name="money" />
+                                        Send Money
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         as='a'
                                         onClick={() => navigate('/transactionhistory')}
                                     >
+                                        <Icon name="suitcase" />
                                         Transaction History
                                     </Dropdown.Item>
                                     <Dropdown.Item icon='setting' text='Settings' />
