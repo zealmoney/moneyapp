@@ -122,8 +122,7 @@ export const TransactionComponentMobile = () => {
     return(
         <>
             <TransactionNavbarMobile />
-            <Segment vertical style={{padding: '2em 0em'}}>
-                <Container>
+            <Segment vertical style={{padding: '4em 1em'}}>
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column style={{maxWidth: 600}}>
@@ -241,7 +240,6 @@ export const TransactionComponentMobile = () => {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                </Container>
                 <TransactionModal
                     open={open}
                     size={size}
