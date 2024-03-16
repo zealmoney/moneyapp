@@ -21,7 +21,7 @@ export const TransactionNavbarMobile = () => {
                     <Container>
                         <Menu.Item>
                             <Dropdown 
-                                text={sessionStorage.getItem('userId')}
+                                text={sessionStorage.getItem('fname')}
                                 inline
                             >
                                 <Dropdown.Menu>
