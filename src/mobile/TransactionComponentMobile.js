@@ -127,7 +127,7 @@ export const TransactionComponentMobile = () => {
                         <Grid.Row>
                             <Grid.Column style={{maxWidth: 600}}>
                                 <Header as='h1' content='Send money to...?' />
-                                <Segment style={{padding: '2em 2em'}}>
+                                <Segment style={{padding: '2em 0.5em'}}>
                                     {
                                         msg ?
                                         <Message 
@@ -155,7 +155,7 @@ export const TransactionComponentMobile = () => {
                                             list={['Please select a currency to be received']}
                                         /> : ''
                                     }
-                                    <Form size="huge">
+                                    <Form size="large">
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>You Send</label>
                                             <Input 
