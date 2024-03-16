@@ -195,7 +195,6 @@ export const RecepientsInfo = () => {
                                                 onClick={() => setRegionError(false)}
                                             />
                                         </Form.Field>
-                                        <Form.Group widths='equal'>
                                             <Form.Field style={{textAlign: 'left'}}>
                                                 <label>City</label>
                                                 <Form.Input 
@@ -214,7 +213,7 @@ export const RecepientsInfo = () => {
                                                     onClick={() => setPostalError(false)}
                                                 />
                                             </Form.Field>
-                                        </Form.Group>
+
                                         <Form.Field>
                                             <Button 
                                                 color="green" 
