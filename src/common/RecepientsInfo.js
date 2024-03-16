@@ -1,4 +1,4 @@
-import { Button, Container, Dropdown, Form, Grid, Header, Input, Label, Segment } from "semantic-ui-react"
+import { Button, Container, Dropdown, Form, Grid, Header, Input, Label, Segment, Select } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
@@ -145,19 +145,20 @@ export const RecepientsInfo = () => {
                                                 onClick={() => setSlnameError(false)}
                                             />
                                         </Form.Field>
-                                        <Form.Field>
-                                            <Input
-                                                error={countryError}
-                                            >
-                                            <Label basic>
-                                                <Dropdown 
+                                        <Form.Field style={{textAlign: 'left'}}>
+                                                {/*<Dropdown 
                                                     options={countryOptions}
                                                     fluid
                                                     onChange={(e, {value}) => setCountry(value.toString())}
+                                                    error={countryError}
+                                                />*/}
+                                                <label>Country</label>
+                                                <Select 
+                                                    placeholder="Select your country"
+                                                    options={countryOptions}
+                                                    onChange={(e, {value}) => setCountry(value.toString())}
+                                                    error={countryError}
                                                 />
-                                            </Label>
-                                            <input />
-                                            </Input>
                                         </Form.Field>
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>Email</label>
