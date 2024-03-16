@@ -155,7 +155,7 @@ export const TransactionComponentMobile = () => {
                                             list={['Please select a currency to be received']}
                                         /> : ''
                                     }
-                                    <Form size="large">
+                                    <Form size="small">
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>You Send</label>
                                             <Input 
