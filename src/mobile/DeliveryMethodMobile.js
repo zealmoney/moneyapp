@@ -88,7 +88,7 @@ export const DeliveryMethodMobile = () => {
                                         raised
                                         style={{padding: '2em 2em'}}
                                     >
-                                        <Form size="large">
+                                        <Form size="huge">
                                             <Form.Group widths="equal">
                                             <Form.Field>
                                                 <input  
