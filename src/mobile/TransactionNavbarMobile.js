@@ -19,35 +19,9 @@ export const TransactionNavbarMobile = () => {
                     secondary                    
                 >
                     <Container>
-                        <Menu.Item
-                            as='a'
-                            inverted
-                            style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '20px'}}
-                            onClick={() => navigate('/')}
-                        >
-                            MONEY APP
-                        </Menu.Item>
-                        {/*<Menu.Item
-                            as='a'
-                            onClick={() => navigate('/profile')}
-                        >
-                            Profile
-                        </Menu.Item>*/}
-                        {/*<Menu.Item
-                            as='a'
-                            onClick={() => navigate('/transaction')}
-                        >
-                            Send Money
-                        </Menu.Item>*/}
-                        {/*<Menu.Item 
-                            as='a'
-                            onClick={() => navigate('/transactionhistory')}
-                        >
-                            Transaction History
-                        </Menu.Item>*/}
                         <Menu.Item>
                             <Dropdown 
-                                text={sessionStorage.getItem('fname')}
+                                text={sessionStorage.getItem('userId')}
                                 inline
                             >
                                 <Dropdown.Menu>
@@ -81,6 +55,14 @@ export const TransactionNavbarMobile = () => {
                                     />
                                 </Dropdown.Menu>
                             </Dropdown>
+                        </Menu.Item>
+                        <Menu.Item
+                            as='a'
+                            inverted
+                            style={{fontFamily: 'AGRESSIVE', fontWeight: 'bold', fontSize: '20px'}}
+                            onClick={() => navigate('/')}
+                        >
+                            MONEY APP
                         </Menu.Item>
                     </Container>
                 </Menu>
