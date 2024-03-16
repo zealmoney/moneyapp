@@ -268,10 +268,7 @@ export const TransactionSummaryMobile = () => {
                                             </Grid.Column>
                                         </Grid.Row>
                                         <Grid.Row>
-                                            <Grid.Column width={8}>
-                                                <Header content="Email" />
-                                            </Grid.Column>
-                                            <Grid.Column textAlign="right" width={8}>
+                                            <Grid.Column textAlign="center">
                                                 {email}
                                             </Grid.Column>
                                         </Grid.Row>
