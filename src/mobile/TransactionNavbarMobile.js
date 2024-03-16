@@ -47,8 +47,8 @@ export const TransactionNavbarMobile = () => {
                         </Menu.Item>*/}
                         <Menu.Item>
                             <Dropdown 
-                                text={sessionStorage.getItem('fname')} 
-                                fluid
+                                text={sessionStorage.getItem('fname')}
+                                inline
                             >
                                 <Dropdown.Menu>
                                     <Dropdown.Item
