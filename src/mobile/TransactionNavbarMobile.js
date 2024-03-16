@@ -7,6 +7,7 @@ export const TransactionNavbarMobile = () => {
 
     const signOut = () => {
         sessionStorage.removeItem('userId')
+        sessionStorage.removeItem('fname')
         navigate('/')
     }
 
@@ -46,7 +47,7 @@ export const TransactionNavbarMobile = () => {
                         </Menu.Item>*/}
                         <Menu.Item>
                             <Dropdown 
-                                text={sessionStorage.getItem('userId')} 
+                                text={sessionStorage.getItem('fname')} 
                                 fluid
                             >
                                 <Dropdown.Menu>

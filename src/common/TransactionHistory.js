@@ -46,7 +46,7 @@ const countries = [
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column style={{maxWidth: 600}}>
-                                <Header as='h3' content='Transactions' />
+                                <Header as='h1' content='Transactions' />
                                 <Segment style={{padding: '2em 2em'}}>
                                     <Grid textAlign="left">
                                         {transaction}

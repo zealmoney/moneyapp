@@ -21,7 +21,7 @@ export const ProfileMobile = () => {
     return(
         <>
             <TransactionNavbarMobile />
-            <Segment vertical style={{padding: '4em 2em'}}>
+            <Segment vertical style={{padding: '1em 1em'}}>
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column>

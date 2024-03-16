@@ -24,9 +24,11 @@ export const SignInMobile = () => {
     let count_email = 0
     let count_user = 0
     let email_verify = 0
+    let fname = ''
     if(isSuccess){
         const user = users.find(u => u.email === email)
         if(user){
+            fname = user.fname
             ++count_email
             if(user.verify === 1){
                 ++email_verify
@@ -58,6 +60,7 @@ export const SignInMobile = () => {
             setLoading(true)
             setTimeout(() => {
                 sessionStorage.setItem('userId', email)
+                sessionStorage.setItem('fname', fname)
                 navigate('/profile')
             }, 300)
         }
@@ -66,7 +69,7 @@ export const SignInMobile = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '2em 3em'}}>
+            <Segment vertical style={{padding: '1em 1em'}}>
                 <Grid textAlign="center">
                     <Grid.Row>
                         <Grid.Column>
