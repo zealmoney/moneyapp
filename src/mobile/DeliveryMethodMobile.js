@@ -88,7 +88,7 @@ export const DeliveryMethodMobile = () => {
                                         raised
                                         style={{padding: '2em 2em'}}
                                     >
-                                        <Form size="huge">
+                                        <Form size="small">
                                             <Form.Group widths="equal">
                                             <Form.Field>
                                                 <input  
@@ -98,7 +98,7 @@ export const DeliveryMethodMobile = () => {
                                                 /> &nbsp;
                                                 <span>Cash Pickup</span>
                                             </Form.Field>
-                                            <Form.Field style={{textAlign: 'right'}}>
+                                            <Form.Field>
                                                 <input 
                                                     type="radio" 
                                                     value={deliveryBank}
