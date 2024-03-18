@@ -113,11 +113,15 @@ export const SignIn = () => {
                                         <Input
                                             fluid
                                             label={
-                                                <Icon
-                                                    name={passwordType === "password" ? "eye slash" : "eye"}
-                                                    onClick={togglePassword} 
-                                                    content='show'
-                                                />
+                                                <Button
+                                                    icon
+                                                    basic
+                                                >
+                                                    <Icon 
+                                                        name={passwordType === "password" ? "eye slash" : "eye"}
+                                                        onClick={togglePassword} 
+                                                    />
+                                                </Button>
                                             }
                                             labelPosition="right"
                                             type={passwordType}
