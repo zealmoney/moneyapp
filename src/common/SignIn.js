@@ -1,4 +1,4 @@
-import { Button, Container, Form, Grid, Header, Menu, Segment } from "semantic-ui-react"
+import { Button, ButtonOr, Container, Form, Grid, Header, Icon, Input, Menu, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
@@ -17,6 +17,8 @@ export const SignIn = () => {
 
     const handleEmailChange = e => setEmail(e.target.value)
     const handlePasswordChange = e => setPassword(e.target.value)
+
+    const [passwordType, setPasswordType] = useState("password")
 
     const navigate = useNavigate()
 
@@ -37,6 +39,14 @@ export const SignIn = () => {
                 }
             })
         }
+    }
+
+    const togglePassword = () => {
+        if(passwordType === "password"){
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
     }
 
     const signInClick = () => {
@@ -100,11 +110,17 @@ export const SignIn = () => {
                                         <label>
                                             Password
                                         </label>
-                                        <Form.Input 
+                                        <Input
                                             fluid
-                                            icon='eye'
-                                            iconPosition="right"
-                                            type="password"
+                                            label={
+                                                <Icon
+                                                    name={passwordType === "password" ? "eye slash" : "eye"}
+                                                    onClick={togglePassword} 
+                                                    content='show'
+                                                />
+                                            }
+                                            labelPosition="right"
+                                            type={passwordType}
                                             value={password}
                                             error={passwordError}
                                             onChange={handlePasswordChange}
