@@ -1,4 +1,4 @@
-import { Container, Divider, Flag, Grid, Header, Segment } from "semantic-ui-react"
+import { Container, Divider, Flag, Grid, Header, Icon, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useState } from "react"
 import { Footer } from "./Footer"
@@ -14,6 +14,7 @@ const countries = [
    const {data: transactions, isSuccess} = useGetTransactionsQuery()
 
    let transaction
+   let count = 0
    if(isSuccess){
         transaction = transactions.map((trans) => {
         
@@ -32,12 +33,14 @@ const countries = [
                             </Grid.Column>
                         </Grid.Row>
                         <Divider />
+                        {++count}
                     </>
                 )
             }
         }) 
+        
     }
-
+    if(count > 0){
     return(
         <>
             <TransactionNavbar />
@@ -60,4 +63,39 @@ const countries = [
             <Footer />
         </>
     )
+    }else{
+        return(
+            <>
+                <TransactionNavbar />
+                <Segment vertical style={{padding: '8em 0em 25em'}}>
+                    <Container>
+                        <Grid textAlign="center">
+                            <Grid.Row>
+                                <Grid.Column style={{maxWidth: 600}}>
+                                    <Header as='h1' content='Transactions' />
+                                    <Segment 
+                                        tertiary raised 
+                                        inverted color="green" secondary
+                                        style={{padding: '2em 2em'}}
+                                    >
+                                        <Grid textAlign="center">
+                                            <Header
+                                               as='h3' 
+                                               icon
+                                               inverted
+                                            >
+                                                 <Icon name="money" circular inverted color="green" />
+                                                No Transactions to be displayed
+                                            </Header>
+                                        </Grid>
+                                    </Segment>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Segment>
+                <Footer />
+            </>
+        )
+    }
 }

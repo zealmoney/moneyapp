@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Button, Container, Form, Grid, Header, Segment } from "semantic-ui-react"
+import { Button, Container, Form, Grid, Header, Icon, Input, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { useState } from "react"
 import { useGetUsersQuery, useRegisterMutation } from "../features/api/apiSlice"
@@ -23,6 +23,9 @@ export const Register = () => {
     const [passwordError, setPasswordError] = useState(false)
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
 
+    const [passwordType, setPasswordType] = useState("password")
+    const [confirmPasswordType, setConfirmPasswordType] = useState("password")
+
     const [loading, setLoading] = useState(false)
 
     const handleFnameChange = e => setFname(e.target.value)
@@ -44,6 +47,22 @@ export const Register = () => {
 
     const [addUser, {isLoading}] = useRegisterMutation()
     const saveUser = [fname, lname, phone, email, dob, password].every(Boolean) && !isLoading
+
+    const togglePassword = () => {
+        if(passwordType === "password"){
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
+    }
+
+    const togglePassword2 = () => {
+        if(confirmPasswordType === "password"){
+            setConfirmPasswordType("text")
+            return;
+        }
+        setConfirmPasswordType("password")
+    }
 
     const registerBtn = async () => {
         if(fname === ''){
@@ -169,11 +188,21 @@ export const Register = () => {
                                         <label>
                                             Password
                                         </label>
-                                        <Form.Input 
+                                        <Input
                                             fluid
-                                            icon='eye'
-                                            iconPosition="right"
-                                            type="password"
+                                            label={
+                                                <Button
+                                                    icon
+                                                    basic
+                                                >
+                                                    <Icon 
+                                                        name={passwordType === "password" ? "eye slash" : "eye"}
+                                                        onClick={togglePassword} 
+                                                    />
+                                                </Button>
+                                            }
+                                            labelPosition="right"
+                                            type={passwordType}
                                             value={password}
                                             error={passwordError}
                                             onChange={handlePasswordChange}
@@ -183,9 +212,21 @@ export const Register = () => {
                                         <label>
                                             Confirm Password
                                         </label>
-                                        <Form.Input 
+                                        <Input
                                             fluid
-                                            type="password"
+                                            label={
+                                                <Button
+                                                    icon
+                                                    basic
+                                                >
+                                                    <Icon 
+                                                        name={confirmPasswordType === "password" ? "eye slash" : "eye"}
+                                                        onClick={togglePassword2} 
+                                                    />
+                                                </Button>
+                                            }
+                                            labelPosition="right"
+                                            type={confirmPasswordType}
                                             value={confirmPassword}
                                             error={confirmPasswordError}
                                             onChange={handleConfirmPasswordChange}

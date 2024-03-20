@@ -1,4 +1,4 @@
-import { Button, Form, Grid, Header, Segment } from "semantic-ui-react"
+import { Button, Form, Grid, Header, Icon, Input, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "../common/AuthenticationHeader"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
@@ -17,6 +17,8 @@ export const SignInMobile = () => {
 
     const handleEmailChange = e => setEmail(e.target.value)
     const handlePasswordChange = e => setPassword(e.target.value)
+
+    const [passwordType, setPasswordType] = useState("password")
 
     const navigate = useNavigate()
 
@@ -40,6 +42,15 @@ export const SignInMobile = () => {
             })
         }
     }
+
+    const togglePassword = () => {
+        if(passwordType === "password"){
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
+    }
+
 
     const signInClick = () => {
         if(email === ''){
@@ -102,11 +113,21 @@ export const SignInMobile = () => {
                                         <label>
                                             Password
                                         </label>
-                                        <Form.Input 
+                                        <Input
                                             fluid
-                                            icon='eye'
-                                            iconPosition="right"
-                                            type="password"
+                                            label={
+                                                <Button
+                                                    icon
+                                                    basic
+                                                >
+                                                    <Icon 
+                                                        name={passwordType === "password" ? "eye slash" : "eye"}
+                                                        onClick={togglePassword} 
+                                                    />
+                                                </Button>
+                                            }
+                                            labelPosition="right"
+                                            type={passwordType}
                                             value={password}
                                             error={passwordError}
                                             onChange={handlePasswordChange}
