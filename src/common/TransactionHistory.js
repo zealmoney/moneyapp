@@ -3,6 +3,7 @@ import { TransactionNavbar } from "./TransactionNavbar"
 import { useState } from "react"
 import { Footer } from "./Footer"
 import { useGetTransactionsQuery } from "../features/api/apiSlice"
+import moment from "moment"
 
 const countries = [
     { name: 'Nigeria', countryCode: 'ng'},
@@ -22,7 +23,10 @@ const countries = [
                 return(
                     <>
                         <Grid.Row>
-                            <Grid.Column width={12}>
+                            <Grid.Column width={2}>
+                                {++count}
+                            </Grid.Column>
+                            <Grid.Column width={10}>
                                 To: {trans.fname + ' ' + trans.lname} <br/>
                                 Date: {trans.trans_date}<br/>
                                 <Flag name={trans.currencyReceived} />  {trans.deliveryBank ? 'Bank Deposit' : 'Cash Pick Up'} <br/>
@@ -33,7 +37,6 @@ const countries = [
                             </Grid.Column>
                         </Grid.Row>
                         <Divider />
-                        {++count}
                     </>
                 )
             }
@@ -67,7 +70,7 @@ const countries = [
         return(
             <>
                 <TransactionNavbar />
-                <Segment vertical style={{padding: '8em 0em 25em'}}>
+                <Segment vertical style={{padding: '8em 0em 23em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>

@@ -24,6 +24,7 @@ import { RecepientsInfoMobile } from "./mobile/RecepientsInfoMobile";
 import { PaymentMobile } from "./mobile/PaymentMobile";
 import { TransactionSummaryMobile } from "./mobile/TransactionSummaryMobile";
 import { TransactionHistoryMobile } from "./mobile/TransactionHistoryMobile";
+import { Sample } from "./common/Sample";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -69,6 +70,7 @@ function App() {
             <Route path="/recepientsinfo" element={<RecepientsInfo />} />
             <Route path="/transactionsummary" element={<TransactionSummary />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/sample" element={<Sample />} />
           </Routes>
         </BrowserRouter>
       </Media>
