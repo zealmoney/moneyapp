@@ -145,6 +145,7 @@ export const Register = () => {
                             <Segment 
                                 raised
                                 style={{padding: '4em 4em'}}
+                                size="huge"
                             >
                                 <form ref={form} onSubmit={sendEmail}>
                                     <Grid>
