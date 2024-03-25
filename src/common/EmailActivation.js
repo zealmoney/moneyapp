@@ -1,10 +1,13 @@
 import { Button, Container, Grid, Header, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 export const EmailActivation = () => {
 
     const navigate = useNavigate()
+
+    const params = useParams()
 
     return(
         <>
