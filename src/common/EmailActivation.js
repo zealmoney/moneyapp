@@ -2,8 +2,21 @@ import { Button, Container, Grid, Header, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
+import { useState } from "react"
+import { useGetUsersQuery } from "../features/api/apiSlice"
 
 export const EmailActivation = () => {
+
+    const [id, setId] = useState()
+
+    const {data: users, isSuccess} = useGetUsersQuery()
+    let user
+    if(isSuccess){
+        user = users.find((u) => u.email === params.email_id)
+        if(user){
+            alert('User Exists')
+        }
+    }
 
     const navigate = useNavigate()
 

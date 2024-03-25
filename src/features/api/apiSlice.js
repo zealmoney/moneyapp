@@ -29,6 +29,13 @@ export const apiSlice = createApi({
         }),
         getTransactions: builder.query({
             query: () => 'transactions'
+        }),
+        validateEmail: builder.mutation({
+            query: verify => ({
+                url: `/register/${verify.id}/`,
+                method: 'PATCH',
+                body: verify
+            })
         })
     })
 })
@@ -38,5 +45,6 @@ export const {
     useGetUsersQuery,
     useGetRatesQuery,
     useAddTransactionMutation,
-    useGetTransactionsQuery
+    useGetTransactionsQuery,
+    useValidateEmailMutation
 } = apiSlice
