@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Container, Divider, Grid, Header, Image, List, Placeholder, Segment } from "semantic-ui-react"
 
 export const Footer = () => {
+
+    const navigate = useNavigate()
 
     return(
         <>
@@ -46,7 +48,10 @@ export const Footer = () => {
                                     <List.Item as='a'>
                                         Help
                                     </List.Item>
-                                    <List.Item as='a'>
+                                    <List.Item 
+                                        as='a'
+                                        onClick={() => navigate("/contact")}
+                                    >
                                         Contact Us
                                     </List.Item>
                                     <List.Item as='a'>

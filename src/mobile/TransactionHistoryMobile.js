@@ -4,6 +4,7 @@ import { useGetTransactionsQuery } from "../features/api/apiSlice"
 import { TransactionNavbarMobile } from "./TransactionNavbarMobile"
 import { Footer } from "../common/Footer"
 import Moment from "react-moment"
+import moment from "moment"
 
 const countries = [
     { name: 'Nigeria', countryCode: 'ng'},
@@ -25,9 +26,7 @@ const countries = [
                         <Grid.Row>
                             <Grid.Column width={12}>
                                 To: {trans.fname + ' ' + trans.lname} <br/>
-                                Date: <Moment format="MMMM Do, YYYY">
-                                        {trans.trans_date}
-                                    </Moment><br/>
+                                Date: {moment(trans.trans_date).format("MMMM Do YYYY")} <br/>
                                 <Flag name={trans.currencyReceived} />  {trans.deliveryBank ? 'Bank Deposit' : 'Cash Pick Up'} <br/>
                                 Completed
                             </Grid.Column>

@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import { Button, Container, Form, Grid, Header, Icon, Input, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { useGetUsersQuery, useRegisterMutation } from "../features/api/apiSlice"
 import EmailValidator from 'email-validator'
+import emailjs from '@emailjs/browser'
 
 export const Register = () => {
 
@@ -106,6 +107,26 @@ export const Register = () => {
         }
     }
 
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+        .sendForm('service_0yg1q1q', 'template_pbszqyf', form.current, {
+            publicKey: 'z0oC3V4leS1UTpslF',
+        })
+        .then(
+            () => {
+            console.log('SUCCESS!');
+            },
+            (error) => {
+            console.log('FAILED...', error.text);
+            },
+        );
+  };
+
     return(
         <>
             <AuthenticationHeader />
@@ -125,131 +146,144 @@ export const Register = () => {
                                 raised
                                 style={{padding: '4em 4em'}}
                             >
-                                <Form size="huge">
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            First Name
-                                        </label>
-                                        <Form.Input 
-                                            fluid
-                                            value={fname}
-                                            error={fnameError}
-                                            onChange={handleFnameChange}
-                                        />
-                                    </Form.Field> 
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            Last Name
-                                        </label>
-                                        <Form.Input 
-                                            fluid
-                                            value={lname}
-                                            error={lnameError}
-                                            onChange={handleLnameChange}
-                                        />
-                                    </Form.Field>
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            Phone No:
-                                        </label>
-                                        <Form.Input 
-                                            fluid
-                                            value={phone}
-                                            error={phoneError}
-                                            onChange={handlePhoneChange}
-                                        />
-                                    </Form.Field>  
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            Email Address
-                                        </label>
-                                        <Form.Input 
-                                            fluid
-                                            placeholder='youremail@domain.com'
-                                            value={email}
-                                            error={emailError}
-                                            onChange={handleEmailChange}
-                                        />
-                                    </Form.Field> 
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            Date Of Birth
-                                        </label>
-                                        <Form.Input
-                                            type="date" 
-                                            fluid
-                                            placeholder='Enter your address'
-                                            value={dob}
-                                            error={dobError}
-                                            onChange={handleDobChange}
-                                        />
-                                    </Form.Field>
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            Password
-                                        </label>
-                                        <Input
-                                            fluid
-                                            label={
-                                                <Button
-                                                    icon
-                                                    basic
+                                <form ref={form} onSubmit={sendEmail}>
+                                    <Grid>
+                                        <Grid.Row>
+                                            <Grid.Column textAlign="left">
+                                                <label>First Name</label>
+                                                <Input 
+                                                    placeholder='First Name'
+                                                    type='text' 
+                                                    name='user_name'
+                                                    fluid
+                                                    value={fname}
+                                                    error={fnameError}
+                                                    onChange={handleFnameChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column textAlign="left">
+                                                <label>Last Name</label>
+                                                <Input 
+                                                    placeholder='Last Name'
+                                                    fluid
+                                                    value={lname}
+                                                    error={lnameError}
+                                                    onChange={handleLnameChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column textAlign="left">
+                                                <label>Phone No:</label>
+                                                <Input 
+                                                    placeholder='Phone No'
+                                                    fluid
+                                                    value={phone}
+                                                    error={phoneError}
+                                                    onChange={handlePhoneChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column textAlign="left">
+                                                <label>Email Address</label>
+                                                <Input 
+                                                    placeholder='youremail@domain.com'
+                                                    type='email' 
+                                                    name='user_email'
+                                                    fluid
+                                                    value={email}
+                                                    error={emailError}
+                                                    onChange={handleEmailChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column textAlign="left">
+                                                <label>Date of Birth</label>
+                                                <Input 
+                                                    type="date"
+                                                    placeholder='DOB'
+                                                    fluid
+                                                    value={dob}
+                                                    error={dobError}
+                                                    onChange={handleDobChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column textAlign="left">
+                                                <label>Password</label>
+                                                <Input 
+                                                    fluid
+                                                    label={
+                                                        <Button
+                                                            icon
+                                                            basic
+                                                        >
+                                                            <Icon 
+                                                                name={passwordType === "password" ? "eye slash" : "eye"}
+                                                                onClick={togglePassword} 
+                                                            />
+                                                        </Button>
+                                                    }
+                                                    labelPosition="right"
+                                                    type={passwordType}
+                                                    value={password}
+                                                    error={passwordError}
+                                                    onChange={handlePasswordChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column textAlign="left">
+                                                <label>Confirm Password</label>
+                                                <Input 
+                                                    fluid
+                                                    label={
+                                                        <Button
+                                                            icon
+                                                            basic
+                                                        >
+                                                            <Icon 
+                                                                name={confirmPasswordType === "password" ? "eye slash" : "eye"}
+                                                                onClick={togglePassword2} 
+                                                            />
+                                                        </Button>
+                                                    }
+                                                    labelPosition="right"
+                                                    type={confirmPasswordType}
+                                                    value={confirmPassword}
+                                                    error={confirmPasswordError}
+                                                    onChange={handleConfirmPasswordChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Button 
+                                                    color="green" 
+                                                    fluid 
+                                                    size="huge"
+                                                    onClick={() => registerBtn()}
+                                                    loading={loading}
                                                 >
-                                                    <Icon 
-                                                        name={passwordType === "password" ? "eye slash" : "eye"}
-                                                        onClick={togglePassword} 
-                                                    />
+                                                    Sign Up
                                                 </Button>
-                                            }
-                                            labelPosition="right"
-                                            type={passwordType}
-                                            value={password}
-                                            error={passwordError}
-                                            onChange={handlePasswordChange}
-                                        />
-                                    </Form.Field> 
-                                    <Form.Field style={{textAlign: 'left'}}>
-                                        <label>
-                                            Confirm Password
-                                        </label>
-                                        <Input
-                                            fluid
-                                            label={
-                                                <Button
-                                                    icon
-                                                    basic
-                                                >
-                                                    <Icon 
-                                                        name={confirmPasswordType === "password" ? "eye slash" : "eye"}
-                                                        onClick={togglePassword2} 
-                                                    />
-                                                </Button>
-                                            }
-                                            labelPosition="right"
-                                            type={confirmPasswordType}
-                                            value={confirmPassword}
-                                            error={confirmPasswordError}
-                                            onChange={handleConfirmPasswordChange}
-                                        />
-                                    </Form.Field> 
-                                    <Form.Field>
-                                        <Button 
-                                            color="green" 
-                                            fluid 
-                                            size="huge"
-                                            onClick={() => registerBtn()}
-                                            loading={loading}
-                                        >
-                                            Sign Up
-                                        </Button>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <span>
-                                            Already have an Account? &nbsp;
-                                            <Link style={{textDecorationLine: 'none'}} to={'/signin'}>Sign In</Link>
-                                        </span>
-                                    </Form.Field>        
-                                </Form>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <span>
+                                                    Already have an Account? &nbsp;
+                                                    <Link style={{textDecorationLine: 'none'}} to={'/signin'}>Sign In</Link>
+                                                </span>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>      
+                                </form>
                             </Segment>
                         </Grid.Column>
                     </Grid.Row>                
