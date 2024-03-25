@@ -25,6 +25,7 @@ import { PaymentMobile } from "./mobile/PaymentMobile";
 import { TransactionSummaryMobile } from "./mobile/TransactionSummaryMobile";
 import { TransactionHistoryMobile } from "./mobile/TransactionHistoryMobile";
 import { Contact } from "./common/Contact";
+import { EmailActivation } from "./common/EmailActivation";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -71,6 +72,7 @@ function App() {
             <Route path="/transactionsummary" element={<TransactionSummary />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/verify/:email_id" element={<EmailActivation />} />
           </Routes>
         </BrowserRouter>
       </Media>
