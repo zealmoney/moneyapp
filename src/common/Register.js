@@ -268,6 +268,7 @@ export const Register = () => {
                                                     color="green" 
                                                     fluid 
                                                     size="huge"
+                                                    type="submit"
                                                     onClick={() => registerBtn()}
                                                     loading={loading}
                                                 >

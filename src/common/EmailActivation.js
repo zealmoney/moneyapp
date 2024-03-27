@@ -3,7 +3,7 @@ import { AuthenticationHeader } from "./AuthenticationHeader"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { useState } from "react"
-import { useGetUsersQuery } from "../features/api/apiSlice"
+import { useGetUsersQuery, useValidateEmailMutation } from "../features/api/apiSlice"
 
 export const EmailActivation = () => {
 
@@ -18,9 +18,11 @@ export const EmailActivation = () => {
     if(isSuccess){
         user = users.find((u) => u.email === params.email_id)
         if(user){
-            alert('User Exists')
+            setId(user.id)
         }
     }
+
+    const [verifyUser, {isLoading}] = useValidateEmailMutation()
 
     const verifyClick = () => {
 
