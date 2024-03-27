@@ -9,6 +9,10 @@ export const EmailActivation = () => {
 
     const [id, setId] = useState()
 
+    const navigate = useNavigate()
+
+    const params = useParams()
+
     const {data: users, isSuccess} = useGetUsersQuery()
     let user
     if(isSuccess){
@@ -18,9 +22,9 @@ export const EmailActivation = () => {
         }
     }
 
-    const navigate = useNavigate()
+    const verifyClick = () => {
 
-    const params = useParams()
+    }
 
     return(
         <>
@@ -34,14 +38,14 @@ export const EmailActivation = () => {
                                     <Grid>
                                         <Grid.Row>
                                             <Grid.Column>
-                                                <Header as='h1' content='Verification Successful!!!' />
+                                                <Header as='h1' content='Complete Verification' />
                                             </Grid.Column>
                                         </Grid.Row>
                                         <Grid.Row>
                                             <Grid.Column>
                                                 <Header 
                                                     as='h3' 
-                                                    content='Please click the button below to sign in '
+                                                    content='Please click the button below to complete the verification process'
                                                 />       
                                             </Grid.Column>
                                         </Grid.Row>
@@ -49,7 +53,7 @@ export const EmailActivation = () => {
                                             <Grid.Column>
                                                 <Button 
                                                     color="green"
-                                                    onClick={() => navigate('/signin')}
+                                                    onClick={() => verifyClick()}
                                                 >
                                                     Sign In Here
                                                 </Button>
