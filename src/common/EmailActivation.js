@@ -24,7 +24,7 @@ export const EmailActivation = () => {
         }
     }
 
-    const [verifyUser, {isLoading}] = useValidateEmailMutation()
+    {/*const [verifyUser, {isLoading}] = useValidateEmailMutation()
     const verifyItem = [verify].every(Boolean) && !isLoading
 
     const verifyClick = async () => {
@@ -36,7 +36,7 @@ export const EmailActivation = () => {
                 console.log('An error has occured', error)  
             }
         }
-    }
+    }*/}
 
     return(
         <>
