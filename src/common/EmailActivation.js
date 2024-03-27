@@ -15,17 +15,27 @@ export const EmailActivation = () => {
 
     const {data: users, isSuccess} = useGetUsersQuery()
     let user
+    let verify = 0
     if(isSuccess){
         user = users.find((u) => u.email === params.email_id)
         if(user){
             setId(user.id)
+            verify = 1
         }
     }
 
     const [verifyUser, {isLoading}] = useValidateEmailMutation()
+    const verifyItem = [verify].every(Boolean) && !isLoading
 
-    const verifyClick = () => {
-
+    const verifyClick = async () => {
+        if(verifyItem){
+            try {
+                await verifyUser({id: id, verify})
+                alert('Success')
+            } catch (error) {
+                console.log('An error has occured', error)  
+            }
+        }
     }
 
     return(
