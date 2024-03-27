@@ -65,7 +65,7 @@ export const EmailActivation = () => {
                                             <Grid.Column>
                                                 <Button 
                                                     color="green"
-                                                    onClick={() => verifyClick()}
+                                                    //onClick={() => verifyClick()}
                                                 >
                                                     Sign In Here
                                                 </Button>
