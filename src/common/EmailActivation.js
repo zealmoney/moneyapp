@@ -7,24 +7,22 @@ import { useGetUsersQuery, useValidateEmailMutation } from "../features/api/apiS
 
 export const EmailActivation = () => {
 
-    const [id, setId] = useState()
-
     const navigate = useNavigate()
 
     const params = useParams()
 
     const {data: users, isSuccess} = useGetUsersQuery()
-    let user
-    let verify = 0
+    let verify
+    let id
     if(isSuccess){
-        user = users.find((u) => u.email === params.email_id)
+        const user = users.find((u) => u.email === params.email_id)
         if(user){
-            setId(user.id)
-            verify = 1
+           id = user.id
+           verify = 1
         }
     }
 
-    {/*const [verifyUser, {isLoading}] = useValidateEmailMutation()
+    const [verifyUser, {isLoading}] = useValidateEmailMutation()
     const verifyItem = [verify].every(Boolean) && !isLoading
 
     const verifyClick = async () => {
@@ -36,7 +34,7 @@ export const EmailActivation = () => {
                 console.log('An error has occured', error)  
             }
         }
-    }*/}
+    }
 
     return(
         <>
@@ -65,9 +63,9 @@ export const EmailActivation = () => {
                                             <Grid.Column>
                                                 <Button 
                                                     color="green"
-                                                    //onClick={() => verifyClick()}
+                                                    onClick={() => verifyClick()}
                                                 >
-                                                    Sign In Here
+                                                    Verify Now
                                                 </Button>
                                             </Grid.Column>
                                         </Grid.Row>
