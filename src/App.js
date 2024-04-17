@@ -15,7 +15,7 @@ import { TransactionHistory } from "./common/TransactionHistory";
 import { AccountInfo } from "./common/AccountInfo";
 import { RecepientsInfo } from "./common/RecepientsInfo";
 import { TransactionSummary } from "./common/TransactionSummary";
-import { Payment } from "./common/Payment";
+import { PaymentMethod } from "./common/PaymentMethod";
 import { ProfileMobile } from "./mobile/ProfileMobile";
 import { TransactionComponentMobile } from "./mobile/TransactionComponentMobile";
 import { DeliveryMethodMobile } from "./mobile/DeliveryMethodMobile";
@@ -26,6 +26,10 @@ import { TransactionSummaryMobile } from "./mobile/TransactionSummaryMobile";
 import { TransactionHistoryMobile } from "./mobile/TransactionHistoryMobile";
 import { Contact } from "./common/Contact";
 import { EmailActivation } from "./common/EmailActivation";
+import { PaymentCard } from "./common/PaymentCard";
+import { ChangePassword } from "./common/ChangePassword";
+import { Recepients } from "./common/Recepients";
+import { PrivacyPolicy } from "./common/PrivacyPolicy";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -70,9 +74,13 @@ function App() {
             <Route path="/accountinfo" element={<AccountInfo />} />
             <Route path="/recepientsinfo" element={<RecepientsInfo />} />
             <Route path="/transactionsummary" element={<TransactionSummary />} />
-            <Route path="/payment" element={<Payment />} />
+            <Route path="/payment" element={<PaymentMethod />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/verify/:email_id" element={<EmailActivation />} />
+            <Route path="/settings/paymentcard" element={<PaymentCard />} />
+            <Route path="/settings/changepassword" element={<ChangePassword />} />
+            <Route path="/settings/recepients" element={<Recepients />} />
+            <Route path="/settings/policy" element={<PrivacyPolicy />} />
           </Routes>
         </BrowserRouter>
       </Media>

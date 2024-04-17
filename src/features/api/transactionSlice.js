@@ -10,9 +10,8 @@ const initialState = {
 
     deliveryBank: '',
     deliveryCash: '',
-    zenith: '',
-    gtb: '',
-    polaris: '',
+    bankname: '',
+    
 
     accountNumber: '',
     retypeAccountNumber: '',
@@ -75,19 +74,15 @@ export const transactionSlice = createSlice({
             reducer(state, action){
                 state.deliveryBank = action.payload.delivery_bank
                 state.deliveryCash = action.payload.delivery_cash
-                state.zenith = action.payload.p_zenith
-                state.gtb = action.payload.p_gtb
-                state.polaris = action.payload.p_polaris
+                state.bankname = action.payload.p_bankName
             
             }, 
-            prepare(delivery_bank, delivery_cash, p_zenith, p_gtb, p_polaris){
+            prepare(delivery_bank, delivery_cash, p_bankName){
                 return{
                     payload: {
                         delivery_bank: delivery_bank,
                         delivery_cash: delivery_cash,
-                        p_zenith: p_zenith,
-                        p_gtb: p_gtb,
-                        p_polaris: p_polaris
+                        p_bankName: p_bankName
                     }
                 }
             }

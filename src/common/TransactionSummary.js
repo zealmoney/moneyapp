@@ -43,9 +43,7 @@ export const TransactionSummary = () => {
 
     const deliveryBank = useSelector((state)=> state.transactions.deliveryBank)
     const deliveryCash = useSelector((state)=> state.transactions.deliveryCash)
-    const zenith = useSelector((state)=> state.transactions.zenith)
-    const gtb = useSelector((state)=> state.transactions.gtb)
-    const polaris = useSelector((state)=> state.transactions.polaris)
+    const bankname = useSelector((state)=> state.transactions.bankname)
 
     const accountNumber = useSelector((state) => state.transactions.accountNumber)
     const retypeAccountNumber = useSelector((state) => state.transactions.retypeAccountNumber)
@@ -105,7 +103,7 @@ export const TransactionSummary = () => {
                     try {
                         await sendTransaction({
                             moneySent, moneyReceived, currencySent, currencyReceived, fee, total,
-                            deliveryBank, deliveryCash, zenith, gtb, polaris,
+                            deliveryBank, deliveryCash, bankname,
                             accountNumber, retypeAccountNumber, checking, savings,
                             fname, mname, lname, slname, country, email, street, street2, region, city, postal,
                             cardNumber, expiration, securityCode, b_fname, nickname, streetAd, apartment, b_city,
@@ -190,9 +188,7 @@ export const TransactionSummary = () => {
                                                 <Header content='Bank' />
                                             </Grid.Column>
                                             <Grid.Column width={8} textAlign="right">
-                                                {zenith ? 'Zenith Bank' : ''}
-                                                {gtb ? 'Guaranty Trust Bank' : ''}
-                                                {polaris ? 'Polaris Bank' : ''}
+                                                {bankname}
                                             </Grid.Column>
                                         </Grid.Row>
                                     </Grid>

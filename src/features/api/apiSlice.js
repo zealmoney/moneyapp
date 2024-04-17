@@ -36,6 +36,26 @@ export const apiSlice = createApi({
                 method: 'PATCH',
                 body: verify
             })
+        }),
+        cardDetails: builder.mutation({
+            query: initialPost => ({
+                url: 'paymentmethod/',
+                method: 'POST',
+                body: initialPost
+            })
+        }),
+        getCardDetails: builder.query({
+            query: () => 'paymentmethod'
+        }), 
+        getBankInfo: builder.query({
+            query: () => 'bankinfo'
+        }), 
+        updatePassword: builder.mutation({
+            query: passwordChange => ({
+                url: `/register/${passwordChange.id}/`,
+                method: 'PATCH',
+                body: passwordChange
+            })
         })
     })
 })
@@ -46,5 +66,9 @@ export const {
     useGetRatesQuery,
     useAddTransactionMutation,
     useGetTransactionsQuery,
-    useValidateEmailMutation
+    useValidateEmailMutation,
+    useCardDetailsMutation,
+    useGetCardDetailsQuery,
+    useGetBankInfoQuery,
+    useUpdatePasswordMutation
 } = apiSlice

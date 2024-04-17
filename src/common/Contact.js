@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useReducer, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Button, Container, Form, Grid, Header, Input, Modal, Segment, TextArea } from 'semantic-ui-react';
 import { NavbarDesktop } from '../desktop/NavbarDesktop';
@@ -33,14 +33,27 @@ export const Contact = () => {
         default:
             return new Error('unsupported action')
     }
-}
+  }
 
-const [state, dispatch] = useReducer(modalReducer, 
+  const [state, dispatch] = useReducer(modalReducer, 
     {
         open: false, size: undefined
     })
 
-    const {open, size} = state
+    const {open, size} = state  
+  
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const [nameError, setNameError] = useState(false)
+  const [emailError, setEmailError] = useState(false)
+  const [messageError, setMessageError] = useState(false)
+
+  const handleNameChange = e => setName(e.target.value)
+  const handleEmailChange = e => setEmail(e.target.value)
+  const handleMessageChange = e => setMessage(e.target.value)
+
 
   return (
     <>
@@ -62,7 +75,11 @@ const [state, dispatch] = useReducer(modalReducer,
                               <Form.Input 
                                 type='text' 
                                 name='user_name' 
-                                fluid 
+                                fluid
+                                value={name}
+                                error={nameError}
+                                onChange={handleNameChange}
+                                onClick={() => setNameError(false)} 
                               />
                             </Form.Field>
                             <Form.Field style={{textAlign: 'left'}}>
@@ -70,14 +87,22 @@ const [state, dispatch] = useReducer(modalReducer,
                               <Form.Input 
                                 type='text' 
                                 name='user_email' 
-                                fluid 
+                                fluid
+                                value={email}
+                                error={emailError}
+                                onChange={handleEmailChange}
+                                onClick={() => setEmailError(false)}  
                               />
                             </Form.Field> 
                             <Form.Field style={{textAlign: 'left'}}>
-                              <label>Name</label>
+                              <label>Message  </label>
                               <Form.TextArea 
                                 name='message' 
                                 fluid 
+                                value={message}
+                                error={messageError}
+                                onChange={handleMessageChange}
+                                onClick={() => setMessageError(false)} 
                               />
                             </Form.Field> 
                             <Form.Field> 

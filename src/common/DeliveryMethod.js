@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateBank, updateDelivery } from "../features/api/transactionSlice"
 import { Footer } from "./Footer"
+import { useGetBankInfoQuery } from "../features/api/apiSlice"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -17,15 +18,50 @@ export const DeliveryMethod = () => {
     const [deliveryBank, setDeliveryBank] = useState(false)
     const [deliveryCash, setDeliveryCash] = useState(false)
 
-    const [zenith, setZenith] = useState(false)
-    const [gtb, setGtb] = useState(false)
-    const [polaris, setPolaris] = useState(false)
+    const [bank, setBank] = useState(false)
+
+    const [bankName, setBankName] = useState('')
+
+    //const [zenith, setZenith] = useState(false)
+    //const [gtb, setGtb] = useState(false)
+    //const [polaris, setPolaris] = useState(false)
 
     const [loading, setLoading] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
     const navigate = useNavigate()
     const dispatch_reducer = useDispatch()
+
+    /*const handleGtbChange = () => {
+        setDisabled(false)
+        setGtb(true)
+        setZenith(false)
+        setPolaris(false)
+    }*/
+
+    const handleBankChange = ({target}) => {
+        setDisabled(false)
+        setBank(true)
+        setBankName(target.name)
+    }
+
+    const {data: bankinfo, isSuccess} = useGetBankInfoQuery()
+    let bank_name
+    if(isSuccess){
+        bank_name = bankinfo.map((bank) => (
+            <List.Item>
+                <input
+                    type='radio'
+                    name={bank.bank_name}
+                    onChange={handleBankChange}
+                /> &nbsp; &nbsp; &nbsp;
+                <span>{bank.bank_name}</span>                
+                <List.Content floated="right">
+                    <Image size="mini" src={bank.bank_image} />
+                </List.Content>
+            </List.Item>
+        ))
+    }
 
     const handleDeliveryChangeBank = () => {
         setDeliveryBank(true)
@@ -36,39 +72,34 @@ export const DeliveryMethod = () => {
         
     } 
 
-    const handleZenithChange = () => {
+    /*const handleZenithChange = () => {
         setDisabled(false)
         setZenith(true)
         setGtb(false)
         setPolaris(false)
-    }
+    }*/
 
-    const handleGtbChange = () => {
-        setDisabled(false)
-        setGtb(true)
-        setZenith(false)
-        setPolaris(false)
-    }
-
-    const handlePolarisChange = () => {
+    /*const handlePolarisChange = () => {
         setDisabled(false)
         setPolaris(true)
         setZenith(false)
         setGtb(false)
-    }
+    }*/
 
     const resetDelivery = () => {
         setDeliveryBank(false)
         setDeliveryCash(false)
+        setDisabled(true)
+        setBank(false)
     }
 
     const deliveryClick = () => {
         setLoading(true)
-        dispatch_reducer(updateBank(deliveryBank, deliveryCash, zenith, gtb, polaris))
+        dispatch_reducer(updateBank(deliveryBank, deliveryCash, bankName))
         setTimeout(() => {
             navigate('/accountinfo')
-            //navigate('/transactionsummary')
-        }, 300)    
+            
+        }, 300)  
     }
 
     if(deliveryCash === false && deliveryBank === false){
@@ -144,39 +175,7 @@ export const DeliveryMethod = () => {
                                         }
                                         <Header textAlign="center" as='h3' content='Available Banks' />
                                         <List verticalAlign="middle" celled size="huge">
-                                            <List.Item>
-                                                <input
-                                                    type='radio'
-                                                    name="bank" 
-                                                    onChange={handleZenithChange}   
-                                                /> &nbsp; &nbsp; &nbsp;
-                                                <span>Zenith Bank</span>              
-                                                <List.Content floated="right">
-                                                    <Image size="mini" src='/images/zenith_bank.png' />
-                                                </List.Content>
-                                            </List.Item>
-                                            <List.Item>
-                                                <input
-                                                    type='radio'
-                                                    name="bank"
-                                                    onChange={handleGtbChange}
-                                                /> &nbsp; &nbsp; &nbsp;
-                                                <span>Guaranty Trust Bank</span>                
-                                                <List.Content floated="right">
-                                                    <Image size="mini" src='/images/guaranty_trust_bank.png' />
-                                                </List.Content>
-                                            </List.Item>
-                                            <List.Item>
-                                                <input 
-                                                    type='radio'
-                                                    name="bank"
-                                                    onChange={handlePolarisChange}
-                                                />  &nbsp; &nbsp; &nbsp;  
-                                                <span>Polaris Bank</span>             
-                                                <List.Content floated="right">
-                                                    <Image size="mini" src='/images/polaris_bank.png' />
-                                                </List.Content>
-                                            </List.Item>
+                                            {bank_name}
                                         </List>
                                         <Button 
                                             color="green"

@@ -5,13 +5,18 @@ import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updatePayment } from "../features/api/transactionSlice"
 import { Footer } from "./Footer"
+import Cards  from "react-credit-cards-2"
+import "react-credit-cards-2/dist/es/styles-compiled.css"
+import { clearNumber } from "./utils"
+import Payment from "payment"
+import { useCardDetailsMutation, useGetCardDetailsQuery } from "../features/api/apiSlice"
 
-export const Payment = () => {
+export const PaymentMethod = () => {
 
     const [showForm, setShowForm] = useState(false)
 
     const [cardNumber, setCardNumber] = useState('')
-    const [expiration, setExpiration] = useState('')
+    const [expiration, setExpiration] = useState("")
     const [securityCode, setSecurityCode] = useState('')
     const [b_fname, setFname] = useState('')
     const [nickname, setNickname]= useState('none')
@@ -20,6 +25,9 @@ export const Payment = () => {
     const [b_city, setCity]= useState('')
     const [b_region, setRegion]= useState('')
     const [zipcode, setZipcode]= useState('')
+    const [email, setEmail] = useState(sessionStorage.getItem('userId'))
+
+    const [focused, setFocused] = useState('')
 
     const [loading, setLoading] = useState(false)
 
@@ -34,9 +42,39 @@ export const Payment = () => {
     const [regionError, setRegionError]= useState(false)
     const [zipcodeError, setZipcodeError]= useState(false)
 
-    const handleCardNumberChange = e => setCardNumber(e.target.value)
-    const handleExpirationChange = e => setExpiration(e.target.value)
-    const handleSecurityCodeChange = e => setSecurityCode(e.target.value)
+    const handleCardNumberChange = e => 
+        {
+            const clearValue = clearNumber(e.target.value)
+            const issuer = Payment.fns.cardType(e.target.value)
+            switch(issuer){
+                case "amex": 
+                    setCardNumber(`${clearValue.slice(0,4)} ${clearValue.slice(4,10)} ${clearValue.slice(10,15)}`) 
+                    break;
+                case "diners":
+                    setCardNumber(`${clearValue.slice(0,4)} ${clearValue.slice(4,10)} ${clearValue.slice(10,14)}`)
+                    break
+                default:
+                    setCardNumber(`${clearValue.slice(0,4)} ${clearValue.slice(4,8)} ${clearValue.slice(8,12)} ${clearValue.slice(12,19)}`)
+            }
+        }
+    const handleExpirationChange = e => 
+        {
+            const clearValue = clearNumber(e.target.value)
+            setExpiration(clearValue)
+            if(expiration.length >= 2){
+                setExpiration(`${clearValue.slice(0,2)}/${clearValue.slice(2,4)}`)
+            }
+        }
+    const handleSecurityCodeChange = (e, allValues = {}) => 
+        {
+            const clearValue = clearNumber(e.target.value)
+            let maxLength = 4
+            if(allValues.number){
+                const issuer = Payment.fns.cardType(allValues.number)
+                maxLength = issuer === "amex" ? 4 : 3
+            }
+            setSecurityCode(clearValue.slice(0, maxLength))
+        }
     const handleFnameChange = e => setFname(e.target.value)
     const handleNicknameChange = e => setNickname(e.target.value)
     const handleStreetAdChange = e => setStreetAd(e.target.value)
@@ -48,7 +86,58 @@ export const Payment = () => {
     const dispatch_reducer = useDispatch()
     const navigate = useNavigate()
 
-    const paymentClick = () => {
+    const [updateCardDetails, {isLoading}] = useCardDetailsMutation()
+    const saveCardDetails = [cardNumber, expiration, securityCode, b_fname, nickname, 
+        streetAd, apartment, b_city, b_region, zipcode, email].every(Boolean) && !isLoading
+
+    const clickCard = (cn, exp, fn, nn, str, apt, ct, rg, zp) => {
+        setCardNumber(cn)
+        setExpiration(exp)
+        setFname(fn)
+        setNickname(nn)
+        setStreetAd(str)
+        setApartment(apt)
+        setCity(ct)
+        setRegion(rg)
+        setZipcode(zp)
+        setShowForm(true)
+    }
+
+    const {data: cards, isSuccess} = useGetCardDetailsQuery()
+    let cardDetails
+    if(isSuccess){
+        let card = cards.find(e => e.email === sessionStorage.getItem('userId'))
+        if(card){
+            cardDetails = cards.map((c) => {
+                if(c.email === sessionStorage.getItem('userId')){
+                    return(
+                        <Segment style={{padding: '2em 2em', textAlign: 'left'}}>
+                            <List size="huge" link>
+                                <List.Item 
+                                    as='a'
+                                    onClick={() => clickCard(
+                                        c.cardNumber, c.expiration, c.b_fname,
+                                        c.nickname, c.streetAd, c.apartment, c.b_city,
+                                        c.b_region, c.zipcode
+                                    )}
+                                >
+                                    <List.Icon name="credit card" inverted color="green" />
+                                        <List.Content>
+                                            <List.Header>
+                                                {c.b_fname}
+                                            </List.Header>
+                                            {c.cardNumber}
+                                        </List.Content>
+                                </List.Item>
+                            </List>
+                        </Segment>
+                    )
+                }
+            })
+        }
+    }
+
+    const paymentClick = async () => {
         if(cardNumber === ''){
             setCardNumberError({content: 'Empty Fields'})
         }else if(expiration === ''){
@@ -71,13 +160,34 @@ export const Payment = () => {
              streetAd !== '' && b_city !== '' &&
             b_region !== '' && zipcode !== ''
         ){
-            setLoading(true)
-            dispatch_reducer(updatePayment(
-                cardNumber, expiration, securityCode, b_fname,
-                nickname, streetAd, apartment, b_city, b_region,
-                zipcode
-            ))
-            navigate('/transactionsummary')
+            let card = cards.find(c => c.cardNumber === cardNumber)
+            if(card){
+                setLoading(true)
+                dispatch_reducer(updatePayment(
+                    cardNumber, expiration, securityCode, b_fname,
+                    nickname, streetAd, apartment, b_city, b_region,
+                    zipcode, email
+                ))
+                navigate('/transactionsummary')
+            }else{
+                if(saveCardDetails){
+                    setLoading(true)
+                    try {
+                    await updateCardDetails({
+                        cardNumber, expiration, securityCode, b_fname, nickname,
+                        streetAd, apartment, b_city, b_region, zipcode, email
+                    }).unwrap() 
+                    dispatch_reducer(updatePayment(
+                        cardNumber, expiration, securityCode, b_fname,
+                        nickname, streetAd, apartment, b_city, b_region,
+                        zipcode, email
+                    ))
+                    navigate('/transactionsummary')
+                    } catch (error) {
+                        console.log('An error has occured', error)
+                    }
+                }
+            }
         }
     }
 
@@ -91,6 +201,11 @@ export const Payment = () => {
                             <Grid.Row>
                                 <Grid.Column>
                                     <Header as='h1' content='Payment Method' />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column style={{maxWidth: 600}}>
+                                    {cardDetails}
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
@@ -119,6 +234,11 @@ export const Payment = () => {
             </>
         )
     }else if(showForm){
+
+        const handleInputFocus = ({ target }) => {
+            alert(target.name)
+        };
+
         return(
             <>
                 <TransactionNavbar />
@@ -147,20 +267,34 @@ export const Payment = () => {
                                                 Credit cards have an extra 3% fee.
                                             </Message.Content>
                                         </Message>
+                                        <Cards 
+                                            number={cardNumber}
+                                            expiry={expiration}
+                                            cvc={securityCode}
+                                            name={b_fname}
+                                            focused={focused}
+                                        />
                                         <Form size="huge">
                                             <Form.Field>
                                                 <label> Card Number</label>
-                                                <Form.Input 
+                                                <Form.Input
+                                                    type="tel"
+                                                    name="cardNumber"
+                                                    placeholder='Card No:'
                                                     value={cardNumber}
                                                     error={cardNumberError}
                                                     onChange={handleCardNumberChange}
                                                     onClick={() => setCardNumberError(false)}
+                                                    
                                                 />
                                             </Form.Field>
                                             <Form.Group widths="equal">
                                                 <Form.Field>
                                                     <label>Expiration Date</label>
                                                     <Form.Input 
+                                                        name="expiration"
+                                                        type="tel"
+                                                        placeholder='MM/YY'
                                                         value={expiration}
                                                         error={expirationError}
                                                         onChange={handleExpirationChange}
@@ -170,8 +304,9 @@ export const Payment = () => {
                                                 <Form.Field>
                                                     <label>Security Code</label>
                                                     <Form.Input 
-                                                        icon='credit card' 
-                                                        iconPosition="right" 
+                                                        type="tel"
+                                                        name="securityCode"
+                                                        placeholder='CVC'
                                                         value={securityCode}
                                                         error={securityCodeError}
                                                         onChange={handleSecurityCodeChange}
@@ -181,7 +316,9 @@ export const Payment = () => {
                                             </Form.Group>
                                             <Form.Field>
                                                 <label>Name as it appears on card</label>
-                                                <Form.Input 
+                                                <Form.Input
+                                                    type="text" 
+                                                    name="b_fname"
                                                     value={b_fname}
                                                     error={fnameError}
                                                     onChange={handleFnameChange}

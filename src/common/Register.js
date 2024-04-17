@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import { Button, Container, Form, Grid, Header, Icon, Input, Segment } from "semantic-ui-react"
+import { Button, Container, Form, Grid, Header, Icon, Input, Modal, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
-import { useRef, useState } from "react"
+import { useReducer, useRef, useState } from "react"
 import { useGetUsersQuery, useRegisterMutation } from "../features/api/apiSlice"
 import EmailValidator from 'email-validator'
 import emailjs from '@emailjs/browser'
@@ -18,13 +18,31 @@ export const Register = () => {
         })
         .then(
             () => {
-                alert('SUCCESS!');
+                dispatch({type: 'open', size: 'tiny'});
             },
             (error) => {
                 alert('FAILED...' +  error.text);
             },
         );
     };
+
+    function modalReducer(state, action){
+        switch(action.type){
+            case 'open':
+                return {open: true, size: action.size}
+            case 'close': 
+                return {open: false}
+            default:
+                return new Error('unsupported action')
+        }
+      }
+    
+      const [state, dispatch] = useReducer(modalReducer, 
+        {
+            open: false, size: undefined
+        })
+    
+        const {open, size} = state 
 
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
@@ -278,6 +296,41 @@ export const Register = () => {
                     </Grid.Row>                
                 </Grid>
                 </Container>
+                <Modal
+                    open={open}
+                    size={size}
+                >
+                    <Modal.Header style={{textAlign: 'center'}}>
+                        Registration Successful!!
+                    </Modal.Header>
+                    <Modal.Content>
+                        <Grid textAlign="center">
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Header 
+                                        as='h3'
+                                        content='Thank You for registering with MoneyApp.'
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column>
+                                    A link has been sent to your email for verification.
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Button
+                                        color="green"
+                                        onClick={() => dispatch({type: 'close'})}
+                                    >
+                                        OK
+                                    </Button>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Modal.Content>
+                </Modal>
             </Segment>
         </>
     )
