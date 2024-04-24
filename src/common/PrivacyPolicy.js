@@ -19,14 +19,14 @@ export const PrivacyPolicy = () => {
                                 <Grid>
                                     <Grid.Row>
                                         <Grid.Column>
-                                            <Header textAlign="center" as='h1' content='Privacy Policy' />
+                                            <Header textAlign="center" as='h1' content='PRIVACY POLICY' />
                                         </Grid.Column>
                                     </Grid.Row>
                                     <Grid.Row>
                                         <Grid.Column>
                                             <p>
-                                                <Header as='h3' content='ABOUT THIS POLICY' />
-                                                <span style={{fontFamily: 'Poppins', wordSpacing: '0.2em', lineHeight: '2em'}}>
+                                                <Header as='h2' content='ABOUT THIS POLICY' />
+                                                <span style={{lineHeight: '2em', fontSize: '1.3em'}}>
                                                     This Privacy Policy ("Policy") applies to the websites located at remitly.com, 
                                                     the Remitly mobile applications and through any other programs (including Remitly Research programs), 
                                                     websites, or applications owned and operated by Remitly that direct you to this Policy.
@@ -36,9 +36,10 @@ export const PrivacyPolicy = () => {
                                                     these have the same meaning as given to them in our User Agreement, unless we have defined them differently in this Policy.
                                                 </span>
                                             </p>
+                                            <p></p>
                                             <p>
-                                                <Header as='h3' content='NOTICE TO CALIFORNIA RESIDENTS' />
-                                                <span style={{fontFamily: 'Poppins', wordSpacing: '0.2em', lineHeight: '2em'}}>
+                                                <Header as='h2' content='NOTICE TO CALIFORNIA RESIDENTS' />
+                                                <span style={{lineHeight: '2em', fontSize: '1.3em'}}>
                                                     Notice at Collection of personal information: We list the categories of personal information that we collect below under 
                                                     "What Personal Data Do We Collect." We collect personal information about you for business and commercial purposes as 
                                                     described below under "How Do We Use or Process Your Personal Data." For more information, including on how to opt-out 

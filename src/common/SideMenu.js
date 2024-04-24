@@ -19,7 +19,7 @@ export const SideMenu = () => {
                 />
                 <Menu.Item 
                     name="Recepients"
-                    onClick={() => navigate('/profile')}
+                    onClick={() => navigate('/settings/recepients')}
                 />
                 <Menu.Item 
                     name="Payment Methods"

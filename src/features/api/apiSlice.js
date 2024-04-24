@@ -56,6 +56,16 @@ export const apiSlice = createApi({
                 method: 'PATCH',
                 body: passwordChange
             })
+        }),
+        storeRecepients: builder.mutation({
+            query: recepientsinfo => ({
+                url: 'recepients/',
+                method: 'POST',
+                body: recepientsinfo
+            })
+        }),
+        getRecepients: builder.query({
+            query: () => 'recepients'
         })
     })
 })
@@ -70,5 +80,7 @@ export const {
     useCardDetailsMutation,
     useGetCardDetailsQuery,
     useGetBankInfoQuery,
-    useUpdatePasswordMutation
+    useUpdatePasswordMutation,
+    useStoreRecepientsMutation,
+    useGetRecepientsQuery
 } = apiSlice

@@ -1,7 +1,7 @@
 import { Button, Container, Divider, Flag, Grid, Header, Modal, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
 import { useDispatch, useSelector } from "react-redux"
-import { useAddTransactionMutation, useGetUsersQuery } from "../features/api/apiSlice"
+import { useAddTransactionMutation, useGetRecepientsQuery, useGetUsersQuery, useStoreRecepientsMutation } from "../features/api/apiSlice"
 import { Footer } from "./Footer"
 import { useReducer, useState } from "react"
 import { TransactionSummaryModal } from "./TransactionSummaryModal"
@@ -61,6 +61,7 @@ export const TransactionSummary = () => {
     const region = useSelector((state) => state.transactions.region)
     const city = useSelector((state) => state.transactions.city)
     const postal = useSelector((state) => state.transactions.postal)
+    let account_email = sessionStorage.getItem('userId')
 
     const cardNumber = useSelector((state) => state.transactions.cardNumber)
     const expiration = useSelector((state) => state.transactions.expiration)
@@ -95,6 +96,17 @@ export const TransactionSummary = () => {
     const [sendTransaction, {isLoading}] = useAddTransactionMutation()
     //const saveTransaction = [moneySent, moneyReceived, currencySent, currencyReceived, fee, total].every(Boolean) && !isLoading
 
+    const [sendRecepients] = useStoreRecepientsMutation()
+
+    /*const {data: recepients} = useGetRecepientsQuery()
+    let count = 0
+    if(recepients.length > 0){
+        let recepient = recepients.find(e => e.email === email)
+        if(recepient){
+            ++count
+        }
+    }*/
+
     const sendMoneyClick = async() => {
            // if(saveTransaction){
                 dispatch({type: 'close'})
@@ -109,6 +121,11 @@ export const TransactionSummary = () => {
                             cardNumber, expiration, securityCode, b_fname, nickname, streetAd, apartment, b_city,
                             b_region, zipcode, senderEmail
                         }).unwrap()
+                        await sendRecepients({
+                            fname, mname, lname, slname, country, email, 
+                            street, street2, region, city, postal, account_email
+                        }).unwrap()
+                       
                         setLoading(false)
                     } catch (error) {
                     console.error('An error has occured', error) 
@@ -270,7 +287,7 @@ export const TransactionSummary = () => {
                                                 <Header content="Email" />
                                             </Grid.Column>
                                             <Grid.Column textAlign="right" width={8}>
-                                                {email}
+                                                {senderEmail}
                                             </Grid.Column>
                                         </Grid.Row>
                                     </Grid>
