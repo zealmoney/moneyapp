@@ -1,4 +1,4 @@
-import { Button, Container, Divider, Grid, Header, Segment } from "semantic-ui-react"
+import { Button, Container, Divider, Grid, Header, Icon, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
 import { SideMenu } from "./SideMenu"
 import { Footer } from "./Footer"
@@ -17,11 +17,13 @@ export const Recepients = () => {
 
     const {data: recepients, isSuccess} = useGetRecepientsQuery()
     let recepientList
+    let count = 0
     if(isSuccess){
         let recepient = recepients.find(e => e.account_email === sessionStorage.getItem('userId'))
         if(recepient){
             recepientList = recepients.map((r) => {
                 if(r.account_email === recepient.account_email){
+                    ++count
                     return(
                         <>
                             <Grid.Row>
@@ -67,6 +69,7 @@ export const Recepients = () => {
         
     }
 
+    if(count > 0){
     return(
         <>
             <TransactionNavbar />
@@ -92,4 +95,42 @@ export const Recepients = () => {
             <Footer />
         </>
     )
+    }else{
+        return(
+            <>
+                <TransactionNavbar />
+                <Segment vertical style={{padding: '4em 0em 23em'}}>
+                    <Container>
+                        <Grid>
+                            <Grid.Row>
+                                <Grid.Column width={6}>
+                                    <SideMenu />
+                                </Grid.Column>
+                                <Grid.Column width={10}>
+                                    <Header textAlign="center" as='h1' content='Recepients' />
+                                    <Segment 
+                                        tertiary raised 
+                                        inverted color="green" secondary
+                                        style={{padding: '2em 2em'}}
+                                    >
+                                        <Grid textAlign="center">
+                                            <Header
+                                               as='h3' 
+                                               icon
+                                               inverted
+                                            >
+                                                 <Icon name="user outline" circular inverted color="green" />
+                                                No recipients available yet
+                                            </Header>
+                                        </Grid>
+                                    </Segment>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Segment>
+                <Footer />
+            </>
+        )
+    }
 }

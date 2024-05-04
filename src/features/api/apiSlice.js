@@ -66,6 +66,20 @@ export const apiSlice = createApi({
         }),
         getRecepients: builder.query({
             query: () => 'recepients'
+        }),
+        updateEmailChecked: builder.mutation({
+            query: emailChange => ({
+                url: `/register/${emailChange.id}/`,
+                method: 'PATCH',
+                body: emailChange
+            })
+        }),
+        updateTextChecked: builder.mutation({
+            query: textChange => ({
+                url: `/register/${textChange.id}/`,
+                method: 'PATCH',
+                body: textChange
+            })
         })
     })
 })
@@ -82,5 +96,7 @@ export const {
     useGetBankInfoQuery,
     useUpdatePasswordMutation,
     useStoreRecepientsMutation,
-    useGetRecepientsQuery
+    useGetRecepientsQuery,
+    useUpdateEmailCheckedMutation,
+    useUpdateTextCheckedMutation
 } = apiSlice

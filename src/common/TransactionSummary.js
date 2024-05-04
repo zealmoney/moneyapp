@@ -3,10 +3,26 @@ import { TransactionNavbar } from "./TransactionNavbar"
 import { useDispatch, useSelector } from "react-redux"
 import { useAddTransactionMutation, useGetRecepientsQuery, useGetUsersQuery, useStoreRecepientsMutation } from "../features/api/apiSlice"
 import { Footer } from "./Footer"
-import { useReducer, useState } from "react"
+import { useEffect, useReducer, useState } from "react"
 import { TransactionSummaryModal } from "./TransactionSummaryModal"
+import getRecepientDetails from "../client/api"
+import { removeRecepientsInfo } from "../features/api/transactionSlice"
 
 export const TransactionSummary = () => {
+
+    const [recepientDetails, setRecepientDetails] = useState([])
+
+    const dispatch_reducer = useDispatch()
+
+    useEffect(() => {
+        getAllRecepients()
+    }, [])
+
+    const getAllRecepients = () => {
+        getRecepientDetails().get("/")
+            .then((res) => setRecepientDetails(res.data))
+            .catch(console.log('An error has occured'))
+    }
 
     function modalReducer(state, action){
         switch(action.type){
@@ -94,23 +110,21 @@ export const TransactionSummary = () => {
     }
 
     const [sendTransaction, {isLoading}] = useAddTransactionMutation()
-    //const saveTransaction = [moneySent, moneyReceived, currencySent, currencyReceived, fee, total].every(Boolean) && !isLoading
+
+    let count_recepient = 0
+    const checkRecepients = () => {
+        recepientDetails.map((r) => {
+            if(r.account_email === senderEmail && r.email === email){
+                ++count_recepient
+            }
+        })
+        return count_recepient
+    }
 
     const [sendRecepients] = useStoreRecepientsMutation()
 
-    /*const {data: recepients} = useGetRecepientsQuery()
-    let count = 0
-    if(recepients.length > 0){
-        let recepient = recepients.find(e => e.email === email)
-        if(recepient){
-            ++count
-        }
-    }*/
-
     const sendMoneyClick = async() => {
-           // if(saveTransaction){
                 dispatch({type: 'close'})
-                //if(readyToSend){
                     setLoading(true)
                     try {
                         await sendTransaction({
@@ -121,11 +135,15 @@ export const TransactionSummary = () => {
                             cardNumber, expiration, securityCode, b_fname, nickname, streetAd, apartment, b_city,
                             b_region, zipcode, senderEmail
                         }).unwrap()
+                        if(checkRecepients() === 0){
                         await sendRecepients({
                             fname, mname, lname, slname, country, email, 
                             street, street2, region, city, postal, account_email
                         }).unwrap()
-                       
+                        dispatch_reducer(
+                            removeRecepientsInfo()
+                        )
+                        }
                         setLoading(false)
                     } catch (error) {
                     console.error('An error has occured', error) 

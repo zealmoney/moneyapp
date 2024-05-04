@@ -22,22 +22,11 @@ export const DeliveryMethod = () => {
 
     const [bankName, setBankName] = useState('')
 
-    //const [zenith, setZenith] = useState(false)
-    //const [gtb, setGtb] = useState(false)
-    //const [polaris, setPolaris] = useState(false)
-
     const [loading, setLoading] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
     const navigate = useNavigate()
     const dispatch_reducer = useDispatch()
-
-    /*const handleGtbChange = () => {
-        setDisabled(false)
-        setGtb(true)
-        setZenith(false)
-        setPolaris(false)
-    }*/
 
     const handleBankChange = ({target}) => {
         setDisabled(false)
@@ -52,7 +41,8 @@ export const DeliveryMethod = () => {
             <List.Item>
                 <input
                     type='radio'
-                    name={bank.bank_name}
+                    name="bank"
+                    id="bank"
                     onChange={handleBankChange}
                 /> &nbsp; &nbsp; &nbsp;
                 <span>{bank.bank_name}</span>                
@@ -71,20 +61,6 @@ export const DeliveryMethod = () => {
         setDeliveryCash(true)
         
     } 
-
-    /*const handleZenithChange = () => {
-        setDisabled(false)
-        setZenith(true)
-        setGtb(false)
-        setPolaris(false)
-    }*/
-
-    /*const handlePolarisChange = () => {
-        setDisabled(false)
-        setPolaris(true)
-        setZenith(false)
-        setGtb(false)
-    }*/
 
     const resetDelivery = () => {
         setDeliveryBank(false)

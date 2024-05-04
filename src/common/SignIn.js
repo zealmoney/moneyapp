@@ -26,12 +26,16 @@ export const SignIn = () => {
     let count_email = 0
     let count_user = 0
     let email_verify = 0
+    let count_password = 0
     if(isSuccess){
         const user = users.find(u => u.email === email)
         if(user){
             ++count_email
             if(user.verify === 1){
                 ++email_verify
+            }
+            if(user.password === password){
+                ++count_password
             }
             users.map((usr) => {
                 if(usr.email === email && usr.password === password && usr.verify === 1){
@@ -61,7 +65,7 @@ export const SignIn = () => {
         }else if(email_verify === 0){
             setEmailError({content: 'Email not verified'})
         }
-        else if(count_user === 0){
+        else if(count_password === 0){
             setPasswordError({content: 'Wrong password entered'})
         }
         else if(count_user > 0){

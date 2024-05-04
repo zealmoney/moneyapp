@@ -140,6 +140,38 @@ export const transactionSlice = createSlice({
                 }
             }
         },
+        removeRecepientsInfo: {
+            reducer(state, action){
+                state.fname = action.payload.p_fname
+                state.mname = action.payload.p_mname
+                state.lname = action.payload.p_lname
+                state.slname = action.payload.p_slname
+                state.country = action.payload.p_country
+                state.email = action.payload.p_email
+                state.street = action.payload.p_street
+                state.street2 = action.payload.p_street2
+                state.region = action.payload.p_region
+                state.city = action.payload.p_city
+                state.postal = action.payload.p_postal
+            },
+            prepare(){
+                return{
+                    payload: {
+                        p_fname: '',
+                        p_mname: '',
+                        p_lname: '',
+                        p_slname: '',
+                        p_country: '',
+                        p_email: '',
+                        p_street: '',
+                        p_street2: '',
+                        p_region: '',
+                        p_city: '',
+                        p_postal: ''
+                    }
+                }
+            }
+        },
         updatePayment: {
             reducer(state, action){
                 state.cardNumber = action.payload.card_number
@@ -182,6 +214,7 @@ export const {
     updateBank, 
     updateAccountInfo, 
     updateRecepientsInfo, 
-    updatePayment
+    updatePayment,
+    removeRecepientsInfo
 } = transactionSlice.actions
 export default transactionSlice.reducer

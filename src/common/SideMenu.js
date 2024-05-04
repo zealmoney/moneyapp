@@ -15,7 +15,7 @@ export const SideMenu = () => {
                 />
                 <Menu.Item 
                     name="Notifications"
-                    onClick={() => navigate('/profile')}
+                    onClick={() => navigate('/settings/notifications')}
                 />
                 <Menu.Item 
                     name="Recepients"

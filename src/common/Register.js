@@ -238,7 +238,7 @@ export const Register = () => {
                                                 >
                                                     <Icon 
                                                         name={passwordType === "password" ? "eye slash" : "eye"}
-                                                        onClick={togglePassword} 
+                                                        onClick={togglePassword}
                                                     />
                                                 </Button>
                                             }

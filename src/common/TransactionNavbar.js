@@ -55,11 +55,6 @@ export const TransactionNavbar = () => {
                                         text='Settings' 
                                         onClick={() => navigate('/settings/changepassword')}
                                     />
-                                    {/*<Dropdown.Item 
-                                        icon='credit card' 
-                                        text='Payment Methods'
-                                        onClick={() => navigate('/paymentcard')} 
-                                    />*/}
                                     <Dropdown.Item icon='help circle' text='Get Help' />
                                     <Dropdown.Item 
                                         icon='sign-out' 
