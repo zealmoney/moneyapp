@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Header, Segment } from "semantic-ui-react"
+import { Button, Container, Grid, Header, Modal, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
@@ -57,6 +57,11 @@ export const EmailActivation = () => {
                 console.log('An error has occured', error)  
             }
         }
+    }
+
+    const verifyComplete = () => {
+        dispatch({type: 'close'})
+        navigate("/signin")
     }
 
     return(
@@ -120,7 +125,7 @@ export const EmailActivation = () => {
                                 <Grid.Column>
                                     <Button
                                         color="green"
-                                        onClick={() => navigate("/signin")}
+                                        onClick={() => verifyComplete()}
                                     >
                                         OK
                                     </Button>
