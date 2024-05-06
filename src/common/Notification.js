@@ -3,69 +3,82 @@ import { TransactionNavbar } from "./TransactionNavbar"
 import { SideMenu } from "./SideMenu"
 import { Footer } from "./Footer"
 import { useGetUsersQuery, useUpdateEmailCheckedMutation } from "../features/api/apiSlice"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { getRegisteredUsers } from "../client/api"
 
-export const Notifications = () => {  
+export const Notifications = () => {
 
-    const {data: users, isSuccess} = useGetUsersQuery()
-    let userId
-    let email_notify
-    let email_label
-    let text_notify
-    let text_label
-    if(isSuccess){
-        let user = users.find(u => u.email === sessionStorage.getItem('userId'))
+    const [users, setUsers] = useState([])
+
+    const [email_checked, setEmail_checked] = useState()
+    const [text_checked, setText_checked] = useState()
+
+    let email_notification
+    let text_notification
+
+    let id
+
+    useEffect(() => {
+        getUsers()
+        getEmailNotification()
+        getTextNotification()
+    })
+
+    const getUsers = () => {
+        getRegisteredUsers().get("/")
+         .then((res) => setUsers(res.data))
+          .catch(console.log('An error has occured'))
+    }
+
+    const getEmailNotification = () => {
+        const user = users.find(e => e.email === sessionStorage.getItem('userId'))
         if(user){
-            userId = user.id
-            email_notify = user.email_notification
-            text_notify = user.text_notification
-            if(email_notify){
-                email_label = "YES"
-            }else if(email_notify === false){
-                email_label = "NO"
-            }else if(text_notify){
-                text_label = "YES"
-            }else if(text_notify === false){
-                text_label = "NO"
+            email_notification = user.email_notification
+            id = user.id
+            if(email_notification === "0"){
+                setEmail_checked(false)
+            }else if(email_notification === "1"){
+                setEmail_checked(true)
             }
         }
     }
 
-    const [email_notification, setEmailChecked] = useState(email_notify)
-    const [text_notification, setTextChecked] = useState(email_notify)
-
-    const [emailLabel, setEmailLabel] = useState(email_label)
-    const [textLabel, setTextLabel] = useState(text_label)
-
-    const [changeEmail, {isLoading}] = useUpdateEmailCheckedMutation()
-    const saveEmail = [email_notification, text_notification].every(Boolean) && !isLoading
-
-    const getEmailChecked = (checked) => {
-                    if(checked){
-                        setEmailLabel("YES")
-                        email_notify = true
-                        setEmailChecked(email_notify)
-                        changeEmail({id: userId, email_notification})
-                    }else{
-                        setEmailLabel("NO")
-                        email_notify = false
-                        setEmailChecked(email_notify)
-                        changeEmail({id: userId, email_notification})
-                    }         
+    const getTextNotification = () => {
+        const user = users.find(e => e.email === sessionStorage.getItem('userId'))
+        if(user){
+            text_notification = user.text_notification
+            id = user.id
+            if(text_notification === "0"){
+                setText_checked(false)
+            }else if(text_notification === "1"){
+                setText_checked(true)
+            }
+        }
     }
 
-    const getTextChecked = (checked) => {
-        if(checked){
-            setTextLabel("YES")
-            text_notify = true
-            changeEmail({id: userId, text_notification})
-        }else{
-            setTextLabel("NO")
-            text_notify = false
-            changeEmail({id: userId, text_notification})
+    const emailChange = () => {
+       if(email_notification === "0"){
+        email_notification = "1"
+        let item = {email_notification}
+        getRegisteredUsers().patch(`/${id}/`, item)
+       }else if(email_notification === "1"){
+        email_notification = "0"
+        let item = {email_notification}
+        getRegisteredUsers().patch(`/${id}/`, item)
+       }
     }
-}
 
+    const textChange = () => {
+        if(text_notification === "0"){
+         text_notification = "1"
+         let item = {text_notification}
+         getRegisteredUsers().patch(`/${id}/`, item)
+        }else if(text_notification === "1"){
+         text_notification = "0"
+         let item = {text_notification}
+         getRegisteredUsers().patch(`/${id}/`, item)
+        }
+     }
 
     return(
         <>
@@ -97,9 +110,8 @@ export const Notifications = () => {
                                             <Grid.Column width={8} textAlign="right">
                                                 <Radio 
                                                     toggle
-                                                    label={emailLabel}
-                                                    checked={email_notification}
-                                                    onChange={(e, {checked}) => {setEmailChecked(checked); getEmailChecked(checked)}}
+                                                    checked={email_checked}
+                                                    onChange={emailChange}
                                                 />
                                             </Grid.Column>
                                         </Grid.Row>
@@ -110,9 +122,8 @@ export const Notifications = () => {
                                             <Grid.Column width={8} textAlign="right">
                                                 <Radio 
                                                     toggle
-                                                    label={textLabel} 
-                                                    checked={text_notification} 
-                                                    onChange={(e, {checked}) => {setTextChecked(checked); getTextChecked(checked)}}
+                                                    checked={text_checked}
+                                                    onChange={textChange}
                                                 />
                                             </Grid.Column>
                                         </Grid.Row>
