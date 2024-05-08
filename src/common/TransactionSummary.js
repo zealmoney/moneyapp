@@ -7,12 +7,14 @@ import { useEffect, useReducer, useState } from "react"
 import { TransactionSummaryModal } from "./TransactionSummaryModal"
 import getRecepientDetails from "../client/api"
 import { removeRecepientsInfo } from "../features/api/transactionSlice"
+import { useNavigate } from "react-router-dom"
 
 export const TransactionSummary = () => {
 
     const [recepientDetails, setRecepientDetails] = useState([])
 
     const dispatch_reducer = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getAllRecepients()
@@ -28,8 +30,10 @@ export const TransactionSummary = () => {
         switch(action.type){
             case 'open':
                 return {open: true, size: action.size}
+            case 'open_transaction':
+                return {open_transaction: true, size_transaction: action.size_transaction}
             case 'close': 
-                return {open: false}
+                return {open: false, open_transaction: false}
             default:
                 return new Error('unsupported action')
         }
@@ -37,10 +41,11 @@ export const TransactionSummary = () => {
 
     const [state, dispatch] = useReducer(modalReducer, 
         {
-            open: false, size: undefined
+            open: false, size: undefined,
+            open_transaction: false, size_transaction: undefined
         })
 
-        const {open, size} = state
+        const {open, open_transaction, size, size_transaction} = state
 
         const closeModal = () => {
             dispatch({type: 'close'})
@@ -145,15 +150,12 @@ export const TransactionSummary = () => {
                         )
                         }
                         setLoading(false)
+                        dispatch({type: 'open_transaction', size_transaction: 'mini'})
                     } catch (error) {
                     console.error('An error has occured', error) 
                     }
-                //}
-                
-            //}
         
     }
-
 
     return(
         <>
@@ -387,6 +389,36 @@ export const TransactionSummary = () => {
                                         onClick={() => sendMoneyClick()}
                                     >
                                         YES
+                                    </Button>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Modal.Content>
+                </Modal>
+                <Modal
+                    open={open_transaction}
+                    size={size_transaction}
+                >
+                    <Modal.Header style={{textAlign: 'center'}}>
+                        Transaction Complete
+                    </Modal.Header>
+                    <Modal.Content>
+                        <Grid textAlign="center">
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Header 
+                                        as='h1'
+                                        content='Transaction Successful.'
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Button
+                                        color="green"
+                                        onClick={() => navigate("/transactionhistory")}
+                                    >
+                                        OK
                                     </Button>
                                 </Grid.Column>
                             </Grid.Row>
