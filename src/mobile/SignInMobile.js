@@ -80,7 +80,7 @@ export const SignInMobile = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '1em 1em'}}>
+            <Segment vertical style={{padding: '4em 1em'}}>
                 <Grid textAlign="center">
                     <Grid.Row>
                         <Grid.Column>
@@ -92,7 +92,7 @@ export const SignInMobile = () => {
                     <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
                             <Segment
-                                style={{padding: '2em 2em'}}
+                                style={{padding: '2em 0.5em'}}
                             >
                                 <Form size="huge">
                                     <Form.Field style={{textAlign: 'left'}}>

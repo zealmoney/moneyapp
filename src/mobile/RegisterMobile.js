@@ -90,7 +90,7 @@ export const RegisterMobile = () => {
     return(
         <>
             <AuthenticationHeader />
-            <Segment vertical style={{padding: '1em 1em'}}>
+            <Segment vertical style={{padding: '4em 1em'}}>
                 <Grid textAlign="center">
                     <Grid.Row>
                         <Grid.Column>
@@ -102,9 +102,9 @@ export const RegisterMobile = () => {
                     <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
                             <Segment
-                                style={{padding: '2em 2em'}}
+                                style={{padding: '2em 0.5em'}}
                             >
-                                <Form size="huge">
+                                <Form size="small">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>
                                             First Name
