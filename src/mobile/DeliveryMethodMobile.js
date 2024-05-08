@@ -82,7 +82,7 @@ export const DeliveryMethodMobile = () => {
         return(
             <>
                 <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '4em 0em 24em'}}>
+                <Segment vertical style={{padding: '4em 1em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
@@ -92,8 +92,8 @@ export const DeliveryMethodMobile = () => {
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column textAlign="left" style={{maxWidth: 600}}>
-                                    <Segment style={{padding: '4em 2em'}}>
-                                        <Form size="huge">
+                                    <Segment style={{padding: '2em 0.5em'}}>
+                                        <Form size="small">
                                             <Form.Group widths="equal">
                                             <Form.Field>
                                                 <input  
