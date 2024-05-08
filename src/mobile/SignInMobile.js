@@ -94,7 +94,7 @@ export const SignInMobile = () => {
                             <Segment
                                 style={{padding: '2em 0.5em'}}
                             >
-                                <Form size="huge">
+                                <Form size="small">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>
                                             Email Address
