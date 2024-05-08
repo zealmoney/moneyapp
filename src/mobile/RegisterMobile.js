@@ -102,7 +102,6 @@ export const RegisterMobile = () => {
                     <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
                             <Segment
-                                raised
                                 style={{padding: '2em 2em'}}
                             >
                                 <Form size="huge">

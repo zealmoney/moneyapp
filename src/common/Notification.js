@@ -83,7 +83,7 @@ export const Notifications = () => {
     return(
         <>
             <TransactionNavbar />
-            <Segment vertical style={{padding: '4em 0em 10em'}}>
+            <Segment vertical style={{padding: '4em 0em 12em'}}>
                 <Container>
                     <Grid>
                         <Grid.Row>

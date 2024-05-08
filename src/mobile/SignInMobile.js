@@ -91,8 +91,7 @@ export const SignInMobile = () => {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column style={{maxWidth: 600}}>
-                            <Segment 
-                                raised
+                            <Segment
                                 style={{padding: '2em 2em'}}
                             >
                                 <Form size="huge">
