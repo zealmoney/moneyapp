@@ -33,7 +33,7 @@ export const ProfileMobile = () => {
                                 <Segment>
                                     <Grid>
                                         <Grid.Row>
-                                            <Grid.Column width={8}>
+                                            <Grid.Column>
                                                 <Segment tertiary raised inverted color="green" secondary>
                                                     <Header icon as='h3'>
                                                         <Icon name="user" circular inverted color="green" />
@@ -41,7 +41,9 @@ export const ProfileMobile = () => {
                                                     </Header>
                                                 </Segment>
                                             </Grid.Column>
-                                            <Grid.Column width={8}>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
                                                 <Segment tertiary raised inverted color="green" secondary>
                                                     <Header icon as='h3'>
                                                         <Icon name="phone" circular inverted color="green" />
@@ -50,9 +52,8 @@ export const ProfileMobile = () => {
                                                 </Segment>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Divider />
                                         <Grid.Row>
-                                            <Grid.Column width={8}>
+                                            <Grid.Column>
                                                 <Segment tertiary raised inverted color="green" secondary>
                                                     <Header icon as='h3'>
                                                         <Icon name="mail" circular inverted color="green" />
@@ -60,7 +61,9 @@ export const ProfileMobile = () => {
                                                     </Header>
                                                 </Segment>
                                             </Grid.Column>
-                                            <Grid.Column width={8}>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
                                                 <Segment tertiary raised inverted color="green" secondary>
                                                     <Header icon as='h3'>
                                                         <Icon name="calendar" circular inverted color="green" />
