@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateBank, updateDelivery } from "../features/api/transactionSlice"
+import { useGetBankInfoQuery } from "../features/api/apiSlice"
 import { TransactionNavbarMobile } from "./TransactionNavbarMobile"
 import { Footer } from "../common/Footer"
 
@@ -17,15 +18,40 @@ export const DeliveryMethodMobile = () => {
     const [deliveryBank, setDeliveryBank] = useState(false)
     const [deliveryCash, setDeliveryCash] = useState(false)
 
-    const [zenith, setZenith] = useState(false)
-    const [gtb, setGtb] = useState(false)
-    const [polaris, setPolaris] = useState(false)
+    const [bank, setBank] = useState(false)
+
+    const [bankName, setBankName] = useState('')
 
     const [loading, setLoading] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
     const navigate = useNavigate()
     const dispatch_reducer = useDispatch()
+
+    const handleBankChange = ({target}) => {
+        setDisabled(false)
+        setBank(true)
+        setBankName(target.name)
+    }
+
+    const {data: bankinfo, isSuccess} = useGetBankInfoQuery()
+    let bank_name
+    if(isSuccess){
+        bank_name = bankinfo.map((bank) => (
+            <List.Item>
+                <input
+                    type='radio'
+                    name="bank"
+                    id="bank"
+                    onChange={handleBankChange}
+                /> &nbsp; &nbsp; &nbsp;
+                <span>{bank.bank_name}</span>                
+                <List.Content floated="right">
+                    <Image size="mini" src={bank.bank_image} />
+                </List.Content>
+            </List.Item>
+        ))
+    }
 
     const handleDeliveryChangeBank = () => {
         setDeliveryBank(true)
@@ -36,46 +62,28 @@ export const DeliveryMethodMobile = () => {
         
     } 
 
-    const handleZenithChange = () => {
-        setDisabled(false)
-        setZenith(true)
-        setGtb(false)
-        setPolaris(false)
-    }
-
-    const handleGtbChange = () => {
-        setDisabled(false)
-        setGtb(true)
-        setZenith(false)
-        setPolaris(false)
-    }
-
-    const handlePolarisChange = () => {
-        setDisabled(false)
-        setPolaris(true)
-        setZenith(false)
-        setGtb(false)
-    }
-
     const resetDelivery = () => {
         setDeliveryBank(false)
         setDeliveryCash(false)
+        setDisabled(true)
+        setBank(false)
     }
 
     const deliveryClick = () => {
         setLoading(true)
-        dispatch_reducer(updateBank(deliveryBank, deliveryCash, zenith, gtb, polaris))
+        dispatch_reducer(updateBank(deliveryBank, deliveryCash, bankName))
         setTimeout(() => {
             navigate('/accountinfo')
-            //navigate('/transactionsummary')
-        }, 300)    
+            
+        }, 300)  
     }
 
     if(deliveryCash === false && deliveryBank === false){
         return(
             <>
                 <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '4em 2em'}}>
+                <Segment vertical style={{padding: '4em 0em 24em'}}>
+                    <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column>
@@ -84,10 +92,7 @@ export const DeliveryMethodMobile = () => {
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column textAlign="left" style={{maxWidth: 600}}>
-                                    <Segment 
-                                        raised
-                                        style={{padding: '2em 2em'}}
-                                    >
+                                    <Segment style={{padding: '4em 2em'}}>
                                         <Form size="huge">
                                             <Form.Group widths="equal">
                                             <Form.Field>
@@ -95,15 +100,15 @@ export const DeliveryMethodMobile = () => {
                                                     type="radio"
                                                     value={deliveryCash}
                                                     onChange={handleDeliveryChangeCash} 
-                                                /> &nbsp;
+                                                /> &nbsp;&nbsp;&nbsp;
                                                 <span>Cash Pickup</span>
                                             </Form.Field>
-                                            <Form.Field>
+                                            <Form.Field style={{textAlign: 'right'}}>
                                                 <input 
                                                     type="radio" 
                                                     value={deliveryBank}
                                                     onChange={handleDeliveryChangeBank} 
-                                                /> &nbsp;
+                                                /> &nbsp;&nbsp;&nbsp;
                                                 <span>Bank Deposit</span>
                                             </Form.Field>
                                             </Form.Group>
@@ -113,6 +118,7 @@ export const DeliveryMethodMobile = () => {
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
+                    </Container>
                 </Segment>
                 <Footer />
             </>
@@ -121,7 +127,8 @@ export const DeliveryMethodMobile = () => {
         return(
             <>
                 <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '4em 2em'}}>
+                <Segment vertical style={{padding: '6em 0em'}}>
+                    <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column textAlign="left">
@@ -144,39 +151,7 @@ export const DeliveryMethodMobile = () => {
                                         }
                                         <Header textAlign="center" as='h3' content='Available Banks' />
                                         <List verticalAlign="middle" celled size="huge">
-                                            <List.Item>
-                                                <input
-                                                    type='radio'
-                                                    name="bank" 
-                                                    onChange={handleZenithChange}   
-                                                /> &nbsp; &nbsp; &nbsp;
-                                                <span>Zenith Bank</span>              
-                                                <List.Content floated="right">
-                                                    <Image size="mini" src='/images/zenith_bank.png' />
-                                                </List.Content>
-                                            </List.Item>
-                                            <List.Item>
-                                                <input
-                                                    type='radio'
-                                                    name="bank"
-                                                    onChange={handleGtbChange}
-                                                /> &nbsp; &nbsp; &nbsp;
-                                                <span>Guaranty Trust Bank</span>                
-                                                <List.Content floated="right">
-                                                    <Image size="mini" src='/images/guaranty_trust_bank.png' />
-                                                </List.Content>
-                                            </List.Item>
-                                            <List.Item>
-                                                <input 
-                                                    type='radio'
-                                                    name="bank"
-                                                    onChange={handlePolarisChange}
-                                                />  &nbsp; &nbsp; &nbsp;  
-                                                <span>Polaris Bank</span>             
-                                                <List.Content floated="right">
-                                                    <Image size="mini" src='/images/polaris_bank.png' />
-                                                </List.Content>
-                                            </List.Item>
+                                            {bank_name}
                                         </List>
                                         <Button 
                                             color="green"
@@ -192,6 +167,7 @@ export const DeliveryMethodMobile = () => {
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
+                    </Container>
                 </Segment>
                 <Footer />
             </>
