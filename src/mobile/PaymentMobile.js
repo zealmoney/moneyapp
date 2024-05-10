@@ -260,7 +260,7 @@ export const PaymentMobile = () => {
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 650}}>
-                                    <Segment style={{padding: '2em 2em', textAlign: 'left'}}>
+                                    <Segment style={{padding: '2em 1em', textAlign: 'left'}}>
                                         <Message color="green" size="huge">
                                             <Message.Content style={{color: 'black'}}>
                                                 Debit cards have no extra fees.
