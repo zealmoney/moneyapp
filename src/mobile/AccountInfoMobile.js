@@ -78,7 +78,7 @@ export const AccountInfoMobile = () => {
     return(
         <>
             <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '4em 2em'}}>
+                <Segment vertical style={{padding: '4em 0em'}}>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 600}}>

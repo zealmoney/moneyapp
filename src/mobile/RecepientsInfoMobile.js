@@ -1,6 +1,6 @@
 import { Button, Container, Dropdown, Form, Grid, Header, Input, Label, Segment, Select } from "semantic-ui-react"
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { updateRecepientsInfo } from "../features/api/transactionSlice"
 import { useNavigate } from "react-router-dom"
 import { TransactionNavbarMobile } from "./TransactionNavbarMobile"
@@ -12,19 +12,31 @@ const countryOptions = [
     { key: 'gh', value: 'gh', flag: 'gh', text: 'GHS'},
 ]
 
-export const RecepientsInfoMobile = () => {
+export const RecepientsInfo = () => {
 
-    const [fname, setFname] = useState('')
+    const firstname = useSelector((state) => state.transactions.fname)
+    const middlename = useSelector((state) => state.transactions.mname)
+    const lastname = useSelector((state) => state.transactions.lname)
+    const s_lastname = useSelector((state) => state.transactions.slname)
+    const r_country = useSelector((state) => state.transactions.country)
+    const r_email = useSelector((state) => state.transactions.email)
+    const r_street = useSelector((state) => state.transactions.street)
+    const r_street2 = useSelector((state) => state.transactions.street2)
+    const r_region = useSelector((state) => state.transactions.region)
+    const r_city = useSelector((state) => state.transactions.city)
+    const r_postal = useSelector((state) => state.transactions.postal)
+
+    const [fname, setFname] = useState(firstname)
     const [mname, setMname] = useState('none')
-    const [lname, setLname] = useState('')
+    const [lname, setLname] = useState(lastname)
     const [slname, setSlname] = useState('none')
-    const [country, setCountry] = useState()
-    const [email, setEmail] = useState('')
-    const [street, setStreet] = useState('')
+    const [country, setCountry] = useState(r_country)
+    const [email, setEmail] = useState(r_email)
+    const [street, setStreet] = useState(r_street)
     const [street2, setStreet2] = useState('none')
-    const [region, setRegion] = useState('')
-    const [city, setCity] = useState('')
-    const [postal, setPostal] = useState('')
+    const [region, setRegion] = useState(r_region)
+    const [city, setCity] = useState(r_city)
+    const [postal, setPostal] = useState(r_postal)
 
     const [loading, setLoading] = useState(false)
 
@@ -95,7 +107,7 @@ export const RecepientsInfoMobile = () => {
     return(
         <>
             <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '4em 1em'}}>
+                <Segment vertical style={{padding: '4em 0em'}}>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 600}}>
@@ -107,10 +119,7 @@ export const RecepientsInfoMobile = () => {
                                         content="Enter the recepient's information as it appears on 
                                         official identification."
                                     />
-                                    <Segment 
-                                        raised
-                                        style={{padding: '2em 2em'}}
-                                    >
+                                    <Segment style={{padding: '2em 2em'}}>
                                         <Form size="huge">
                                         <Form.Field style={{textAlign: 'left'}}>
                                             <label>First Name</label>
@@ -148,13 +157,13 @@ export const RecepientsInfoMobile = () => {
                                             />
                                         </Form.Field>
                                         <Form.Field style={{textAlign: 'left'}}>
-                                                <label>Country</label>
                                                 {/*<Dropdown 
                                                     options={countryOptions}
                                                     fluid
                                                     onChange={(e, {value}) => setCountry(value.toString())}
                                                     error={countryError}
                                                 />*/}
+                                                <label>Country</label>
                                                 <Select 
                                                     placeholder="Select your country"
                                                     options={countryOptions}
@@ -197,7 +206,6 @@ export const RecepientsInfoMobile = () => {
                                                 onClick={() => setRegionError(false)}
                                             />
                                         </Form.Field>
-                                        <Form.Group widths='equal'>
                                             <Form.Field style={{textAlign: 'left'}}>
                                                 <label>City</label>
                                                 <Form.Input 
@@ -216,7 +224,7 @@ export const RecepientsInfoMobile = () => {
                                                     onClick={() => setPostalError(false)}
                                                 />
                                             </Form.Field>
-                                        </Form.Group>
+
                                         <Form.Field>
                                             <Button 
                                                 color="green" 
@@ -234,7 +242,7 @@ export const RecepientsInfoMobile = () => {
                             </Grid.Row>
                         </Grid>
                 </Segment>
-            <Footer />
+                <Footer />
         </>
     )
 }
