@@ -101,7 +101,7 @@ export const DeliveryMethodMobile = () => {
                                                     value={deliveryCash}
                                                     onChange={handleDeliveryChangeCash} 
                                                 /> &nbsp;&nbsp;&nbsp;
-                                                <label>Cash Pickup</label>
+                                                Cash Pickup
                                             </Form.Field>
                                             <Form.Field>
                                                 <input 
@@ -109,7 +109,7 @@ export const DeliveryMethodMobile = () => {
                                                     value={deliveryBank}
                                                     onChange={handleDeliveryChangeBank} 
                                                 /> &nbsp;&nbsp;&nbsp;
-                                                <label>Bank Deposit</label>
+                                                Bank Deposit
                                             </Form.Field>
                                             </Form.Group>
                                             
