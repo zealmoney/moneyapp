@@ -94,7 +94,7 @@ export const DeliveryMethodMobile = () => {
                                 <Grid.Column textAlign="left" style={{maxWidth: 600}}>
                                     <Segment style={{padding: '2em 0.5em'}}>
                                         <Form size="small">
-                                            
+                                            <Form.Group widths="equal">
                                             <Form.Field>
                                                 <input  
                                                     type="radio"
@@ -103,7 +103,7 @@ export const DeliveryMethodMobile = () => {
                                                 /> &nbsp;&nbsp;&nbsp;
                                                 <span>Cash Pickup</span>
                                             </Form.Field>
-                                            <Form.Field style={{textAlign: 'right'}}>
+                                            <Form.Field>
                                                 <input 
                                                     type="radio" 
                                                     value={deliveryBank}
@@ -111,7 +111,7 @@ export const DeliveryMethodMobile = () => {
                                                 /> &nbsp;&nbsp;&nbsp;
                                                 <span>Bank Deposit</span>
                                             </Form.Field>
-                                            
+                                            </Form.Group>
                                             
                                         </Form>
                                     </Segment>
