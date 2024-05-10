@@ -12,7 +12,7 @@ const countryOptions = [
     { key: 'gh', value: 'gh', flag: 'gh', text: 'GHS'},
 ]
 
-export const RecepientsInfo = () => {
+export const RecepientsInfoMobile = () => {
 
     const firstname = useSelector((state) => state.transactions.fname)
     const middlename = useSelector((state) => state.transactions.mname)
