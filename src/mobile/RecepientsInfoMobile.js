@@ -107,7 +107,7 @@ export const RecepientsInfoMobile = () => {
     return(
         <>
             <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '4em 0em'}}>
+                <Segment vertical style={{padding: '4em 1em'}}>
                         <Grid textAlign="center">
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 600}}>
