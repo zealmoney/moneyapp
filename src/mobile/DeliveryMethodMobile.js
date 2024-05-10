@@ -95,21 +95,25 @@ export const DeliveryMethodMobile = () => {
                                     <Segment style={{padding: '2em 0.5em'}}>
                                         <Form size="small">
                                             <Form.Group widths="equal">
-                                            <Form.Field>
+                                            <Form.Field style={{textAlign: 'left'}}>
                                                 <input  
                                                     type="radio"
                                                     value={deliveryCash}
                                                     onChange={handleDeliveryChangeCash} 
                                                 /> &nbsp;&nbsp;&nbsp;
-                                                Cash Pickup
+                                                <span>
+                                                    <label>Cash Pickup</label>
+                                                </span>
                                             </Form.Field>
-                                            <Form.Field>
+                                            <Form.Field style={{textAlign: 'left'}}>
                                                 <input 
                                                     type="radio" 
                                                     value={deliveryBank}
                                                     onChange={handleDeliveryChangeBank} 
                                                 /> &nbsp;&nbsp;&nbsp;
-                                                Bank Deposit
+                                                <span>
+                                                    <label>Bank Deposit</label>
+                                                </span>
                                             </Form.Field>
                                             </Form.Group>
                                             

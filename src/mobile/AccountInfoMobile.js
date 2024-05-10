@@ -83,8 +83,7 @@ export const AccountInfoMobile = () => {
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 600}}>
                                     <Header as='h1' content='Account Information' />
-                                    <Segment 
-                                        raised
+                                    <Segment
                                         style={{padding: '2em 2em'}}
                                     >
                                         {
