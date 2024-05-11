@@ -242,7 +242,7 @@ export const PaymentMobile = () => {
         return(
             <>
                 <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '4em 1em'}}>
+                <Segment vertical style={{padding: '4em 0em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
@@ -261,125 +261,138 @@ export const PaymentMobile = () => {
                             <Grid.Row>
                                 <Grid.Column style={{maxWidth: 650}}>
                                     <Segment style={{padding: '2em 1em', textAlign: 'left'}}>
-                                        <Message color="green" size="huge">
-                                            <Message.Content style={{color: 'black'}}>
-                                                Debit cards have no extra fees.
-                                                Credit cards have an extra 3% fee.
-                                            </Message.Content>
-                                        </Message>
-                                        <Cards 
-                                            number={cardNumber}
-                                            expiry={expiration}
-                                            cvc={securityCode}
-                                            name={b_fname}
-                                            focused={focused}
-                                        />
-                                        <Form size="huge">
-                                            <Form.Field>
-                                                <label> Card Number</label>
-                                                <Form.Input
-                                                    type="tel"
-                                                    name="cardNumber"
-                                                    placeholder='Card No:'
-                                                    value={cardNumber}
-                                                    error={cardNumberError}
-                                                    onChange={handleCardNumberChange}
-                                                    onClick={() => setCardNumberError(false)}
-                                                    
-                                                />
-                                            </Form.Field>
-                                            <Form.Group widths="equal">
-                                                <Form.Field>
-                                                    <label>Expiration Date</label>
-                                                    <Form.Input 
-                                                        name="expiration"
-                                                        type="tel"
-                                                        placeholder='MM/YY'
-                                                        value={expiration}
-                                                        error={expirationError}
-                                                        onChange={handleExpirationChange}
-                                                        onClick={() => setExpirationError(false)}
+                                        <Grid>
+                                            <Grid.Row>
+                                                <Grid.Column>
+                                                    <Message color="green" size="huge">
+                                                        <Message.Content style={{color: 'black'}}>
+                                                            Debit cards have no extra fees.
+                                                            Credit cards have an extra 3% fee.
+                                                        </Message.Content>
+                                                    </Message>
+                                                </Grid.Column>
+                                            </Grid.Row>
+                                            <Grid.Row>
+                                                <Grid.Column>
+                                                    <Cards 
+                                                        number={cardNumber}
+                                                        expiry={expiration}
+                                                        cvc={securityCode}
+                                                        name={b_fname}
+                                                        focused={focused}
                                                     />
-                                                </Form.Field>
-                                                <Form.Field>
-                                                    <label>Security Code</label>
-                                                    <Form.Input 
-                                                        type="tel"
-                                                        name="securityCode"
-                                                        placeholder='CVC'
-                                                        value={securityCode}
-                                                        error={securityCodeError}
-                                                        onChange={handleSecurityCodeChange}
-                                                        onClick={() => setSecurityCodeError(false)}
-                                                    />
-                                                </Form.Field>
-                                            </Form.Group>
-                                            <Form.Field>
-                                                <label>Name as it appears on card</label>
-                                                <Form.Input
-                                                    type="text" 
-                                                    name="b_fname"
-                                                    value={b_fname}
-                                                    error={fnameError}
-                                                    onChange={handleFnameChange}
-                                                    onClick={() => setFnameError(false)}
-                                                />
-                                            </Form.Field>
-                                            <Form.Field>
-                                                <label>Card Nickname (Optional)</label>
-                                                <Form.Input 
-                                                    error={nicknameError}
-                                                    onChange={handleNicknameChange}
-                                                    onClick={() => setNicknameError(false)}
-                                                />
-                                            </Form.Field>
-                                            <Header textAlign="center" as='h2' content='Billing Address' />
-                                            <Form.Field>
-                                                <label>Street Address</label>
-                                                <Form.Input 
-                                                    value={streetAd}
-                                                    error={streetAdError}
-                                                    onChange={handleStreetAdChange}
-                                                    onClick={() => setStreetAdError(false)}
-                                                />
-                                            </Form.Field>
-                                            <Form.Field>
-                                                <label>Apartment, suit, unit, etc. (Optional)</label>
-                                                <Form.Input 
-                                                    error={apartmentError}
-                                                    onChange={handleApartmentChange}
-                                                    onClick={() => setApartmentError(false)}
-                                                />
-                                            </Form.Field>
-                                            <Form.Field>
-                                                <label>City</label>
-                                                <Form.Input 
-                                                    value={b_city}
-                                                    error={cityError}
-                                                    onChange={handleCityChange}
-                                                    onClick={() => setCityError(false)}
-                                                />
-                                            </Form.Field>
-                                            <Form.Field>
-                                                <label>State</label>
-                                                <Form.Input 
-                                                    value={b_region}
-                                                    error={regionError}
-                                                    onChange={handleRegionChange}
-                                                    onClick={() => setRegionError(false)}
-                                                />                                           
-                                            </Form.Field>
-                                            <Form.Field>
-                                                <label>Zip Code</label>
-                                                <Form.Input 
-                                                    value={zipcode}
-                                                    error={zipcodeError}
-                                                    onChange={handleZipcodeChange}
-                                                    onClick={() => setZipcodeError(false)}
-                                                />
-                                            </Form.Field>
-                                            
-                                        </Form>
+                                                </Grid.Column>
+                                            </Grid.Row>
+                                            <Grid.Row>
+                                                <Grid.Column>
+                                                    <Form size="huge">
+                                                        <Form.Field>
+                                                            <label> Card Number</label>
+                                                            <Form.Input
+                                                                type="tel"
+                                                                name="cardNumber"
+                                                                placeholder='Card No:'
+                                                                value={cardNumber}
+                                                                error={cardNumberError}
+                                                                onChange={handleCardNumberChange}
+                                                                onClick={() => setCardNumberError(false)}
+                                                                
+                                                            />
+                                                        </Form.Field>
+                                                        <Form.Group widths="equal">
+                                                            <Form.Field>
+                                                                <label>Expiration Date</label>
+                                                                <Form.Input 
+                                                                    name="expiration"
+                                                                    type="tel"
+                                                                    placeholder='MM/YY'
+                                                                    value={expiration}
+                                                                    error={expirationError}
+                                                                    onChange={handleExpirationChange}
+                                                                    onClick={() => setExpirationError(false)}
+                                                                />
+                                                            </Form.Field>
+                                                            <Form.Field>
+                                                                <label>Security Code</label>
+                                                                <Form.Input 
+                                                                    type="tel"
+                                                                    name="securityCode"
+                                                                    placeholder='CVC'
+                                                                    value={securityCode}
+                                                                    error={securityCodeError}
+                                                                    onChange={handleSecurityCodeChange}
+                                                                    onClick={() => setSecurityCodeError(false)}
+                                                                />
+                                                            </Form.Field>
+                                                        </Form.Group>
+                                                        <Form.Field>
+                                                            <label>Name as it appears on card</label>
+                                                            <Form.Input
+                                                                type="text" 
+                                                                name="b_fname"
+                                                                value={b_fname}
+                                                                error={fnameError}
+                                                                onChange={handleFnameChange}
+                                                                onClick={() => setFnameError(false)}
+                                                            />
+                                                        </Form.Field>
+                                                        <Form.Field>
+                                                            <label>Card Nickname (Optional)</label>
+                                                            <Form.Input 
+                                                                error={nicknameError}
+                                                                onChange={handleNicknameChange}
+                                                                onClick={() => setNicknameError(false)}
+                                                            />
+                                                        </Form.Field>
+                                                        <Header textAlign="center" as='h2' content='Billing Address' />
+                                                        <Form.Field>
+                                                            <label>Street Address</label>
+                                                            <Form.Input 
+                                                                value={streetAd}
+                                                                error={streetAdError}
+                                                                onChange={handleStreetAdChange}
+                                                                onClick={() => setStreetAdError(false)}
+                                                            />
+                                                        </Form.Field>
+                                                        <Form.Field>
+                                                            <label>Apartment, suit, unit, etc. (Optional)</label>
+                                                            <Form.Input 
+                                                                error={apartmentError}
+                                                                onChange={handleApartmentChange}
+                                                                onClick={() => setApartmentError(false)}
+                                                            />
+                                                        </Form.Field>
+                                                        <Form.Field>
+                                                            <label>City</label>
+                                                            <Form.Input 
+                                                                value={b_city}
+                                                                error={cityError}
+                                                                onChange={handleCityChange}
+                                                                onClick={() => setCityError(false)}
+                                                            />
+                                                        </Form.Field>
+                                                        <Form.Field>
+                                                            <label>State</label>
+                                                            <Form.Input 
+                                                                value={b_region}
+                                                                error={regionError}
+                                                                onChange={handleRegionChange}
+                                                                onClick={() => setRegionError(false)}
+                                                            />                                           
+                                                        </Form.Field>
+                                                        <Form.Field>
+                                                            <label>Zip Code</label>
+                                                            <Form.Input 
+                                                                value={zipcode}
+                                                                error={zipcodeError}
+                                                                onChange={handleZipcodeChange}
+                                                                onClick={() => setZipcodeError(false)}
+                                                            />
+                                                        </Form.Field>
+                                                    </Form>
+                                                </Grid.Column>
+                                            </Grid.Row>
+                                        </Grid>
                                     </Segment>
                                         <Message color="green" size="large" >
                                                 <Message.Content style={{color: 'black'}}>
