@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Container, Dropdown, Icon, Menu, Segment } from "semantic-ui-react"
+import { Container, Dropdown, DropdownMenu, Icon, Menu, Segment } from "semantic-ui-react"
 
 export const TransactionNavbarMobile = () => {
 
@@ -46,7 +46,20 @@ export const TransactionNavbarMobile = () => {
                                         <Icon name="suitcase" />
                                         Transaction History
                                     </Dropdown.Item>
-                                    <Dropdown.Item icon='setting' text='Settings' />
+                                    <Dropdown.Item>
+                                        <Icon name="setting" />
+                                        Settings
+                                        <Dropdown>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item
+                                                    as='a' 
+                                                    onClick={() => navigate('/settings/changepassword')}
+                                                >
+                                                    Change Password
+                                                </Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </Dropdown.Item>
                                     <Dropdown.Item icon='help circle' text='Get Help' />
                                     <Dropdown.Item 
                                         icon='sign-out' 
