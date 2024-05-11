@@ -57,6 +57,35 @@ export const TransactionNavbarMobile = () => {
                                                 >
                                                     Change Password
                                                 </Dropdown.Item>
+                                                <Dropdown.Item
+                                                    as='a' 
+                                                    onClick={() => navigate('/settings/notifications')}
+                                                >
+                                                    Notifications
+                                                </Dropdown.Item>
+                                                <Dropdown.Item
+                                                    as='a' 
+                                                    onClick={() => navigate('/settings/recepients')}
+                                                >
+                                                    Recepients
+                                                </Dropdown.Item>
+                                                <Dropdown.Item
+                                                    as='a' 
+                                                    onClick={() => navigate('/settings/paymentcard')}
+                                                >
+                                                    Payment Methods
+                                                </Dropdown.Item>
+                                                <Dropdown.Item
+                                                    as='a' 
+                                                    onClick={() => navigate('/settings/policy')}
+                                                >
+                                                    Privacy Policy
+                                                </Dropdown.Item>
+                                                <Dropdown.Item
+                                                    as='a'
+                                                >
+                                                    User Agreement
+                                                </Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
                                     </Dropdown.Item>

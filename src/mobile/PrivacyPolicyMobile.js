@@ -1,21 +1,17 @@
 import { Container, Grid, Header, Segment } from "semantic-ui-react"
-import { TransactionNavbar } from "./TransactionNavbar"
-import { SideMenu } from "./SideMenu"
-import { Footer } from "./Footer"
+import { TransactionNavbarMobile } from "./TransactionNavbarMobile"
+import { Footer } from "../common/Footer"
 
-export const PrivacyPolicy = () => {
+export const PrivacyPolicyMobile = () => {
 
     return(
         <>
-            <TransactionNavbar />
+            <TransactionNavbarMobile />
             <Segment vertical style={{padding: '4em 0em'}}>
                 <Container>
                     <Grid>
                         <Grid.Row>
-                            <Grid.Column width={6}>
-                                <SideMenu />
-                            </Grid.Column>
-                            <Grid.Column width={10}>
+                            <Grid.Column>
                                 <Grid>
                                     <Grid.Row>
                                         <Grid.Column>

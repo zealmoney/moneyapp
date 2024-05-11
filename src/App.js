@@ -32,6 +32,10 @@ import { Recepients } from "./common/Recepients";
 import { PrivacyPolicy } from "./common/PrivacyPolicy";
 import { Notifications } from "./common/Notification";
 import { ChangePasswordMobile } from "./mobile/ChangePasswordMobile";
+import { NotificationsMobile } from "./mobile/NotificationMobile";
+import { RecepientsMobile } from "./mobile/RecepientsMobile";
+import { PaymentCardMobile } from "./mobile/PaymentCardMobile";
+import { PrivacyPolicyMobile } from "./mobile/PrivacyPolicyMobile";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -60,6 +64,10 @@ function App() {
             <Route path="/transactionsummary" element={<TransactionSummaryMobile />} />
             <Route path="/transactionhistory" element={<TransactionHistoryMobile />} />
             <Route path="/settings/changepassword" element={<ChangePasswordMobile />} />
+            <Route path="/settings/notifications" element={<NotificationsMobile />} />
+            <Route path="/settings/recepients" element={<RecepientsMobile />} />
+            <Route path="/settings/paymentcard" element={<PaymentCardMobile />} />
+            <Route path="/settings/policy" element={<PrivacyPolicyMobile />} />
           </Routes>
         </BrowserRouter>
       </Media>
