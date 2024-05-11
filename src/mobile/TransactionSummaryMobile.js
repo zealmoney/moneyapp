@@ -1,18 +1,38 @@
 import { Button, Container, Divider, Flag, Grid, Header, Modal, Segment } from "semantic-ui-react"
 import { useDispatch, useSelector } from "react-redux"
-import { useAddTransactionMutation, useGetUsersQuery } from "../features/api/apiSlice"
-import { useReducer, useState } from "react"
-import { Footer } from "../common/Footer"
+import { useAddTransactionMutation, useGetRecepientsQuery, useGetUsersQuery, useStoreRecepientsMutation } from "../features/api/apiSlice"
+import { useEffect, useReducer, useState } from "react"
+import getRecepientDetails from "../client/api"
+import { removeRecepientsInfo } from "../features/api/transactionSlice"
+import { useNavigate } from "react-router-dom"
 import { TransactionNavbarMobile } from "./TransactionNavbarMobile"
+import { Footer } from "../common/Footer"
 
 export const TransactionSummaryMobile = () => {
+
+    const [recepientDetails, setRecepientDetails] = useState([])
+
+    const dispatch_reducer = useDispatch()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        getAllRecepients()
+    }, [])
+
+    const getAllRecepients = () => {
+        getRecepientDetails().get("/")
+            .then((res) => setRecepientDetails(res.data))
+            .catch(console.log('An error has occured'))
+    }
 
     function modalReducer(state, action){
         switch(action.type){
             case 'open':
                 return {open: true, size: action.size}
+            case 'open_transaction':
+                return {open_transaction: true, size_transaction: action.size_transaction}
             case 'close': 
-                return {open: false}
+                return {open: false, open_transaction: false}
             default:
                 return new Error('unsupported action')
         }
@@ -20,10 +40,11 @@ export const TransactionSummaryMobile = () => {
 
     const [state, dispatch] = useReducer(modalReducer, 
         {
-            open: false, size: undefined
+            open: false, size: undefined,
+            open_transaction: false, size_transaction: undefined
         })
 
-        const {open, size} = state
+        const {open, open_transaction, size, size_transaction} = state
 
         const closeModal = () => {
             dispatch({type: 'close'})
@@ -42,9 +63,7 @@ export const TransactionSummaryMobile = () => {
 
     const deliveryBank = useSelector((state)=> state.transactions.deliveryBank)
     const deliveryCash = useSelector((state)=> state.transactions.deliveryCash)
-    const zenith = useSelector((state)=> state.transactions.zenith)
-    const gtb = useSelector((state)=> state.transactions.gtb)
-    const polaris = useSelector((state)=> state.transactions.polaris)
+    const bankname = useSelector((state)=> state.transactions.bankname)
 
     const accountNumber = useSelector((state) => state.transactions.accountNumber)
     const retypeAccountNumber = useSelector((state) => state.transactions.retypeAccountNumber)
@@ -62,6 +81,7 @@ export const TransactionSummaryMobile = () => {
     const region = useSelector((state) => state.transactions.region)
     const city = useSelector((state) => state.transactions.city)
     const postal = useSelector((state) => state.transactions.postal)
+    let account_email = sessionStorage.getItem('userId')
 
     const cardNumber = useSelector((state) => state.transactions.cardNumber)
     const expiration = useSelector((state) => state.transactions.expiration)
@@ -94,37 +114,53 @@ export const TransactionSummaryMobile = () => {
     }
 
     const [sendTransaction, {isLoading}] = useAddTransactionMutation()
-    //const saveTransaction = [moneySent, moneyReceived, currencySent, currencyReceived, fee, total].every(Boolean) && !isLoading
+
+    let count_recepient = 0
+    const checkRecepients = () => {
+        recepientDetails.map((r) => {
+            if(r.account_email === senderEmail && r.email === email){
+                ++count_recepient
+            }
+        })
+        return count_recepient
+    }
+
+    const [sendRecepients] = useStoreRecepientsMutation()
 
     const sendMoneyClick = async() => {
-           // if(saveTransaction){
                 dispatch({type: 'close'})
-                //if(readyToSend){
                     setLoading(true)
                     try {
                         await sendTransaction({
                             moneySent, moneyReceived, currencySent, currencyReceived, fee, total,
-                            deliveryBank, deliveryCash, zenith, gtb, polaris,
+                            deliveryBank, deliveryCash, bankname,
                             accountNumber, retypeAccountNumber, checking, savings,
                             fname, mname, lname, slname, country, email, street, street2, region, city, postal,
                             cardNumber, expiration, securityCode, b_fname, nickname, streetAd, apartment, b_city,
                             b_region, zipcode, senderEmail
                         }).unwrap()
+                        if(checkRecepients() === 0){
+                        await sendRecepients({
+                            fname, mname, lname, slname, country, email, 
+                            street, street2, region, city, postal, account_email
+                        }).unwrap()
+                        dispatch_reducer(
+                            removeRecepientsInfo()
+                        )
+                        }
                         setLoading(false)
+                        dispatch({type: 'open_transaction', size_transaction: 'mini'})
                     } catch (error) {
                     console.error('An error has occured', error) 
                     }
-                //}
-                
-            //}
         
     }
-
 
     return(
         <>
             <TransactionNavbarMobile />
-            <Segment vertical style={{padding: '4em 1em'}}>
+            <Segment vertical style={{padding: '4em 0em'}}>
+                <Container>
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column>
@@ -133,7 +169,7 @@ export const TransactionSummaryMobile = () => {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column style={{maxWidth: 600}}>
-                                <Segment raised>
+                                <Segment>
                                     <Grid textAlign="left">
                                         <Grid.Row>
                                             <Grid.Column textAlign="center">
@@ -167,7 +203,7 @@ export const TransactionSummaryMobile = () => {
                                         </Grid.Row>
                                     </Grid>
                                 </Segment>
-                                <Segment raised>
+                                <Segment>
                                     <Grid textAlign="left">
                                         <Grid.Row>
                                             <Grid.Column textAlign="center">
@@ -188,14 +224,12 @@ export const TransactionSummaryMobile = () => {
                                                 <Header content='Bank' />
                                             </Grid.Column>
                                             <Grid.Column width={8} textAlign="right">
-                                                {zenith ? 'Zenith Bank' : ''}
-                                                {gtb ? 'Guaranty Trust Bank' : ''}
-                                                {polaris ? 'Polaris Bank' : ''}
+                                                {bankname}
                                             </Grid.Column>
                                         </Grid.Row>
                                     </Grid>
                                 </Segment>
-                                <Segment raised>
+                                <Segment>
                                     <Grid textAlign="left">
                                         <Grid.Row>
                                             <Grid.Column textAlign="center">
@@ -219,7 +253,7 @@ export const TransactionSummaryMobile = () => {
                                         </Grid.Row>
                                     </Grid>
                                 </Segment>
-                                <Segment raised>
+                                <Segment>
                                     <Grid textAlign="left">
                                         <Grid.Row>
                                             <Grid.Column textAlign="center">
@@ -244,7 +278,7 @@ export const TransactionSummaryMobile = () => {
                                         </Grid.Row>
                                     </Grid>
                                 </Segment>
-                                <Segment raised>
+                                <Segment>
                                     <Grid textAlign="left">
                                         <Grid.Row>
                                             <Grid.Column textAlign="center">
@@ -268,13 +302,16 @@ export const TransactionSummaryMobile = () => {
                                             </Grid.Column>
                                         </Grid.Row>
                                         <Grid.Row>
-                                            <Grid.Column textAlign="center">
-                                                {email}
+                                            <Grid.Column width={8}>
+                                                <Header content="Email" />
+                                            </Grid.Column>
+                                            <Grid.Column textAlign="right" width={8}>
+                                                {senderEmail}
                                             </Grid.Column>
                                         </Grid.Row>
                                     </Grid>
                                 </Segment>
-                                <Segment raised>
+                                <Segment>
                                     <Grid textAlign="left">
                                         <Grid.Row>
                                             <Grid.Column textAlign="center">
@@ -308,13 +345,14 @@ export const TransactionSummaryMobile = () => {
                                     color="green" 
                                     size="massive"
                                     loading={loading}
-                                    onClick={() => dispatch({type: 'open', size: 'mini'})}
+                                    onClick={() => dispatch({type: 'open', size: 'tiny'})}
                                 >
                                     Send Money
                                 </Button>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
+                </Container>
                 <Modal
                     open={open}
                     size={size}
@@ -350,6 +388,36 @@ export const TransactionSummaryMobile = () => {
                                         onClick={() => sendMoneyClick()}
                                     >
                                         YES
+                                    </Button>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Modal.Content>
+                </Modal>
+                <Modal
+                    open={open_transaction}
+                    size={size_transaction}
+                >
+                    <Modal.Header style={{textAlign: 'center'}}>
+                        Transaction Complete
+                    </Modal.Header>
+                    <Modal.Content>
+                        <Grid textAlign="center">
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Header 
+                                        as='h1'
+                                        content='Transaction Successful.'
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Button
+                                        color="green"
+                                        onClick={() => navigate("/transactionhistory")}
+                                    >
+                                        OK
                                     </Button>
                                 </Grid.Column>
                             </Grid.Row>
