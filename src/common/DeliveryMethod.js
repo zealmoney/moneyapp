@@ -28,10 +28,10 @@ export const DeliveryMethod = () => {
     const navigate = useNavigate()
     const dispatch_reducer = useDispatch()
 
-    const handleBankChange = ({target}) => {
+    const handleBankChange = (value) => {
         setDisabled(false)
         setBank(true)
-        setBankName(target.name)
+        setBankName(value)
     }
 
     const {data: bankinfo, isSuccess} = useGetBankInfoQuery()
@@ -43,7 +43,7 @@ export const DeliveryMethod = () => {
                     type='radio'
                     name="bank"
                     id="bank"
-                    onChange={handleBankChange}
+                    onChange={() => handleBankChange(bank.bank_name)}
                 /> &nbsp; &nbsp; &nbsp;
                 <span>{bank.bank_name}</span>                
                 <List.Content floated="right">
