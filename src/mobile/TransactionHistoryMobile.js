@@ -1,10 +1,9 @@
 import { Container, Divider, Flag, Grid, Header, Icon, Segment } from "semantic-ui-react"
 import { useState } from "react"
 import { useGetTransactionsQuery } from "../features/api/apiSlice"
+import moment from "moment"
 import { TransactionNavbarMobile } from "./TransactionNavbarMobile"
 import { Footer } from "../common/Footer"
-import Moment from "react-moment"
-import moment from "moment"
 
 const countries = [
     { name: 'Nigeria', countryCode: 'ng'},
@@ -24,9 +23,12 @@ const countries = [
                 return(
                     <>
                         <Grid.Row>
-                            <Grid.Column width={12}>
+                            <Grid.Column width={2}>
+                                {++count}
+                            </Grid.Column>
+                            <Grid.Column width={10}>
                                 To: {trans.fname + ' ' + trans.lname} <br/>
-                                Date: {moment(trans.trans_date).format("MMMM Do YYYY")} <br/>
+                                Date: {trans.trans_date}<br/>
                                 <Flag name={trans.currencyReceived} />  {trans.deliveryBank ? 'Bank Deposit' : 'Cash Pick Up'} <br/>
                                 Completed
                             </Grid.Column>
@@ -35,26 +37,23 @@ const countries = [
                             </Grid.Column>
                         </Grid.Row>
                         <Divider />
-                        {++count}
                     </>
                 )
             }
         }) 
+        
     }
-
     if(count > 0){
     return(
         <>
             <TransactionNavbarMobile />
-            <Segment vertical style={{padding: '4em 2em 10em'}}>
+            <Segment vertical style={{padding: '4em 0em 20em'}}>
+                <Container>
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column style={{maxWidth: 600}}>
-                                <Header as='h3' content='Transactions' />
-                                <Segment 
-                                    raised
-                                    style={{padding: '2em 2em'}}
-                                >
+                                <Header as='h1' content='Transactions' />
+                                <Segment style={{padding: '2em 2em'}}>
                                     <Grid textAlign="left">
                                         {transaction}
                                     </Grid>
@@ -62,6 +61,7 @@ const countries = [
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
+                </Container>
             </Segment>
             <Footer />
         </>
@@ -70,7 +70,7 @@ const countries = [
         return(
             <>
                 <TransactionNavbarMobile />
-                <Segment vertical style={{padding: '5em 0em 15em'}}>
+                <Segment vertical style={{padding: '8em 0em 23em'}}>
                     <Container>
                         <Grid textAlign="center">
                             <Grid.Row>
