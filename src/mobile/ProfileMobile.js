@@ -77,8 +77,8 @@ export const ProfileMobile = () => {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                <Footer />
             </Segment>
+            <Footer />
         </>
     )
 }
