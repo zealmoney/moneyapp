@@ -1,6 +1,6 @@
 import { Button, Container, Form, Grid, Header, Icon, List, Message, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updatePayment } from "../features/api/transactionSlice"
@@ -41,6 +41,15 @@ export const PaymentMethod = () => {
     const [cityError, setCityError]= useState(false)
     const [regionError, setRegionError]= useState(false)
     const [zipcodeError, setZipcodeError]= useState(false)
+
+    useEffect(() => {
+        window.onbeforeunload = (e) => {
+            e.preventDefault()              
+        }
+        return () => {
+            window.onbeforeunload = null
+        }
+    }, [])
 
     const handleCardNumberChange = e => 
         {

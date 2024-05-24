@@ -1,6 +1,6 @@
 import { Breadcrumb, Button, Container, Dropdown, Flag, Form, Grid, Header, Icon, Image, Input, Label, List, Radio, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateBank, updateDelivery } from "../features/api/transactionSlice"
@@ -27,6 +27,15 @@ export const DeliveryMethod = () => {
 
     const navigate = useNavigate()
     const dispatch_reducer = useDispatch()
+
+    useEffect(() => {
+        window.onbeforeunload = (e) => {
+            e.preventDefault()              
+        }
+        return () => {
+            window.onbeforeunload = null
+        }
+    }, [])
 
     const handleBankChange = (value) => {
         setDisabled(false)

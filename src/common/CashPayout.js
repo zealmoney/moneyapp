@@ -54,7 +54,8 @@ export const CashPayout = () => {
 
     return(
         <>
-            <Segment vertical size="massive" style={{padding: '4em 8em', backgroundColor: '#f6f6f6'}}>
+            <Segment vertical size="massive" style={{backgroundColor: '#f6f6f6'}}>
+                <Container>
                     <Grid textAlign="center">
                         <Grid.Row>
                             <Grid.Column>
@@ -78,6 +79,7 @@ export const CashPayout = () => {
                                     
                         </Grid.Row>
                     </Grid>
+                </Container>
             </Segment>
         </>
     )

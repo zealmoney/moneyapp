@@ -1,15 +1,15 @@
 import { Button, Container, Dropdown, Form, Grid, Header, Input, Label, Segment, Select } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { updateRecepientsInfo } from "../features/api/transactionSlice"
 import { useNavigate } from "react-router-dom"
 import { Footer } from "./Footer"
 
 const countryOptions = [
-    { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
+    { key: 'ng', value: 'ng', flag: 'ng', text: 'Nigeria'},
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN-USD'},
-    { key: 'gh', value: 'gh', flag: 'gh', text: 'GHS'},
+    { key: 'gh', value: 'gh', flag: 'gh', text: 'Ghana'},
 ]
 
 export const RecepientsInfo = () => {
@@ -66,6 +66,15 @@ export const RecepientsInfo = () => {
     const navigate = useNavigate()
 
     const dispatch_reducer =useDispatch()
+
+    useEffect(() => {
+        window.onbeforeunload = (e) => {
+            e.preventDefault()              
+        }
+        return () => {
+            window.onbeforeunload = null
+        }
+    }, [])
 
     const RecepientInfoClick = () => {
         if(fname === ''){

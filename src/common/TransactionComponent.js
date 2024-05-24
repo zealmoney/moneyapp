@@ -1,13 +1,13 @@
 import { Button, Container, Divider, Dropdown, Flag, Form, Grid, Header, Input, Label, Message, Radio, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
-import { useReducer, useState } from "react"
-import { TransactionModal } from "./TransactionModal"
+import { useEffect, useReducer, useState } from "react"
 import { useGetRatesQuery } from "../features/api/apiSlice"
 import { parseInt } from "lodash"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateTransaction } from "../features/api/transactionSlice"
 import { Footer } from "./Footer"
+import { ErrorModal } from "./ErrorModal"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -55,12 +55,22 @@ export const TransactionComponent = () => {
     const [moneySentError, setMoneySentError] = useState(false)
     const [moneyReceivedError, setMoneyReceivedError] = useState(false)
 
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        window.onbeforeunload = (e) => {
+            e.preventDefault()              
+        }
+        return () => {
+            window.onbeforeunload = null
+        }
+    }, [])
+
     const handleMoneySentChange = e => {
         setMoneySent(e.target.value)
         setMsg1(false)
     }
 
-    const navigate = useNavigate()
 
     const {data: rates, isSuccess} = useGetRatesQuery()
 
@@ -242,7 +252,7 @@ export const TransactionComponent = () => {
                         </Grid.Row>
                     </Grid>
                 </Container>
-                <TransactionModal 
+                <ErrorModal 
                     open={open}
                     size={size}
                     close={closeModal}

@@ -8,6 +8,27 @@ import getRecepientDetails from "../client/api"
 import { removeRecepientsInfo } from "../features/api/transactionSlice"
 import { useNavigate } from "react-router-dom"
 
+const initialState = {
+    open: false, size: undefined,
+    open_transaction: false, size_transaction: undefined,
+    open_reload: false, size_reload: undefined
+}
+
+function modalReducer(state, action){
+    switch(action.type){
+        case 'open':
+            return {open: true, size: action.size}
+        case 'open_transaction':
+            return {open_transaction: true, size_transaction: action.size_transaction}
+        case 'open_reload':
+            return {open_reload: true, size_reload: action.size_reload}
+        case 'close': 
+            return {open: false, open_transaction: false, open_reload: false}
+        default:
+            return new Error('unsupported action')
+    }
+}
+
 export const TransactionSummary = () => {
 
     const [recepientDetails, setRecepientDetails] = useState([])
@@ -17,6 +38,13 @@ export const TransactionSummary = () => {
 
     useEffect(() => {
         getAllRecepients()
+        window.onbeforeunload = (e) => {
+            e.preventDefault()              
+        }
+        return () => {
+            window.onbeforeunload = null
+        }
+        
     }, [])
 
     const getAllRecepients = () => {
@@ -25,26 +53,9 @@ export const TransactionSummary = () => {
             .catch(console.log('An error has occured'))
     }
 
-    function modalReducer(state, action){
-        switch(action.type){
-            case 'open':
-                return {open: true, size: action.size}
-            case 'open_transaction':
-                return {open_transaction: true, size_transaction: action.size_transaction}
-            case 'close': 
-                return {open: false, open_transaction: false}
-            default:
-                return new Error('unsupported action')
-        }
-    }
+    const [state, dispatch] = useReducer(modalReducer, initialState)
 
-    const [state, dispatch] = useReducer(modalReducer, 
-        {
-            open: false, size: undefined,
-            open_transaction: false, size_transaction: undefined
-        })
-
-        const {open, open_transaction, size, size_transaction} = state
+        const {open, open_transaction, open_reload, size, size_transaction, size_reload} = state
 
         const closeModal = () => {
             dispatch({type: 'close'})
@@ -418,6 +429,33 @@ export const TransactionSummary = () => {
                                         onClick={() => navigate("/transactionhistory")}
                                     >
                                         OK
+                                    </Button>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Modal.Content>
+                </Modal>
+                <Modal
+                    open={open_reload}
+                    size={size_reload}
+                >
+                    <Modal.Header>
+                        Reload
+                    </Modal.Header>
+                    <Modal.Content>
+                        <Grid>
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Header as="h3" content="Changes you made might not be saved" />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <Button color="green">
+                                        Reload
+                                    </Button>
+                                    <Button color="youtube" onClick={() => dispatch({type: 'close'})}>
+                                        Cancel
                                     </Button>
                                 </Grid.Column>
                             </Grid.Row>

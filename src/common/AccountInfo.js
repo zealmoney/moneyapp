@@ -1,6 +1,6 @@
 import { Button, Container, Form, Grid, Header, Message, Segment } from "semantic-ui-react"
 import { TransactionNavbar } from "./TransactionNavbar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { updateAccountInfo } from "../features/api/transactionSlice"
@@ -24,6 +24,15 @@ export const AccountInfo = () => {
 
     const [accountNumberError, setAccountNumberError] = useState(false)
     const [retypeAccountNumberError, setretypeAccountNumberError] = useState(false)
+
+    useEffect(() => {
+        window.onbeforeunload = (e) => {
+            e.preventDefault()              
+        }
+        return () => {
+            window.onbeforeunload = null
+        }
+    }, [])
 
     const handleAccountNumberChange = e => {
         setAccountNumber(e.target.value)

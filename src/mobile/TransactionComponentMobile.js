@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux"
 import { updateTransaction } from "../features/api/transactionSlice"
 import { TransactionNavbarMobile } from "./TransactionNavbarMobile"
 import { Footer } from "../common/Footer"
-import { TransactionModal } from "../common/TransactionModal"
 
 const countryOptions = [
     { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
@@ -240,11 +239,6 @@ export const TransactionComponentMobile = () => {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                <TransactionModal
-                    open={open}
-                    size={size}
-                    close={closeModal}
-                />
             </Segment>
             <Footer />
         </>
