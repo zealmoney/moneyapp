@@ -12,28 +12,22 @@ export const Footer = () => {
                     <Grid stackable inverted divided>
                         <Grid.Row>
                             <Grid.Column width={4}>
-                                <Header as='h4' inverted content="Our Company"  />
+                                <Header as='h4' inverted content="MONEY APP"  />
                                 <List link inverted>
-                                    <List.Item as='a'>
-                                        About Us
+                                    <List.Item as='a' onClick={() => navigate("/about")}>
+                                        About
                                     </List.Item>
-                                    <List.Item as='a'>
-                                        Careers
+                                    <List.Item as='a' onClick={() => navigate("/signin")}>
+                                        Login
                                     </List.Item>
-                                    <List.Item as='a'>
-                                        Press
+                                    <List.Item as='a' onClick={() => navigate("/register")}>
+                                        Sign Up
                                     </List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
                                 <Header as='h4' inverted content="Services" />
                                 <List link inverted>
-                                    <List.Item as='a'>
-                                        Login
-                                    </List.Item>
-                                    <List.Item as='a'>
-                                        Sign Up
-                                    </List.Item>
                                     <List.Item as='a'>
                                         Rates and Fees
                                     </List.Item>
@@ -68,7 +62,7 @@ export const Footer = () => {
                                     <List.Item as='a'>
                                         Report a Suspicious Activity
                                     </List.Item>
-                                    <List.Item as='a'>
+                                    <List.Item as='a' onClick={() => navigate('/privacy')}>
                                         Privacy Policy
                                     </List.Item>
                                     <List.Item as='a'>

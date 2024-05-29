@@ -1,9 +1,10 @@
-import { Button, ButtonOr, Container, Form, Grid, Header, Icon, Input, Menu, Segment } from "semantic-ui-react"
+import { Button, ButtonOr, Container, Form, Grid, Header, Icon, Input, Menu, Message, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useGetUsersQuery } from "../features/api/apiSlice"
 import EmailValidator from 'email-validator'
+import { Footer } from "./Footer"
 
 export const SignIn = () => {
 
@@ -14,6 +15,11 @@ export const SignIn = () => {
 
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
+
+    const [msg,setMsg] = useState(false)
+    const [msg1,setMsg1] = useState(false)
+    const [msg2,setMsg2] = useState(false)
+    const [msg3,setMsg3] = useState(false)
 
     const handleEmailChange = e => setEmail(e.target.value)
     const handlePasswordChange = e => setPassword(e.target.value)
@@ -55,18 +61,21 @@ export const SignIn = () => {
 
     const signInClick = () => {
         if(email === ''){
-            setEmailError({content: 'Empty Fields'})
-        }else if(password === ''){
-            setPasswordError({content: 'Empty Fields'})
+            setEmailError(true)
         }else if(!EmailValidator.validate(email)){
-            setEmailError({content: 'Invalid Email'})
+            setMsg(true)
         }else if(count_email === 0){
-            setEmailError({content: 'Email does not exist'})
+            //setEmailError({content: 'Email does not exist'})
+            setMsg1(true)
         }else if(email_verify === 0){
-            setEmailError({content: 'Email not verified'})
+            //setEmailError({content: 'Email not verified'})
+            setMsg2(true)
+        }else if(password === ''){
+            setPasswordError(true)
         }
         else if(count_password === 0){
-            setPasswordError({content: 'Wrong password entered'})
+            //setPasswordError({content: 'Wrong password entered'})
+            setMsg3(true)
         }
         else if(count_user > 0){
             setLoading(true)
@@ -96,6 +105,61 @@ export const SignIn = () => {
                                 raised
                                 style={{padding: '4em 4em'}}
                             >
+                                {
+                                    emailError ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Email Error!!!</Message.Header>
+                                        <p>
+                                            Please enter your email
+                                        </p>
+                                    </Message>: ""
+                                }
+                                {
+                                    msg ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Email Error!!!</Message.Header>
+                                        <p>
+                                            Inavlid Email
+                                        </p>
+                                    </Message>: ""
+                                }
+                                {
+                                    msg1 ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Email Error!!!</Message.Header>
+                                        <p>
+                                            Email does not exist
+                                        </p>
+                                    </Message>: ""
+                                }
+                                {
+                                    msg2 ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Email Error!!!</Message.Header>
+                                        <p>
+                                            Email not verified
+                                        </p>
+                                    </Message>: ""
+                                }
+                                {
+                                    passwordError ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Password Error!!!</Message.Header>
+                                        <p>
+                                            Please enter your password
+                                        </p>
+                                    </Message>: ""
+                                }
+                                {
+                                    msg3 ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Password Error!!!</Message.Header>
+                                        <p>
+                                            Wrong password entered
+                                        </p>
+                                    </Message>: ""
+                                }
+                                
                                 <Form size="huge">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>
@@ -105,9 +169,8 @@ export const SignIn = () => {
                                             fluid
                                             placeholder='youremail@domain.com'
                                             value={email}
-                                            error={emailError}
                                             onChange={handleEmailChange}
-                                            onClick={() => setEmailError(false)}
+                                            onClick={() => {setEmailError(false); setMsg(false); setMsg1(false); setMsg2(false)}}
                                         />
                                     </Form.Field> 
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -132,7 +195,7 @@ export const SignIn = () => {
                                             value={password}
                                             error={passwordError}
                                             onChange={handlePasswordChange}
-                                            onClick={() => setPasswordError(false)}
+                                            onClick={() => {setPasswordError(false); setMsg3(false)}}
                                         />
                                     </Form.Field> 
                                     <Form.Field>
@@ -164,6 +227,7 @@ export const SignIn = () => {
                 </Grid>
                 </Container>
             </Segment>
+            <Footer />
         </>
     )
 }

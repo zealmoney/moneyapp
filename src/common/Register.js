@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
-import { Button, Container, Form, Grid, Header, Icon, Input, Modal, Segment } from "semantic-ui-react"
+import { Button, Container, Form, Grid, Header, Icon, Input, Message, Modal, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { useReducer, useRef, useState } from "react"
 import { useGetUsersQuery, useRegisterMutation } from "../features/api/apiSlice"
 import EmailValidator from 'email-validator'
 import emailjs from '@emailjs/browser'
+import { Footer } from "./Footer"
 
 export const Register = () => {
 
@@ -51,6 +52,8 @@ export const Register = () => {
     const [dob, setDob] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const [msg, setMsg] = useState(false)
 
     const [fnameError, setFnameError] = useState(false)
     const [lnameError, setLnameError] = useState(false)
@@ -117,7 +120,8 @@ export const Register = () => {
         }else if(confirmPassword === ''){
             setConfirmPasswordError({content: 'Empty fields'})
         }else if(password !== confirmPassword){
-            setConfirmPasswordError({content: 'Passwords do not match'})
+            //setConfirmPasswordError({content: 'Passwords do not match'})
+            setMsg(true)
         }else if(count > 0){
             setEmailError({content: 'Email already exists'})
         }else if(!EmailValidator.validate(email)){
@@ -164,6 +168,33 @@ export const Register = () => {
                                 style={{padding: '4em 4em'}}
                                 size="huge"
                             >
+                                {
+                                    passwordError ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Password Error!!!</Message.Header>
+                                        <p>
+                                            Please enter a password
+                                        </p>
+                                    </Message>: ""
+                                }
+                                {
+                                    confirmPasswordError ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Password Error!!!</Message.Header>
+                                        <p>
+                                            Please confirm your password
+                                        </p>
+                                    </Message>: ""
+                                }
+                                {
+                                    msg ?
+                                    <Message error style={{textAlign: "left"}}>
+                                        <Message.Header>Password Error!!!</Message.Header>
+                                        <p>
+                                            Passwords do not match
+                                        </p>
+                                    </Message>: ""
+                                }
                                 <Form size="huge" id="form">
                                     <Form.Field style={{textAlign: 'left'}}>
                                         <label>
@@ -175,6 +206,7 @@ export const Register = () => {
                                             value={fname}
                                             error={fnameError}
                                             onChange={handleFnameChange}
+                                            onClick={() => setFnameError(false)}
                                         />
                                     </Form.Field> 
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -186,6 +218,7 @@ export const Register = () => {
                                             value={lname}
                                             error={lnameError}
                                             onChange={handleLnameChange}
+                                            onClick={() => setLnameError(false)}
                                         />
                                     </Form.Field>
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -197,6 +230,7 @@ export const Register = () => {
                                             value={phone}
                                             error={phoneError}
                                             onChange={handlePhoneChange}
+                                            onClick={() => setPhoneError(false)}
                                         />
                                     </Form.Field>  
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -210,6 +244,7 @@ export const Register = () => {
                                             value={email}
                                             error={emailError}
                                             onChange={handleEmailChange}
+                                            onClick={() => setEmailError(false)}
                                         />
                                     </Form.Field> 
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -223,6 +258,7 @@ export const Register = () => {
                                             value={dob}
                                             error={dobError}
                                             onChange={handleDobChange}
+                                            onClick={() => setDobError(false)}
                                         />
                                     </Form.Field>
                                     <Form.Field style={{textAlign: 'left'}}>
@@ -231,6 +267,7 @@ export const Register = () => {
                                         </label>
                                         <Input
                                             fluid
+                                            error={passwordError}
                                             label={
                                                 <Button
                                                     icon
@@ -245,7 +282,7 @@ export const Register = () => {
                                             labelPosition="right"
                                             type={passwordType}
                                             value={password}
-                                            error={passwordError}
+                                            onClick={() => {setPasswordError(false); setMsg(false)}}
                                             onChange={handlePasswordChange}
                                         />
                                     </Form.Field> 
@@ -255,6 +292,7 @@ export const Register = () => {
                                         </label>
                                         <Input
                                             fluid
+                                            error={confirmPasswordError}
                                             label={
                                                 <Button
                                                     icon
@@ -269,7 +307,7 @@ export const Register = () => {
                                             labelPosition="right"
                                             type={confirmPasswordType}
                                             value={confirmPassword}
-                                            error={confirmPasswordError}
+                                            onClick={() => {setConfirmPasswordError(false) ; setMsg(false)}}
                                             onChange={handleConfirmPasswordChange}
                                         />
                                     </Form.Field> 
@@ -332,6 +370,7 @@ export const Register = () => {
                     </Modal.Content>
                 </Modal>
             </Segment>
+            <Footer />
         </>
     )
 }

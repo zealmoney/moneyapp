@@ -23,7 +23,7 @@ export const Customers = () => {
                                     style={{padding: '2em 2em'}}
                                 >
                                     <Header content='Adedotun Adebayo' />
-                                    <Rating icon="star" defaultRating={4} maxRating={5} />
+                                    <Rating icon="star" defaultRating={5} maxRating={5} />
                                     <p>
                                         MoneyApp is very easy to use, I was able to send money to my 
                                         brother in Nigeria and he confirmed that he received the money in his
@@ -41,7 +41,7 @@ export const Customers = () => {
                                     style={{padding: '2em 2em'}}
                                 >
                                     <Header content='Selassie Hadzide' />
-                                    <Rating icon="star" defaultRating={3} maxRating={5} />
+                                    <Rating icon="star" defaultRating={5} maxRating={5} />
                                     <p>
                                         With MoneyApp I can send money to friends and families in any part of 
                                         the world. I have used the app on several occasions to send money abroad, 
@@ -59,7 +59,7 @@ export const Customers = () => {
                                     style={{padding: '2em 2em'}}
                                 >
                                     <Header content='Estrella Moreno' />
-                                    <Rating icon="star" defaultRating={2} maxRating={5} />
+                                    <Rating icon="star" defaultRating={5} maxRating={5} />
                                     <p>
                                         Sending money with MoneyApp is fascinating and comes with several incentives. 
                                         I remember receiving a $10 bonus after sending money for the first time 
