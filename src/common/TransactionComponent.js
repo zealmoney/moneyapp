@@ -10,8 +10,7 @@ import { Footer } from "./Footer"
 import { ErrorModal } from "./ErrorModal"
 
 const countryOptions = [
-    { key: 'ng', value: 'ng', flag: 'ng', text: 'NGN'},
-    { key: 'ng', value: 'us', flag: 'ng', text: 'NGN-USD'},
+    { key: 'ng', value: 'us', flag: 'ng', text: 'NGN'},
     { key: 'gh', value: 'gh', flag: 'gh', text: 'GHS'},
 ]
 

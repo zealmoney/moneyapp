@@ -64,7 +64,6 @@ export const Customers = () => {
                                         Sending money with MoneyApp is fascinating and comes with several incentives. 
                                         I remember receiving a $10 bonus after sending money for the first time 
                                         with the app.
-
                                     </p>
                                 </Segment>
                             </Grid.Column>
