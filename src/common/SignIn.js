@@ -1,12 +1,17 @@
 import { Button, ButtonOr, Container, Form, Grid, Header, Icon, Input, Menu, Message, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useGetUsersQuery } from "../features/api/apiSlice"
 import EmailValidator from 'email-validator'
 import { Footer } from "./Footer"
+import { generatePlaidToken } from "../client/api"
 
 export const SignIn = () => {
+
+    useEffect(() => {
+        generatePlaidToken()
+    }, [])
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
