@@ -5,13 +5,8 @@ import { useEffect, useState } from "react"
 import { useGetUsersQuery } from "../features/api/apiSlice"
 import EmailValidator from 'email-validator'
 import { Footer } from "./Footer"
-import { generatePlaidToken } from "../client/api"
 
 export const SignIn = () => {
-
-    useEffect(() => {
-        generatePlaidToken()
-    }, [])
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
