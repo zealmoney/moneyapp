@@ -16,7 +16,10 @@ export const HeadingPage = () => {
                                     style={{fontSize: '3.2em'}} 
                                     content='Money Transfer That Is Easy And Reliable' 
                                 />
-                                <Button circular size="huge" color="green">
+                                <Button 
+                                    circular size="huge" 
+                                    color="green"    
+                                >
                                     Learn More
                                 </Button>
                             </Grid.Column>
