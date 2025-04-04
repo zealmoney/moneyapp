@@ -8,6 +8,7 @@ import getRecepientDetails from "../client/api"
 import { removeRecepientsInfo } from "../features/api/transactionSlice"
 import { useNavigate } from "react-router-dom"
 
+
 const initialState = {
     open: false, size: undefined,
     open_transaction: false, size_transaction: undefined,
@@ -32,6 +33,8 @@ function modalReducer(state, action){
 export const TransactionSummary = () => {
 
     const [recepientDetails, setRecepientDetails] = useState([])
+
+    let trans_id = uuid()
 
     const dispatch_reducer = useDispatch()
     const navigate = useNavigate()

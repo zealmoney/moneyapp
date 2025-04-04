@@ -17,12 +17,12 @@ export const Footer = () => {
                                     <List.Item as='a' onClick={() => navigate("/about")}>
                                         About
                                     </List.Item>
-                                    <List.Item as='a' onClick={() => navigate("/signin")}>
+                                    {/*<List.Item as='a' onClick={() => navigate("/signin")}>
                                         Login
                                     </List.Item>
                                     <List.Item as='a' onClick={() => navigate("/register")}>
                                         Sign Up
-                                    </List.Item>
+                                    </List.Item>*/}
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={4}>
