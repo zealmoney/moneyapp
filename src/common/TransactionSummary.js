@@ -34,8 +34,6 @@ export const TransactionSummary = () => {
 
     const [recepientDetails, setRecepientDetails] = useState([])
 
-    let trans_id = uuid()
-
     const dispatch_reducer = useDispatch()
     const navigate = useNavigate()
 
