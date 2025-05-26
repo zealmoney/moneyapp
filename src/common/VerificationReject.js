@@ -1,7 +1,7 @@
 import { Button, Container, Grid, Header, Icon, Segment } from "semantic-ui-react"
 import { AuthenticationHeader } from "./AuthenticationHeader"
 
-export const VerificationSuccessful = () => {
+export const VerificationReject = () => {
 
     return(
         <>
@@ -17,8 +17,8 @@ export const VerificationSuccessful = () => {
                         <Grid.Row>
                             <Grid.Column>
                                 <Icon 
-                                    name="check circle outline"
-                                    color="green"
+                                    name="ban"
+                                    color="red"
                                     size="massive"
                                 />
                             </Grid.Column>
@@ -27,7 +27,7 @@ export const VerificationSuccessful = () => {
                             <Grid.Column>
                                 <Header 
                                     as="h2"
-                                    content="Your verification has been successful"
+                                    content="Verification Rejected!! Please try again"
                                 />
                             </Grid.Column>
                         </Grid.Row>

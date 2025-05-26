@@ -41,6 +41,8 @@ import { Privacy } from "./common/Privacy";
 import { EmailActivationMobile } from "./mobile/EmailActivationMobile";
 import { VerificationSuccessful } from "./common/VerificationSuccessful";
 import { VerificationSuccessfulMobile } from "./mobile/VerificationSuccessfulMobile";
+import { VerificationReview } from "./common/VerificationReview";
+import { VerificationReject } from "./common/VerificationReject";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -75,6 +77,8 @@ function App() {
             <Route path="/settings/paymentcard" element={<PaymentCardMobile />} />
             <Route path="/settings/policy" element={<PrivacyPolicyMobile />} />
             <Route path="/verification-complete" element={<VerificationSuccessfulMobile />} />
+            <Route path="/verification-review" element={<VerificationReview />} />
+            <Route path="/verification-reject" element={<VerificationReject />} />
           </Routes>
         </BrowserRouter>
       </Media>
@@ -103,6 +107,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/verification-complete" element={<VerificationSuccessful />} />
+            <Route path="/verification-review" element={<VerificationReview />} />
+            <Route path="/verification-reject" element={<VerificationReject />} />
           </Routes>
         </BrowserRouter>
       </Media>
