@@ -40,6 +40,7 @@ import { About } from "./common/About";
 import { Privacy } from "./common/Privacy";
 import { EmailActivationMobile } from "./mobile/EmailActivationMobile";
 import { VerificationSuccessful } from "./common/VerificationSuccessful";
+import { VerificationSuccessfulMobile } from "./mobile/VerificationSuccessfulMobile";
 
 const { MediaContextProvider, Media} = createMedia({
   breakpoints: {
@@ -73,7 +74,7 @@ function App() {
             <Route path="/verify/:email_id" element={<EmailActivationMobile />} />
             <Route path="/settings/paymentcard" element={<PaymentCardMobile />} />
             <Route path="/settings/policy" element={<PrivacyPolicyMobile />} />
-            <Route path="/verification-complete" element={<VerificationSuccessful />} />
+            <Route path="/verification-complete" element={<VerificationSuccessfulMobile />} />
           </Routes>
         </BrowserRouter>
       </Media>
